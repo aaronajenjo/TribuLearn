@@ -14,30 +14,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartConfig,
-  ChartStyle,
-} from "@/components/ui/chart";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
-
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
-
-const chartConfig = {
-  desktop: {
-    label: "Modules Completed",
-    color: "hsl(var(--primary))",
-  },
-} satisfies ChartConfig;
+import { DashboardChart } from "@/components/dashboard-chart";
 
 export default function Dashboard() {
   return (
@@ -69,31 +46,7 @@ export default function Dashboard() {
           </CardFooter>
         </Card>
 
-        <Card className="flex flex-col">
-          <CardHeader>
-            <CardTitle>Overall Progress</CardTitle>
-            <CardDescription>Your activity in the last 6 months.</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-grow">
-            <ChartContainer config={chartConfig} className="h-full w-full">
-              <BarChart accessibilityLayer data={chartData}>
-                <CartesianGrid vertical={false} />
-                <XAxis
-                  dataKey="month"
-                  tickLine={false}
-                  tickMargin={10}
-                  axisLine={false}
-                  tickFormatter={(value) => value.slice(0, 3)}
-                />
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent indicator="dot" />}
-                />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+        <DashboardChart />
 
         <Card className="flex flex-col">
           <CardHeader>
