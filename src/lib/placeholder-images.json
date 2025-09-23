@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "tech-csharp",
+      "description": "A placeholder image for the C# learning path.",
+      "imageUrl": "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2RlJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzU4NTkyOTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code abstract"
+    },
+    {
+      "id": "tech-angular",
+      "description": "A placeholder image for the Angular learning path.",
+      "imageUrl": "https://images.unsplash.com/photo-1646315026057-1304d4a771c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxnZW9tZXRyaWMlMjBhYnN0cmFjdHxlbnwwfHx8fDE3NTg2MTU1OTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "geometric abstract"
+    },
+    {
+      "id": "tech-ionic",
+      "description": "A placeholder image for the Ionic learning path.",
+      "imageUrl": "https://images.unsplash.com/photo-1755286218783-5b8334109336?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtb2JpbGUlMjBpbnRlcmZhY2V8ZW58MHx8fHwxNzU4NTg1NDg0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mobile interface"
+    },
+    {
+      "id": "tech-blazor",
+      "description": "A placeholder image for the Blazor learning path.",
+      "imageUrl": "https://images.unsplash.com/photo-1558717738-0b9fbb9b0b21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxicm93c2VyJTIwY29kZXxlbnwwfHx8fDE3NTg2Mjc4ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "browser code"
+    },
+    {
+      "id": "tech-razor",
+      "description": "A placeholder image for the Razor learning path.",
+      "imageUrl": "https://images.unsplash.com/photo-1547658719-da2b51169166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3ZWIlMjBkZXNpZ258ZW58MHx8fHwxNzU4NTkzNjY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "web design"
+    },
+    {
+      "id": "user-avatar",
+      "description": "A placeholder image for a user's avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1535643302794-19c3804b874b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTg1ODUxMDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    }
+  ]
 }
