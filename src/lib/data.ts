@@ -47,12 +47,12 @@ export const learningPaths: Technology[] = [
           {
             title: "Introduction to C# and .NET",
             description: "Understand the basics of C#, its syntax, and the .NET framework.",
-            resources: [{ type: "video", title: "C# 101", url: "#", duration: "1h 30m" }],
+            resources: [{ type: "video", title: "C# 101", url: "https://www.youtube.com/watch?v=GhQdlIF3sgQ", duration: "4h 26m" }],
           },
           {
             title: "Variables and Data Types",
             description: "Learn about different data types, variables, and type conversion.",
-            resources: [{ type: "article", title: "C# Data Types Explained", url: "#" }],
+            resources: [{ type: "article", title: "C# Data Types Explained", url: "https://www.w3schools.com/cs/cs_data_types.php" }],
           },
         ],
       },
@@ -74,7 +74,7 @@ export const learningPaths: Technology[] = [
           {
             title: "Getting Started with Angular",
             description: "Set up your first Angular project and understand its architecture.",
-            resources: [{ type: "course", title: "Angular for Beginners", url: "#", duration: "5h" }],
+            resources: [{ type: "course", title: "Angular for Beginners", url: "https://www.youtube.com/watch?v=3qBXWUpoPHo", duration: "9h 53m" }],
           },
         ],
       },
@@ -96,7 +96,7 @@ export const learningPaths: Technology[] = [
           {
             title: "Ionic Framework Fundamentals",
             description: "Learn the core concepts of Ionic for building mobile apps.",
-            resources: [{ type: "video", title: "Intro to Ionic", url: "#", duration: "2h 15m" }],
+            resources: [{ type: "video", title: "Intro to Ionic", url: "https://www.youtube.com/watch?v=O2giE-Ja_1I", duration: "1h 12m" }],
           },
         ],
       },
@@ -118,7 +118,7 @@ export const learningPaths: Technology[] = [
           {
             title: "Introduction to Blazor",
             description: "Explore how Blazor lets you build client-side web apps with .NET.",
-            resources: [{ type: "article", title: "Blazor: A New Era for C# Web Devs", url: "#" }],
+            resources: [{ type: "article", title: "Blazor: A New Era for C# Web Devs", url: "https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor" }],
           },
         ],
       },
@@ -140,7 +140,7 @@ export const learningPaths: Technology[] = [
           {
             title: "Razor Syntax Essentials",
             description: "Master the syntax for embedding server-based code into webpages.",
-            resources: [{ type: "video", title: "Razor Pages in ASP.NET Core", url: "#", duration: "3h" }],
+            resources: [{ type: "video", title: "Razor Pages in ASP.NET Core", url: "https://www.youtube.com/watch?v=a-i0g_a5-3E", duration: "3h 48m" }],
           },
         ],
       },

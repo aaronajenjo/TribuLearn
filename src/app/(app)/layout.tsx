@@ -18,7 +18,6 @@ import {
   BookOpen,
   Code2,
   LayoutDashboard,
-  User,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -27,7 +26,6 @@ const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/paths", icon: BookOpen, label: "Learning Paths" },
   { href: "/playground", icon: Code2, label: "Playground" },
-  { href: "/profile", icon: User, label: "Profile" },
 ];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
