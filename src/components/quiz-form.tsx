@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
+  Form,
   FormControl,
   FormItem,
   FormLabel,
@@ -45,36 +46,38 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
   });
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardHeader>
-        <CardTitle>{quizData.title}</CardTitle>
-        <CardDescription>Answer the following questions to the best of your ability.</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-8">
-        {fields.map((field, index) => (
-          <div key={field.id}>
-            <p className="font-semibold mb-4">{index + 1}. {quizData.questions[index].question}</p>
-            <RadioGroup
-              onValueChange={(value) => form.setValue(`answers.${index}.value`, value)}
-              defaultValue={form.getValues(`answers.${index}.value`)}
-            >
-              {quizData.questions[index].options.map((option, optionIndex) => (
-                <FormItem key={optionIndex} className="flex items-center space-x-3 space-y-0">
-                  <FormControl>
-                    <RadioGroupItem value={optionIndex.toString()} />
-                  </FormControl>
-                  <FormLabel className="font-normal">{option}</FormLabel>
-                </FormItem>
-              ))}
-            </RadioGroup>
-          </div>
-        ))}
-      </CardContent>
-      <CardFooter>
-        <Button type="submit" disabled={submitted} className="w-full">
-          Submit Answers
-        </Button>
-      </CardFooter>
-    </form>
+    <Form {...form}>
+      <form onSubmit={handleSubmit}>
+        <CardHeader>
+          <CardTitle>{quizData.title}</CardTitle>
+          <CardDescription>Answer the following questions to the best of your ability.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-8">
+          {fields.map((field, index) => (
+            <div key={field.id}>
+              <p className="font-semibold mb-4">{index + 1}. {quizData.questions[index].question}</p>
+              <RadioGroup
+                onValueChange={(value) => form.setValue(`answers.${index}.value`, value)}
+                defaultValue={form.getValues(`answers.${index}.value`)}
+              >
+                {quizData.questions[index].options.map((option, optionIndex) => (
+                  <FormItem key={optionIndex} className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value={optionIndex.toString()} />
+                    </FormControl>
+                    <FormLabel className="font-normal">{option}</FormLabel>
+                  </FormItem>
+                ))}
+              </RadioGroup>
+            </div>
+          ))}
+        </CardContent>
+        <CardFooter>
+          <Button type="submit" disabled={submitted} className="w-full">
+            Submit Answers
+          </Button>
+        </CardFooter>
+      </form>
+    </Form>
   );
 }
