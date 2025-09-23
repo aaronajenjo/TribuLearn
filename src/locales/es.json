@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "dashboard": "Panel",
+    "learningPaths": "Rutas de Aprendizaje",
+    "playground": "Playground",
+    "tests": "Tests"
+  },
+  "userNav": {
+    "name": "Nuevo Empleado",
+    "email": "nuevo.empleado@tribu.com",
+    "language": "Idioma",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  },
+  "dashboard": {
+    "continueLearning": {
+      "title": "Continuar Aprendiendo",
+      "description": "Continúa donde lo dejaste en tu viaje de C#.",
+      "button": "Reanudar Ruta"
+    },
+    "chart": {
+      "title": "Progreso General",
+      "description": "Tu actividad en los últimos 6 meses.",
+      "label": "Módulos Completados"
+    },
+    "achievements": {
+      "title": "Logros",
+      "description": "Hitos que has alcanzado.",
+      "firstSteps": {
+        "title": "Primeros Pasos",
+        "description": "Completaste tu primer módulo."
+      },
+      "pathfinder": {
+        "title": "Explorador",
+        "description": "Comenzaste una nueva ruta de aprendizaje."
+      }
+    },
+    "explorePaths": {
+      "title": "Explorar Rutas de Aprendizaje"
+    }
+  },
+  "paths": {
+    "page": {
+      "title": "Rutas de Aprendizaje",
+      "description": "Elige una tecnología para comenzar tu viaje de aprendizaje."
+    },
+    "detail": {
+      "title": "Ruta de Aprendizaje de {pathName}",
+      "resources": "Recursos",
+      "takeQuiz": "Hacer Cuestionario",
+      "comingSoon": "¡El contenido para el nivel {levelName} llegará pronto!"
+    },
+    "levels": {
+      "beginner": "Principiante",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado"
+    }
+  },
+  "playground": {
+    "page": {
+      "title": "Playground de Código con IA",
+      "description": "Mejora tus habilidades con ejercicios de codificación ilimitados generados por IA."
+    },
+    "form": {
+      "title": "Generador de Ejercicios",
+      "description": "Selecciona una tecnología y dificultad para generar un ejercicio de codificación personalizado.",
+      "technology": "Tecnología",
+      "selectTechnology": "Selecciona una tecnología",
+      "difficulty": "Nivel de Dificultad",
+      "selectDifficulty": "Selecciona una dificultad",
+      "generateButton": "Generar Ejercicio"
+    },
+    "result": {
+      "title": "Ejercicio Generado",
+      "description": "Tu ejercicio generado por IA aparecerá aquí.",
+      "generating": "Generando...",
+      "placeholder": "Tu ejercicio se mostrará aquí.",
+      "solvePlaceholder": "Resuelve el ejercicio aquí..."
+    }
+  },
+  "tests": {
+    "page": {
+      "title": "Tests de Evaluación de Habilidades",
+      "description": "Selecciona una tecnología y pon a prueba tus conocimientos para encontrar tu nivel de habilidad."
+    },
+    "container": {
+      "generating": "Generando Cuestionario...",
+      "error": "Error al cargar el cuestionario.",
+      "prompt": "Selecciona una tecnología para comenzar la evaluación.",
+      "result": {
+        "title": "¡Test Completado!",
+        "description": "Respondiste {score} de {total} preguntas correctamente.",
+        "suggestedLevel": "Tu nivel sugerido es"
+      }
+    }
+  },
+  "quiz": {
+    "description": "Responde las siguientes preguntas lo mejor que puedas.",
+    "submitButton": "Enviar Respuestas"
+  },
+  "toast": {
+    "generationFailed": {
+      "title": "Falló la Generación",
+      "description": "Hubo un error al generar el ejercicio. Por favor, inténtalo de nuevo."
+    },
+    "quizGenerationFailed": {
+      "title": "Falló la Generación del Cuestionario",
+      "description": "Hubo un error al generar el cuestionario. Por favor, inténtalo de nuevo."
+    }
+  },
+  "technologies": {
+    "csharp": {
+      "description": "Domina C#, un lenguaje versátil para desarrollo web, móvil y de juegos.",
+      "beginner": {
+        "module1": {
+          "title": "Introducción a C# y .NET",
+          "description": "Comprende los conceptos básicos de C#, su sintaxis y el framework .NET."
+        },
+        "module2": {
+          "title": "Variables y Tipos de Datos",
+          "description": "Aprende sobre diferentes tipos de datos, variables y conversión de tipos."
+        }
+      }
+    },
+    "angular": {
+      "description": "Construye potentes aplicaciones de una sola página con el framework de front-end de Google.",
+      "beginner": {
+        "module1": {
+          "title": "Primeros Pasos con Angular",
+          "description": "Configura tu primer proyecto de Angular y comprende su arquitectura."
+        }
+      }
+    },
+    "ionic": {
+      "description": "Desarrolla aplicaciones móviles multiplataforma con una única base de código usando tecnologías web.",
+      "beginner": {
+        "module1": {
+          "title": "Fundamentos del Framework Ionic",
+          "description": "Aprende los conceptos centrales de Ionic para construir aplicaciones móviles."
+        }
+      }
+    },
+    "blazor": {
+      "description": "Crea interfaces de usuario web interactivas usando C# en lugar de JavaScript.",
+      "beginner": {
+        "module1": {
+          "title": "Introducción a Blazor",
+          "description": "Explora cómo Blazor te permite construir aplicaciones web del lado del cliente con .NET."
+        }
+      }
+    },
+    "razor": {
+      "description": "Construye páginas web dinámicas con este potente motor de plantillas para ASP.NET.",
+      "beginner": {
+        "module1": {
+          "title": "Esenciales de la Sintaxis de Razor",
+          "description": "Domina la sintaxis para incrustar código del lado del servidor en las páginas web."
+        }
+      }
+    }
+  },
+  "months": {
+    "january": "Enero",
+    "february": "Febrero",
+    "march": "Marzo",
+    "april": "Abril",
+    "may": "Mayo",
+    "june": "Junio"
+  }
+}

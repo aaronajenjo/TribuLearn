@@ -13,6 +13,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { useLocale } from "@/hooks/use-locale";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 const chartData = [
@@ -24,23 +25,27 @@ const chartData = [
   { month: "June", desktop: 214 },
 ];
 
-const chartConfig = {
-  desktop: {
-    label: "Modules Completed",
-    color: "hsl(var(--primary))",
-  },
-} satisfies ChartConfig;
-
 export function DashboardChart() {
+  const { t } = useLocale();
+
+  const chartConfig = {
+    desktop: {
+      label: t("dashboard.chart.label"),
+      color: "hsl(var(--primary))",
+    },
+  } satisfies ChartConfig;
+  
+  const translatedChartData = chartData.map(item => ({...item, month: t(`months.${item.month.toLowerCase()}`)}));
+
   return (
     <Card className="flex flex-col">
       <CardHeader>
-        <CardTitle>Overall Progress</CardTitle>
-        <CardDescription>Your activity in the last 6 months.</CardDescription>
+        <CardTitle>{t("dashboard.chart.title")}</CardTitle>
+        <CardDescription>{t("dashboard.chart.description")}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
         <ChartContainer config={chartConfig} className="h-full w-full">
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart accessibilityLayer data={translatedChartData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"

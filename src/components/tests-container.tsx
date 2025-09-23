@@ -9,11 +9,12 @@ import {
 } from "@/components/ui/tabs";
 import { generateQuiz } from "@/ai/flows/generate-quiz";
 import type { Technology } from "@/lib/data";
-import { Loader2, Sparkles } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { QuizForm, Quiz } from "@/components/quiz-form";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { useLocale } from "@/hooks/use-locale";
 
 type QuizState = {
   [key: string]: {
@@ -24,10 +25,15 @@ type QuizState = {
   };
 };
 
-export function TestsContainer({ technologies }: { technologies: Technology[] }) {
+export function TestsContainer({
+  technologies,
+}: {
+  technologies: Technology[];
+}) {
   const [activeTab, setActiveTab] = useState(technologies[0].slug);
   const [quizState, setQuizState] = useState<QuizState>({});
   const { toast } = useToast();
+  const { t } = useLocale();
 
   const handleTabChange = async (value: string) => {
     setActiveTab(value);
@@ -54,17 +60,20 @@ export function TestsContainer({ technologies }: { technologies: Technology[] })
       console.error("Failed to generate quiz:", error);
       toast({
         variant: "destructive",
-        title: "Quiz Generation Failed",
-        description:
-          "There was an error generating the quiz. Please try again.",
+        title: t("toast.quizGenerationFailed.title"),
+        description: t("toast.quizGenerationFailed.description"),
       });
       setQuizState((prev) => ({
         ...prev,
-        [slug]: { ...prev[slug], isLoading: false, error: "Failed to load quiz." },
+        [slug]: {
+          ...prev[slug],
+          isLoading: false,
+          error: t("tests.container.error"),
+        },
       }));
     }
   };
-  
+
   const handleQuizSubmit = (slug: string, score: number) => {
     let level = "Beginner";
     if (score > 10) {
@@ -72,9 +81,9 @@ export function TestsContainer({ technologies }: { technologies: Technology[] })
     } else if (score > 5) {
       level = "Intermediate";
     }
-    setQuizState(prev => ({
+    setQuizState((prev) => ({
       ...prev,
-      [slug]: { ...prev[slug], result: { score, level } }
+      [slug]: { ...prev[slug], result: { score, level } },
     }));
   };
 
@@ -92,9 +101,9 @@ export function TestsContainer({ technologies }: { technologies: Technology[] })
           <Card>
             <CardContent className="p-6">
               {quizState[tech.slug]?.isLoading && (
-                 <div className="flex items-center justify-center h-64 text-muted-foreground">
+                <div className="flex items-center justify-center h-64 text-muted-foreground">
                   <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                  Generating Quiz...
+                  {t("tests.container.generating")}
                 </div>
               )}
               {quizState[tech.slug]?.error && (
@@ -108,22 +117,42 @@ export function TestsContainer({ technologies }: { technologies: Technology[] })
                   onSubmit={(score) => handleQuizSubmit(tech.slug, score)}
                 />
               )}
-               {quizState[tech.slug]?.result && (
+              {quizState[tech.slug]?.result && (
                 <div className="text-center py-12">
-                  <h2 className="text-2xl font-bold mb-2">Test Complete!</h2>
-                  <p className="text-lg text-muted-foreground mb-4">You answered {quizState[tech.slug]!.result!.score} out of 15 questions correctly.</p>
-                  <p className="text-xl">Your suggested level is:</p>
-                  <Badge className="text-2xl mt-2" variant={
-                    quizState[tech.slug]!.result!.level === 'Advanced' ? 'default' : 
-                    quizState[tech.slug]!.result!.level === 'Intermediate' ? 'secondary' : 'outline'
-                  }>
-                    {quizState[tech.slug]!.result!.level}
+                  <h2 className="text-2xl font-bold mb-2">
+                    {t("tests.container.result.title")}
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    {t("tests.container.result.description", {
+                      score: quizState[tech.slug]!.result!.score,
+                      total: 15,
+                    })}
+                  </p>
+                  <p className="text-xl">
+                    {t("tests.container.result.suggestedLevel")}:
+                  </p>
+                  <Badge
+                    className="text-2xl mt-2"
+                    variant={
+                      quizState[tech.slug]!.result!.level === "Advanced"
+                        ? "default"
+                        : quizState[tech.slug]!.result!.level ===
+                          "Intermediate"
+                        ? "secondary"
+                        : "outline"
+                    }
+                  >
+                    {t(
+                      `paths.levels.${quizState[
+                        tech.slug
+                      ]!.result!.level.toLowerCase()}`
+                    )}
                   </Badge>
                 </div>
               )}
               {!quizState[tech.slug] && (
-                 <div className="flex flex-col items-center justify-center h-64 text-muted-foreground">
-                   <p>Select a technology to start the assessment.</p>
+                <div className="flex flex-col items-center justify-center h-64 text-muted-foreground">
+                  <p>{t("tests.container.prompt")}</p>
                 </div>
               )}
             </CardContent>

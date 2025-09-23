@@ -21,12 +21,20 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { generateCodingExercise } from "@/ai/flows/generate-coding-exercises";
 import { learningPaths } from "@/lib/data";
 import { Loader2, Sparkles, Wand2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ScrollArea } from "./ui/scroll-area";
+import { useLocale } from "@/hooks/use-locale";
 
 const formSchema = z.object({
   technology: z.string().min(1, "Please select a technology."),
@@ -39,6 +47,7 @@ export function PlaygroundForm() {
   const [generatedExercise, setGeneratedExercise] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { toast } = useToast();
+  const { t } = useLocale();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -53,9 +62,9 @@ export function PlaygroundForm() {
     setGeneratedExercise("");
     try {
       const technologyName =
-        learningPaths.find((p) => p.slug === values.technology)?.name ||
+        learningPaths(t).find((p) => p.slug === values.technology)?.name ||
         values.technology;
-        
+
       const result = await generateCodingExercise({
         ...values,
         technology: technologyName,
@@ -66,9 +75,8 @@ export function PlaygroundForm() {
       console.error("Failed to generate exercise:", error);
       toast({
         variant: "destructive",
-        title: "Generation Failed",
-        description:
-          "There was an error generating the exercise. Please try again.",
+        title: t("toast.generationFailed.title"),
+        description: t("toast.generationFailed.description"),
       });
     } finally {
       setIsLoading(false);
@@ -81,9 +89,9 @@ export function PlaygroundForm() {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <CardHeader>
-              <CardTitle>Exercise Generator</CardTitle>
+              <CardTitle>{t("playground.form.title")}</CardTitle>
               <CardDescription>
-                Select a technology and difficulty to generate a custom coding exercise.
+                {t("playground.form.description")}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -92,18 +100,20 @@ export function PlaygroundForm() {
                 name="technology"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Technology</FormLabel>
+                    <FormLabel>{t("playground.form.technology")}</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a technology" />
+                          <SelectValue
+                            placeholder={t("playground.form.selectTechnology")}
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {learningPaths.map((path) => (
+                        {learningPaths(t).map((path) => (
                           <SelectItem key={path.id} value={path.slug}>
                             {path.name}
                           </SelectItem>
@@ -119,20 +129,28 @@ export function PlaygroundForm() {
                 name="difficulty"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Difficulty Level</FormLabel>
+                    <FormLabel>{t("playground.form.difficulty")}</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a difficulty" />
+                          <SelectValue
+                            placeholder={t("playground.form.selectDifficulty")}
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="beginner">Beginner</SelectItem>
-                        <SelectItem value="intermediate">Intermediate</SelectItem>
-                        <SelectItem value="advanced">Advanced</SelectItem>
+                        <SelectItem value="beginner">
+                          {t("paths.levels.beginner")}
+                        </SelectItem>
+                        <SelectItem value="intermediate">
+                          {t("paths.levels.intermediate")}
+                        </SelectItem>
+                        <SelectItem value="advanced">
+                          {t("paths.levels.advanced")}
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -147,7 +165,7 @@ export function PlaygroundForm() {
                 ) : (
                   <Wand2 className="mr-2" />
                 )}
-                Generate Exercise
+                {t("playground.form.generateButton")}
               </Button>
             </CardFooter>
           </form>
@@ -155,9 +173,9 @@ export function PlaygroundForm() {
       </Card>
       <Card className="flex flex-col">
         <CardHeader>
-          <CardTitle>Generated Exercise</CardTitle>
+          <CardTitle>{t("playground.result.title")}</CardTitle>
           <CardDescription>
-            Your AI-generated exercise will appear here.
+            {t("playground.result.description")}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex-1 flex flex-col gap-4">
@@ -165,21 +183,23 @@ export function PlaygroundForm() {
             {isLoading ? (
               <div className="flex items-center justify-center h-full text-muted-foreground">
                 <Sparkles className="mr-2 h-4 w-4 animate-pulse" />
-                Generating...
+                {t("playground.result.generating")}
               </div>
             ) : generatedExercise ? (
-              <pre className="whitespace-pre-wrap text-sm">{generatedExercise}</pre>
+              <pre className="whitespace-pre-wrap text-sm">
+                {generatedExercise}
+              </pre>
             ) : (
               <div className="flex items-center justify-center h-full text-muted-foreground">
-                Your exercise will be shown here.
+                {t("playground.result.placeholder")}
               </div>
             )}
           </ScrollArea>
-           <Textarea
-              placeholder="Solve the exercise here..."
-              className="flex-1 text-sm font-mono"
-              rows={10}
-            />
+          <Textarea
+            placeholder={t("playground.result.solvePlaceholder")}
+            className="flex-1 text-sm font-mono"
+            rows={10}
+          />
         </CardContent>
       </Card>
     </div>

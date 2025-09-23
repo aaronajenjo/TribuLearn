@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "learningPaths": "Learning Paths",
+    "playground": "Playground",
+    "tests": "Tests"
+  },
+  "userNav": {
+    "name": "New Hire",
+    "email": "new.hire@tribu.com",
+    "language": "Language",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "dashboard": {
+    "continueLearning": {
+      "title": "Continue Learning",
+      "description": "Pick up where you left off in your C# journey.",
+      "button": "Resume Path"
+    },
+    "chart": {
+      "title": "Overall Progress",
+      "description": "Your activity in the last 6 months.",
+      "label": "Modules Completed"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "description": "Milestones you've reached.",
+      "firstSteps": {
+        "title": "First Steps",
+        "description": "Completed your first module."
+      },
+      "pathfinder": {
+        "title": "Pathfinder",
+        "description": "Started a new learning path."
+      }
+    },
+    "explorePaths": {
+      "title": "Explore Learning Paths"
+    }
+  },
+  "paths": {
+    "page": {
+      "title": "Learning Paths",
+      "description": "Choose a technology to start your learning journey."
+    },
+    "detail": {
+      "title": "{pathName} Learning Path",
+      "resources": "Resources",
+      "takeQuiz": "Take Quiz",
+      "comingSoon": "Content for the {levelName} level is coming soon!"
+    },
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "playground": {
+    "page": {
+      "title": "AI Code Playground",
+      "description": "Sharpen your skills with unlimited, AI-generated coding exercises."
+    },
+    "form": {
+      "title": "Exercise Generator",
+      "description": "Select a technology and difficulty to generate a custom coding exercise.",
+      "technology": "Technology",
+      "selectTechnology": "Select a technology",
+      "difficulty": "Difficulty Level",
+      "selectDifficulty": "Select a difficulty",
+      "generateButton": "Generate Exercise"
+    },
+    "result": {
+      "title": "Generated Exercise",
+      "description": "Your AI-generated exercise will appear here.",
+      "generating": "Generating...",
+      "placeholder": "Your exercise will be shown here.",
+      "solvePlaceholder": "Solve the exercise here..."
+    }
+  },
+  "tests": {
+    "page": {
+      "title": "Skill Assessment Tests",
+      "description": "Select a technology and test your knowledge to find your skill level."
+    },
+    "container": {
+      "generating": "Generating Quiz...",
+      "error": "Failed to load quiz.",
+      "prompt": "Select a technology to start the assessment.",
+      "result": {
+        "title": "Test Complete!",
+        "description": "You answered {score} out of {total} questions correctly.",
+        "suggestedLevel": "Your suggested level is"
+      }
+    }
+  },
+  "quiz": {
+    "description": "Answer the following questions to the best of your ability.",
+    "submitButton": "Submit Answers"
+  },
+  "toast": {
+    "generationFailed": {
+      "title": "Generation Failed",
+      "description": "There was an error generating the exercise. Please try again."
+    },
+    "quizGenerationFailed": {
+      "title": "Quiz Generation Failed",
+      "description": "There was an error generating the quiz. Please try again."
+    }
+  },
+  "technologies": {
+    "csharp": {
+      "description": "Master C#, a versatile language for web, mobile, and game development.",
+      "beginner": {
+        "module1": {
+          "title": "Introduction to C# and .NET",
+          "description": "Understand the basics of C#, its syntax, and the .NET framework."
+        },
+        "module2": {
+          "title": "Variables and Data Types",
+          "description": "Learn about different data types, variables, and type conversion."
+        }
+      }
+    },
+    "angular": {
+      "description": "Build powerful single-page applications with Google's front-end framework.",
+      "beginner": {
+        "module1": {
+          "title": "Getting Started with Angular",
+          "description": "Set up your first Angular project and understand its architecture."
+        }
+      }
+    },
+    "ionic": {
+      "description": "Develop cross-platform mobile apps with a single codebase using web technologies.",
+      "beginner": {
+        "module1": {
+          "title": "Ionic Framework Fundamentals",
+          "description": "Learn the core concepts of Ionic for building mobile apps."
+        }
+      }
+    },
+    "blazor": {
+      "description": "Create interactive web UIs using C# instead of JavaScript.",
+      "beginner": {
+        "module1": {
+          "title": "Introduction to Blazor",
+          "description": "Explore how Blazor lets you build client-side web apps with .NET."
+        }
+      }
+    },
+    "razor": {
+      "description": "Build dynamic web pages with this powerful template engine for ASP.NET.",
+      "beginner": {
+        "module1": {
+          "title": "Razor Syntax Essentials",
+          "description": "Master the syntax for embedding server-based code into webpages."
+        }
+      }
+    }
+  },
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June"
+  }
+}

@@ -14,6 +14,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { UserNav } from "@/components/ui/user-nav";
+import { useLocale } from "@/hooks/use-locale";
 import {
   BookOpen,
   Code2,
@@ -23,15 +24,20 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navItems = [
-  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/paths", icon: BookOpen, label: "Learning Paths" },
-  { href: "/playground", icon: Code2, label: "Playground" },
-  { href: "/tests", icon: ClipboardList, label: "Tests" },
-];
-
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { t } = useLocale();
+
+  const navItems = [
+    {
+      href: "/dashboard",
+      icon: LayoutDashboard,
+      label: t("nav.dashboard"),
+    },
+    { href: "/paths", icon: BookOpen, label: t("nav.learningPaths") },
+    { href: "/playground", icon: Code2, label: t("nav.playground") },
+    { href: "/tests", icon: ClipboardList, label: t("nav.tests") },
+  ];
 
   return (
     <SidebarProvider>
@@ -71,7 +77,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-2">
             <SidebarTrigger className="md:hidden" />
             <h2 className="text-lg font-semibold font-headline">
-              {navItems.find((item) => pathname.startsWith(item.href))?.label || "Tribu"}
+              {navItems.find((item) => pathname.startsWith(item.href))?.label ||
+                "Tribu"}
             </h2>
           </div>
           {/* <UserNav /> */}

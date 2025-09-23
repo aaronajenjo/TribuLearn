@@ -9,15 +9,24 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
+  DropdownMenuSubContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { CreditCard, LogOut, Settings, User } from "lucide-react";
+import { Languages, LogOut, Settings } from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
 
-const avatarImage = PlaceHolderImages.find((image) => image.id === "user-avatar");
+const avatarImage = PlaceHolderImages.find(
+  (image) => image.id === "user-avatar"
+);
 
 export function UserNav() {
+  const { locale, setLocale, t } = useLocale();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -28,42 +37,53 @@ export function UserNav() {
               alt="User Avatar"
               data-ai-hint={avatarImage?.imageHint}
             />
-            <AvatarFallback>TN</AvatarFallback>
+            <AvatarFallback>NH</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">New Hire</p>
+            <p className="text-sm font-medium leading-none">
+              {t("userNav.name")}
+            </p>
             <p className="text-xs leading-none text-muted-foreground">
-              new.hire@tribu.com
+              {t("userNav.email")}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
-            <span>Billing</span>
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <Languages className="mr-2 h-4 w-4" />
+              <span>{t("userNav.language")}</span>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuRadioGroup
+                  value={locale}
+                  onValueChange={(value) => setLocale(value as "en" | "es")}
+                >
+                  <DropdownMenuRadioItem value="en">
+                    English
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="es">
+                    Español
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
           <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
-            <span>Settings</span>
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            <span>{t("userNav.settings")}</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          <span>{t("userNav.logout")}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

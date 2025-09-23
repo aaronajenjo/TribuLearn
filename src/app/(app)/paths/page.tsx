@@ -1,3 +1,5 @@
+"use client";
+
 import { Icons } from "@/components/icons";
 import {
   Card,
@@ -10,20 +12,23 @@ import { learningPaths } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import Link from "next/link";
+import { useLocale } from "@/hooks/use-locale";
 
 export default function PathsPage() {
+  const { t } = useLocale();
+
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-3xl font-bold font-headline tracking-tighter">
-          Learning Paths
+          {t("paths.page.title")}
         </h1>
         <p className="text-muted-foreground mt-1">
-          Choose a technology to start your learning journey.
+          {t("paths.page.description")}
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {learningPaths.map((path) => {
+        {learningPaths(t).map((path) => {
           const Icon = Icons[path.icon];
           const image = PlaceHolderImages.find(
             (img) => img.id === path.imageId
