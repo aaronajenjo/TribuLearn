@@ -14,7 +14,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Article, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
+import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
 
 export default function PathDetailPage({
@@ -72,7 +72,7 @@ export default function PathDetailPage({
                             <Link href={resource.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
                               <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
                                 {resource.type === 'video' && <PlayCircle className="text-primary"/>}
-                                {resource.type === 'article' && <Article className="text-primary"/>}
+                                {resource.type === 'article' && <FileText className="text-primary"/>}
                                 {resource.type === 'course' && <BookOpen className="text-primary"/>}
                               </div>
                               <div className="flex-1">
