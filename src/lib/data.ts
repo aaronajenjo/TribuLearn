@@ -82,7 +82,55 @@ export const learningPaths = (t: Translator): Technology[] => [
           },
         ],
       },
-      { name: "Intermediate", modules: [] },
+      {
+        name: "Intermediate",
+        modules: [
+          {
+            title: t("technologies.csharp.intermediate.module1.title"),
+            description: t(
+              "technologies.csharp.intermediate.module1.description"
+            ),
+            sopraResources: [
+              {
+                type: "article",
+                title: "ASP.NET Dependency Injection",
+                url: "https://soprasteria.percipio.com/linked-contents/1206e78e-5ef4-42ff-a036-133cd163b580/landing",
+              },
+              {
+                type: "article",
+                title: "ASP.NET Data Models - CODE First",
+                url: "https://soprasteria.percipio.com/linked-contents/a5b3bb2f-7f2f-45ed-a253-22a450aecf43/landing",
+              },
+            ],
+            youtubeResources: [
+              {
+                type: "video",
+                title: "Building an API with ASP.NET Core",
+                url: "https://www.youtube.com/watch?v=v3nFQ0hVCa0",
+                duration: "2h 45m",
+              },
+              {
+                type: "video",
+                title: "Entity Framework Core Crash Course",
+                url: "https://www.youtube.com/watch?v=3s4zVg2r2yU",
+                duration: "1h 50m",
+              },
+              {
+                type: "video",
+                title: "Advanced C# Concepts",
+                url: "https://www.youtube.com/watch?v=AhH-p3aUKK4",
+                duration: "1h 15m",
+              },
+              {
+                type: "video",
+                title: "C# Async/Await Explained",
+                url: "https://www.youtube.com/watch?v=2y8A9_l3IuI",
+                duration: "30m",
+              },
+            ],
+          },
+        ],
+      },
       { name: "Advanced", modules: [] },
     ],
   },

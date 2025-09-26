@@ -121,6 +121,12 @@
           "title": "Variables and Data Types",
           "description": "Learn about different data types, variables, and type conversion."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Advanced C# and ASP.NET Core",
+          "description": "Dive into dependency injection, data models in ASP.NET Core, and other advanced C# topics."
+        }
       }
     },
     "angular": {
