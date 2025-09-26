@@ -48,7 +48,8 @@
       "title": "{pathName} Learning Path",
       "resources": "Resources",
       "takeQuiz": "Take Quiz",
-      "comingSoon": "Content for the {levelName} level is coming soon!"
+      "comingSoon": "Content for the {levelName} level is coming soon!",
+      "noResources": "No resources available for this section yet."
     },
     "levels": {
       "beginner": "Beginner",

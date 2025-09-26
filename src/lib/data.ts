@@ -10,7 +10,8 @@ export type Resource = {
 export type Module = {
   title: string;
   description: string;
-  resources: Resource[];
+  sopraResources: Resource[];
+  youtubeResources: Resource[];
   quiz?: {
     title: string;
     questions: any[];
@@ -51,25 +52,35 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.csharp.beginner.module1.title'),
             description: t('technologies.csharp.beginner.module1.description'),
-            resources: [
+            sopraResources: [
               {
-                type: "video",
+                type: "course",
                 title: "C# 101",
                 url: "https://www.youtube.com/watch?v=GhQdlIF3sgQ",
                 duration: "4h 26m",
               },
             ],
+            youtubeResources: [
+                { type: 'video', title: 'C# Tutorial For Beginners - Learn C# in 1 Hour', url: 'https://www.youtube.com/watch?v=gfkTfcpWqAY', duration: '1h' },
+                { type: 'video', title: 'C# Full Course - From Basics to Advanced', url: 'https://www.youtube.com/watch?v= ஏற்ற_y_wO_1A', duration: '8h' },
+                { type: 'video', title: 'Learn C# in 30 Minutes', url: 'https://www.youtube.com/watch?v=a2_U_F2h-2E', duration: '30m' },
+            ]
           },
           {
             title: t('technologies.csharp.beginner.module2.title'),
             description: t('technologies.csharp.beginner.module2.description'),
-            resources: [
+            sopraResources: [
               {
                 type: "article",
                 title: "C# Data Types Explained",
                 url: "https://www.w3schools.com/cs/cs_data_types.php",
               },
             ],
+            youtubeResources: [
+                { type: 'video', title: 'C# Variables and Data Types', url: 'https://www.youtube.com/watch?v=1sM45-g8_pA', duration: '15m' },
+                { type: 'video', title: 'Data Types in C# - Beginner Tutorial', url: 'https://www.youtube.com/watch?v=FB-m2j1_B2w', duration: '12m' },
+                { type: 'video', title: 'C# - Value Types vs Reference Types', url: 'https://wwwyoutube.com/watch?v=h6bJ3nUo14Y', duration: '10m' },
+            ]
           },
         ],
       },
@@ -91,7 +102,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.angular.beginner.module1.title'),
             description: t('technologies.angular.beginner.module1.description'),
-            resources: [
+            sopraResources: [
               {
                 type: "course",
                 title: "Angular for Beginners",
@@ -99,6 +110,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 duration: "9h 53m",
               },
             ],
+            youtubeResources: [
+                { type: 'video', title: 'Angular for Beginners - Full Course', url: 'https://www.youtube.com/watch?v=k5E2AVpwsko', duration: '11h' },
+                { type: 'video', title: 'Learn Angular in 1 Hour', url: 'https://www.youtube.com/watch?v=2-c3f_gA4sQ', duration: '1h' },
+                { type: 'video', title: 'Angular Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=k_AlE32zM0w', duration: '2h' },
+            ]
           },
         ],
       },
@@ -120,7 +136,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.ionic.beginner.module1.title'),
             description: t('technologies.ionic.beginner.module1.description'),
-            resources: [
+            sopraResources: [
               {
                 type: "video",
                 title: "Intro to Ionic",
@@ -128,6 +144,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 duration: "1h 12m",
               },
             ],
+            youtubeResources: [
+                { type: 'video', title: 'Ionic 7 Crash Course', url: 'https://www.youtube.com/watch?v=r2ga-i-s20c', duration: '2h' },
+                { type: 'video', title: 'Learn Ionic in 1 Hour', url: 'https://www.youtube.com/watch?v=u5pybe_8YCE', duration: '1h' },
+                { type: 'video', title: 'Build Your First Ionic App', url: 'https://www.youtube.com/watch?v=s50z8b3i-4Y', duration: '45m' },
+            ]
           },
         ],
       },
@@ -149,13 +170,18 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.blazor.beginner.module1.title'),
             description: t('technologies.blazor.beginner.module1.description'),
-            resources: [
+            sopraResources: [
               {
                 type: "article",
                 title: "Blazor: A New Era for C# Web Devs",
                 url: "https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor",
               },
             ],
+            youtubeResources: [
+                { type: 'video', title: 'Blazor Full Course for Beginners', url: 'https://www.youtube.com/watch?v=w_x3d5gS4_8', duration: '9h' },
+                { type: 'video', title: 'Blazor Crash Course', url: 'https://www.youtube.com/watch?v=p4vG3g0A54A', duration: '2h' },
+                { type: 'video', title: 'Learn Blazor in 1 Hour', url: 'https://www.youtube.com/watch?v=M5-3mYf4xVY', duration: '1h' },
+            ]
           },
         ],
       },
@@ -177,7 +203,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.razor.beginner.module1.title'),
             description: t('technologies.razor.beginner.module1.description'),
-            resources: [
+            sopraResources: [
               {
                 type: "video",
                 title: "Razor Pages in ASP.NET Core",
@@ -185,6 +211,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 duration: "3h 48m",
               },
             ],
+            youtubeResources: [
+                { type: 'video', title: '.NET Core Razor Pages Tutorial', url: 'https://www.youtube.com/watch?v=F0G901I4M44', duration: '2h' },
+                { type: 'video', title: 'Razor Pages for Beginners', url: 'https://www.youtube.com/watch?v=iAm_n2iT4fA', duration: '40m' },
+                { type: 'video', title: 'Creating a Web App with Razor Pages', url: 'https://www.youtube.com/watch?v=13n5f0f5U6Y', duration: '1h 30m' },
+            ]
           },
         ],
       },

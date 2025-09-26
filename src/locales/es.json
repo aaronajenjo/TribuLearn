@@ -48,7 +48,8 @@
       "title": "Ruta de Aprendizaje de {pathName}",
       "resources": "Recursos",
       "takeQuiz": "Hacer Cuestionario",
-      "comingSoon": "¡El contenido para el nivel {levelName} llegará pronto!"
+      "comingSoon": "¡El contenido para el nivel {levelName} llegará pronto!",
+      "noResources": "Aún no hay recursos disponibles para esta sección."
     },
     "levels": {
       "beginner": "Principiante",
