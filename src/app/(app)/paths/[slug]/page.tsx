@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
+import React from "react";
 
 export default function PathDetailPage({
   params,
