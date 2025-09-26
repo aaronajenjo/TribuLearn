@@ -127,6 +127,12 @@
           "title": "Advanced C# and ASP.NET Core",
           "description": "Dive into dependency injection, data models in ASP.NET Core, and other advanced C# topics."
         }
+      },
+      "advanced": {
+        "module1": {
+          "title": "Advanced C# Concepts",
+          "description": "Explore advanced topics like design patterns, performance optimization, and more."
+        }
       }
     },
     "angular": {

@@ -91,14 +91,14 @@ export const learningPaths = (t: Translator): Technology[] => [
             ),
             sopraResources: [
               {
-                type: "article",
-                title: "ASP.NET Dependency Injection",
-                url: "https://soprasteria.percipio.com/linked-contents/1206e78e-5ef4-42ff-a036-133cd163b580/landing",
+                type: "course",
+                title: "C# Intermediate Learning Track",
+                url: "https://soprasteria.percipio.com/track/3ca3af36-ed2c-49b4-92c6-7e02d7b80d22",
               },
               {
-                type: "article",
-                title: "ASP.NET Data Models - CODE First",
-                url: "https://soprasteria.percipio.com/linked-contents/a5b3bb2f-7f2f-45ed-a253-22a450aecf43/landing",
+                type: "course",
+                title: "Web Apps with C# & ASP.NET Track",
+                url: "https://soprasteria.percipio.com/track/fed7500e-f1c5-42cf-9b14-2c738633361a",
               },
             ],
             youtubeResources: [
@@ -124,7 +124,23 @@ export const learningPaths = (t: Translator): Technology[] => [
           },
         ],
       },
-      { name: "Advanced", modules: [] },
+      { 
+        name: "Advanced", 
+        modules: [
+          {
+            title: t("technologies.csharp.advanced.module1.title"),
+            description: t("technologies.csharp.advanced.module1.description"),
+            sopraResources: [
+              {
+                type: "course",
+                title: "C# Advanced Learning Track",
+                url: "https://soprasteria.percipio.com/track/ba25d689-0c0e-4585-92b7-640ed1651c7d",
+              },
+            ],
+            youtubeResources: [],
+          },
+        ] 
+      },
     ],
   },
   {

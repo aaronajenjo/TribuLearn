@@ -127,6 +127,12 @@
           "title": "C# Avanzado y ASP.NET Core",
           "description": "Profundiza en la inyección de dependencias, modelos de datos en ASP.NET Core y otros temas avanzados de C#."
         }
+      },
+      "advanced": {
+        "module1": {
+          "title": "Conceptos Avanzados de C#",
+          "description": "Explora temas avanzados como patrones de diseño, optimización de rendimiento y más."
+        }
       }
     },
     "angular": {
