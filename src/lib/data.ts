@@ -92,7 +92,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             sopraResources: [
               {
                 type: "course",
-                title: "Web Apps with C# & ASP.NET Track",
+                title: "C# Intermediate Learning Track",
                 url: "https://soprasteria.percipio.com/track/fed7500e-f1c5-42cf-9b14-2c738633361a",
               },
             ],
