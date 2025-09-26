@@ -62,7 +62,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             ],
             youtubeResources: [
                 { type: 'video', title: 'C# Tutorial For Beginners - Learn C# in 1 Hour', url: 'https://www.youtube.com/watch?v=gfkTfcpWqAY', duration: '1h' },
-                { type: 'video', title: 'C# Full Course - From Basics to Advanced', url: 'https://www.youtube.com/watch?v= ஏற்ற_y_wO_1A', duration: '8h' },
+                { type: 'video', title: 'C# Full Course - From Basics to Advanced', url: 'https://www.youtube.com/watch?v=wxznTygnRfQ', duration: '8h' },
                 { type: 'video', title: 'Learn C# in 30 Minutes', url: 'https://www.youtube.com/watch?v=a2_U_F2h-2E', duration: '30m' },
             ]
           },
@@ -79,7 +79,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
                 { type: 'video', title: 'C# Variables and Data Types', url: 'https://www.youtube.com/watch?v=1sM45-g8_pA', duration: '15m' },
                 { type: 'video', title: 'Data Types in C# - Beginner Tutorial', url: 'https://www.youtube.com/watch?v=FB-m2j1_B2w', duration: '12m' },
-                { type: 'video', title: 'C# - Value Types vs Reference Types', url: 'https://wwwyoutube.com/watch?v=h6bJ3nUo14Y', duration: '10m' },
+                { type: 'video', title: 'C# - Value Types vs Reference Types', url: 'https://www.youtube.com/watch?v=h6bJ3nUo14Y', duration: '10m' },
             ]
           },
         ],
