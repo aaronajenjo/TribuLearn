@@ -55,7 +55,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             sopraResources: [
               {
                 type: "course",
-                title: "C# Development Fundamentals",
+                title: "C# Development Fundamentals Journey",
                 url: "https://soprasteria.percipio.com/journey/be885a23-3ee8-4c14-8407-ea1d3d0c6dab",
               },
             ],
