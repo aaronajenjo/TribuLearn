@@ -60,11 +60,7 @@ export const learningPaths = (t: Translator): Technology[] => [
                 duration: "4h 26m",
               },
             ],
-            youtubeResources: [
-                { type: 'video', title: 'C# Tutorial For Beginners - Learn C# in 1 Hour', url: 'https://www.youtube.com/watch?v=gfkTfcpWqAY', duration: '1h' },
-                { type: 'video', title: 'C# Full Course - From Basics to Advanced', url: 'https://www.youtube.com/watch?v=wxznTygnRfQ', duration: '8h' },
-                { type: 'video', title: 'C# Tutorial - Full Course for Beginners', url: 'https://www.youtube.com/watch?v=sc2gA9j3DAs', duration: '4h 30m' },
-            ]
+            youtubeResources: []
           },
           {
             title: t('technologies.csharp.beginner.module2.title'),
@@ -76,11 +72,7 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://www.w3schools.com/cs/cs_data_types.php",
               },
             ],
-            youtubeResources: [
-                { type: 'video', title: 'C# Variables and Data Types', url: 'https://www.youtube.com/watch?v=1sM45-g8_pA', duration: '15m' },
-                { type: 'video', title: 'Data Types in C# - Beginner Tutorial', url: 'https://www.youtube.com/watch?v=FB-m2j1_B2w', duration: '12m' },
-                { type: 'video', title: 'C# - Value Types vs Reference Types', url: 'https://www.youtube.com/watch?v=h6bJ3nUo14Y', duration: '10m' },
-            ]
+            youtubeResources: []
           },
         ],
       },

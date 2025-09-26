@@ -77,87 +77,47 @@ export default function PathDetailPage({
                         {module.description}
                       </p>
                       
-                      <Tabs defaultValue="Sopra" className="w-full">
-                        <TabsList>
-                          <TabsTrigger value="Sopra">Sopra</TabsTrigger>
-                          <TabsTrigger value="Youtube">YouTube</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="Sopra">
-                          <h4 className="font-semibold mb-4">
-                            {t("paths.detail.resources")}:
-                          </h4>
-                          <ul className="space-y-3">
-                            {module.sopraResources.map((resource) => (
-                              <li key={resource.title}>
-                                <Link
-                                  href={resource.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center gap-3 group"
-                                >
-                                  <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                    {resource.type === "video" && (
-                                      <PlayCircle className="text-primary" />
-                                    )}
-                                    {resource.type === "article" && (
-                                      <FileText className="text-primary" />
-                                    )}
-                                    {resource.type === "course" && (
-                                      <BookOpen className="text-primary" />
-                                    )}
-                                  </div>
-                                  <div className="flex-1">
-                                    <p className="font-medium group-hover:underline">
-                                      {resource.title}
-                                    </p>
-                                    {resource.duration && (
-                                      <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                        <Clock className="size-3" />
-                                        {resource.duration}
-                                      </p>
-                                    )}
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
-                             {module.sopraResources.length === 0 && <p className="text-muted-foreground text-sm">{t("paths.detail.noResources")}</p>}
-                          </ul>
-                        </TabsContent>
-                        <TabsContent value="Youtube">
-                           <h4 className="font-semibold mb-4">
-                            {t("paths.detail.resources")}:
-                          </h4>
-                          <ul className="space-y-3">
-                            {module.youtubeResources.map((resource) => (
-                              <li key={resource.title}>
-                                <Link
-                                  href={resource.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center gap-3 group"
-                                >
-                                  <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                      <div>
+                        <h4 className="font-semibold mb-4">
+                          {t("paths.detail.resources")}:
+                        </h4>
+                        <ul className="space-y-3">
+                          {module.sopraResources.map((resource) => (
+                            <li key={resource.title}>
+                              <Link
+                                href={resource.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 group"
+                              >
+                                <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                  {resource.type === "video" && (
                                     <PlayCircle className="text-primary" />
-                                  </div>
-                                  <div className="flex-1">
-                                    <p className="font-medium group-hover:underline">
-                                      {resource.title}
+                                  )}
+                                  {resource.type === "article" && (
+                                    <FileText className="text-primary" />
+                                  )}
+                                  {resource.type === "course" && (
+                                    <BookOpen className="text-primary" />
+                                  )}
+                                </div>
+                                <div className="flex-1">
+                                  <p className="font-medium group-hover:underline">
+                                    {resource.title}
+                                  </p>
+                                  {resource.duration && (
+                                    <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                                      <Clock className="size-3" />
+                                      {resource.duration}
                                     </p>
-                                    {resource.duration && (
-                                      <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                        <Clock className="size-3" />
-                                        {resource.duration}
-                                      </p>
-                                    )}
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
-                            {module.youtubeResources.length === 0 && <p className="text-muted-foreground text-sm">{t("paths.detail.noResources")}</p>}
-                          </ul>
-                        </TabsContent>
-                      </Tabs>
-
+                                  )}
+                                </div>
+                              </Link>
+                            </li>
+                          ))}
+                           {module.sopraResources.length === 0 && <p className="text-muted-foreground text-sm">{t("paths.detail.noResources")}</p>}
+                        </ul>
+                      </div>
 
                       {module.quiz && (
                         <Button variant="outline" className="mt-4">
