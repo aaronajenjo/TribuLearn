@@ -45,7 +45,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <SidebarHeader>
           <Link href="/dashboard" className="flex items-center gap-2.5">
             <Icons.logo className="size-7 text-primary" />
-            <h1 className="text-lg font-bold font-headline tracking-tighter text-foreground">
+            <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-foreground">
               Tribu Learning
             </h1>
           </Link>
@@ -68,9 +68,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter>
-          <UserNav />
-        </SidebarFooter>
+        <SidebarFooter>{/* <UserNav /> */}</SidebarFooter>
       </Sidebar>
       <SidebarInset>
         <header className="flex h-14 items-center justify-between border-b bg-card px-4 sm:px-6 lg:px-8">
@@ -81,7 +79,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 "Tribu"}
             </h2>
           </div>
-          {/* <UserNav /> */}
+          <UserNav />
         </header>
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           {children}
