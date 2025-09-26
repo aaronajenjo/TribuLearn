@@ -132,7 +132,32 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://soprasteria.percipio.com/track/ba25d689-0c0e-4585-92b7-640ed1651c7d",
               },
             ],
-            youtubeResources: [],
+            youtubeResources: [
+              {
+                type: "video",
+                title: "The BEST Way To Write C# LINQ Queries",
+                url: "https://www.youtube.com/watch?v=hGz3_n9Ea9k",
+                duration: "27m",
+              },
+              {
+                type: "video",
+                title: "The ONLY 4 Design Patterns I Use in C#",
+                url: "https://www.youtube.com/watch?v=L2zj3C_c22M",
+                duration: "30m",
+              },
+              {
+                type: "video",
+                title: "How to Build a .NET 8 Microservices App",
+                url: "https://www.youtube.com/watch?v=3nB-d21j3H8",
+                duration: "1h 14m",
+              },
+              {
+                type: "video",
+                title: "C# Performance for Beginners",
+                url: "https://www.youtube.com/watch?v=XnEy-3N3goM",
+                duration: "49m",
+              },
+            ],
           },
         ] 
       },
