@@ -63,7 +63,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
                 { type: 'video', title: 'C# Tutorial For Beginners - Learn C# in 1 Hour', url: 'https://www.youtube.com/watch?v=gfkTfcpWqAY', duration: '1h' },
                 { type: 'video', title: 'C# Full Course - From Basics to Advanced', url: 'https://www.youtube.com/watch?v=wxznTygnRfQ', duration: '8h' },
-                { type: 'video', title: 'Learn C# in 30 Minutes', url: 'https://www.youtube.com/watch?v=a2_U_F2h-2E', duration: '30m' },
+                { type: 'video', title: 'C# Tutorial - Full Course for Beginners', url: 'https://www.youtube.com/watch?v=sc2gA9j3DAs', duration: '4h 30m' },
             ]
           },
           {
