@@ -106,25 +106,19 @@ export const learningPaths = (t: Translator): Technology[] => [
               {
                 type: "video",
                 title: "Building an API with ASP.NET Core",
-                url: "https://www.youtube.com/watch?v=v3nFQ0hVCa0",
+                url: "https://www.youtube.com/watch?v=e1hpjbClopA&pp=ygUdYXNwLm5ldCBjb3JlIHdlYiBhcGkgdHV0b3JpYWw%3D",
                 duration: "2h 45m",
               },
               {
                 type: "video",
                 title: "Entity Framework Core Crash Course",
-                url: "https://www.youtube.com/watch?v=3s4zVg2r2yU",
+                url: "https://www.youtube.com/watch?v=lOCUFuTyvaE",
                 duration: "1h 50m",
               },
               {
                 type: "video",
-                title: "Advanced C# Concepts",
-                url: "https://www.youtube.com/watch?v=AhH-p3aUKK4",
-                duration: "1h 15m",
-              },
-              {
-                type: "video",
                 title: "C# Async/Await Explained",
-                url: "https://www.youtube.com/watch?v=2y8A9_l3IuI",
+                url: "https://www.youtube.com/watch?v=5a6WCBftjvw",
                 duration: "30m",
               },
             ],
