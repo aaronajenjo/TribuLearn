@@ -19,6 +19,8 @@ import {
 } from "./ui/card";
 import { GenerateQuizOutput } from "@/ai/flows/generate-quiz";
 import { useLocale } from "@/hooks/use-locale";
+import { cn } from "@/lib/utils";
+import { CheckCircle2, XCircle } from "lucide-react";
 
 export type Quiz = GenerateQuizOutput;
 
@@ -41,14 +43,21 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [questionResults, setQuestionResults] = useState<(boolean | null)[]>(
+    Array(quizData.questions.length).fill(null)
+  );
 
   const handleSubmit = form.handleSubmit((data) => {
     let score = 0;
-    data.answers.forEach((answer, index) => {
-      if (parseInt(answer.value) === quizData.questions[index].correctAnswer) {
+    const results = data.answers.map((answer, index) => {
+      const isCorrect =
+        parseInt(answer.value) === quizData.questions[index].correctAnswer;
+      if (isCorrect) {
         score++;
       }
+      return isCorrect;
     });
+    setQuestionResults(results);
     setSubmitted(true);
     onSubmit(score);
   });
@@ -62,39 +71,75 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
             <CardDescription>{t("quiz.description")}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-8">
-            {fields.map((field, index) => (
-              <div key={field.id}>
-                <p className="font-semibold mb-4">
-                  {index + 1}. {quizData.questions[index].question}
-                </p>
-                <RadioGroup
-                  onValueChange={(value) =>
-                    form.setValue(`answers.${index}.value`, value)
-                  }
-                  defaultValue={form.getValues(`answers.${index}.value`)}
-                >
-                  {quizData.questions[index].options.map(
-                    (option, optionIndex) => (
-                      <FormItem
-                        key={optionIndex}
-                        className="flex items-center space-x-3 space-y-0"
-                      >
-                        <FormControl>
-                          <RadioGroupItem value={optionIndex.toString()} />
-                        </FormControl>
-                        <FormLabel className="font-normal">{option}</FormLabel>
-                      </FormItem>
-                    )
-                  )}
-                </RadioGroup>
-              </div>
-            ))}
+            {fields.map((field, index) => {
+              const question = quizData.questions[index];
+              const result = questionResults[index];
+              const userAnswer = form.getValues(`answers.${index}.value`);
+
+              return (
+                <div key={field.id}>
+                  <p className="font-semibold mb-4 flex items-start">
+                    <span className="mr-2">{index + 1}.</span>
+                    <span>{question.question}</span>
+                    {submitted && result === true && (
+                      <CheckCircle2 className="ml-2 size-5 text-green-500 shrink-0" />
+                    )}
+                    {submitted && result === false && (
+                      <XCircle className="ml-2 size-5 text-red-500 shrink-0" />
+                    )}
+                  </p>
+                  <RadioGroup
+                    onValueChange={(value) =>
+                      form.setValue(`answers.${index}.value`, value)
+                    }
+                    defaultValue={userAnswer}
+                    disabled={submitted}
+                  >
+                    {question.options.map((option, optionIndex) => {
+                      const isCorrectAnswer =
+                        optionIndex === question.correctAnswer;
+                      const isUserAnswer =
+                        userAnswer !== "" &&
+                        parseInt(userAnswer) === optionIndex;
+
+                      return (
+                        <FormItem
+                          key={optionIndex}
+                          className={cn(
+                            "flex items-center space-x-3 space-y-0 rounded-md p-2 transition-colors",
+                            submitted &&
+                              isCorrectAnswer &&
+                              "bg-green-100 text-green-800",
+                            submitted &&
+                              !isCorrectAnswer &&
+                              isUserAnswer &&
+                              "bg-red-100 text-red-800"
+                          )}
+                        >
+                          <FormControl>
+                            <RadioGroupItem
+                              value={optionIndex.toString()}
+                              disabled={submitted}
+                            />
+                          </FormControl>
+                          <FormLabel className="font-normal flex-1">
+                            {option}
+                          </FormLabel>
+                        </FormItem>
+                      );
+                    })}
+                  </RadioGroup>
+                </div>
+              );
+            })}
           </CardContent>
-          <CardFooter>
-            <Button type="submit" disabled={submitted} className="w-full">
-              {t("quiz.submitButton")}
-            </Button>
-          </CardFooter>
+          {!submitted && (
+            <CardFooter>
+              <Button type="submit" disabled={submitted} className="w-full">
+                {t("quiz.submitButton")}
+              </Button>
+            </CardFooter>
+          )}
         </form>
       </Form>
     </FormProvider>
