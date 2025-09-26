@@ -19,15 +19,16 @@ import { Button } from "@/components/ui/button";
 import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
-import React from "react";
+import React, { use } from "react";
 
 export default function PathDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = use(params);
   const { t } = useLocale();
-  const path = learningPaths(t).find((p) => p.slug === params.slug);
+  const path = learningPaths(t).find((p) => p.slug === slug);
 
   if (!path) {
     notFound();
@@ -171,7 +172,7 @@ export default function PathDetailPage({
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-3 group"
                                   >
-                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/1e-f1c5-42cf-9b14-2c738633361a0 transition-colors">
                                       {resource.type === "video" && (
                                         <PlayCircle className="text-primary" />
                                       )}
