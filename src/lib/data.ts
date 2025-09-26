@@ -64,7 +64,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 { type: 'video', title: 'C# Tutorial For Beginners - Learn C# in 1 Hour', url: 'https://www.youtube.com/watch?v=gfkTfcpWqAY', duration: '1h' },
                 { type: 'video', title: 'C# Full Course for free', url: 'https://www.youtube.com/watch?v=wxznTygnRfQ', duration: '6h' },
                 { type: 'video', title: 'C# Tutorial - Full Course for Beginners', url: 'https://www.youtube.com/watch?v=GhQdlIFylQ8', duration: '4h 26m' },
-                { type: 'video', title: 'C# Tutorial For Beginners', url: 'https://www.youtube.com/watch?v=rylaiB2uH2A', duration: '3h 36m' },
+                { type: 'video', title: 'Master Design Patterns & SOLID Principles in C# - Full OOP Course for Beginners', url: 'https://www.youtube.com/watch?v=rylaiB2uH2A', duration: '3h 36m' },
+                { type: 'video', title: '7 Patrones de Diseño que todo Programador Debería Conocer', url: 'https://www.youtube.com/watch?v=rqOaZf4xMlI', duration: '20m' },
             ]
           },
           {
