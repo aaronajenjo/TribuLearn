@@ -55,9 +55,8 @@ export const learningPaths = (t: Translator): Technology[] => [
             sopraResources: [
               {
                 type: "course",
-                title: "C# 101",
-                url: "https://www.youtube.com/watch?v=GhQdlIF3sgQ",
-                duration: "4h 26m",
+                title: "C# Development Fundamentals",
+                url: "https://soprasteria.percipio.com/journey/be885a23-3ee8-4c14-8407-ea1d3d0c6dab",
               },
             ],
             youtubeResources: [
