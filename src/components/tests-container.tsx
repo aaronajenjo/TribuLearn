@@ -30,7 +30,7 @@ export function TestsContainer({
 }: {
   technologies: Technology[];
 }) {
-  const [activeTab, setActiveTab] = useState(technologies[0].slug);
+  const [activeTab, setActiveTab] = useState("");
   const [quizState, setQuizState] = useState<QuizState>({});
   const { toast } = useToast();
   const { t } = useLocale();
@@ -88,77 +88,81 @@ export function TestsContainer({
   };
 
   return (
-    <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-      <TabsList className="grid w-full grid-cols-5">
+    <>
+      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+        <TabsList className="grid w-full grid-cols-5">
+          {technologies.map((tech) => (
+            <TabsTrigger key={tech.id} value={tech.slug}>
+              {tech.name}
+            </TabsTrigger>
+          ))}
+        </TabsList>
         {technologies.map((tech) => (
-          <TabsTrigger key={tech.id} value={tech.slug}>
-            {tech.name}
-          </TabsTrigger>
+          <TabsContent key={tech.id} value={tech.slug}>
+            <Card>
+              <CardContent className="p-6">
+                {quizState[tech.slug]?.isLoading && (
+                  <div className="flex items-center justify-center h-64 text-muted-foreground">
+                    <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+                    {t("tests.container.generating")}
+                  </div>
+                )}
+                {quizState[tech.slug]?.error && (
+                  <div className="flex items-center justify-center h-64 text-destructive">
+                    {quizState[tech.slug]?.error}
+                  </div>
+                )}
+                {quizState[tech.slug]?.quiz && !quizState[tech.slug]?.result && (
+                  <QuizForm
+                    quizData={quizState[tech.slug]!.quiz!}
+                    onSubmit={(score) => handleQuizSubmit(tech.slug, score)}
+                  />
+                )}
+                {quizState[tech.slug]?.result && (
+                  <div className="text-center py-12">
+                    <h2 className="text-2xl font-bold mb-2">
+                      {t("tests.container.result.title")}
+                    </h2>
+                    <p className="text-lg text-muted-foreground mb-4">
+                      {t("tests.container.result.description", {
+                        score: quizState[tech.slug]!.result!.score,
+                        total: 15,
+                      })}
+                    </p>
+                    <p className="text-xl">
+                      {t("tests.container.result.suggestedLevel")}:
+                    </p>
+                    <Badge
+                      className="text-2xl mt-2"
+                      variant={
+                        quizState[tech.slug]!.result!.level === "Advanced"
+                          ? "default"
+                          : quizState[tech.slug]!.result!.level ===
+                            "Intermediate"
+                          ? "secondary"
+                          : "outline"
+                      }
+                    >
+                      {t(
+                        `paths.levels.${quizState[
+                          tech.slug
+                        ]!.result!.level.toLowerCase()}`
+                      )}
+                    </Badge>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
         ))}
-      </TabsList>
-      {technologies.map((tech) => (
-        <TabsContent key={tech.id} value={tech.slug}>
-          <Card>
-            <CardContent className="p-6">
-              {quizState[tech.slug]?.isLoading && (
-                <div className="flex items-center justify-center h-64 text-muted-foreground">
-                  <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                  {t("tests.container.generating")}
-                </div>
-              )}
-              {quizState[tech.slug]?.error && (
-                <div className="flex items-center justify-center h-64 text-destructive">
-                  {quizState[tech.slug]?.error}
-                </div>
-              )}
-              {quizState[tech.slug]?.quiz && !quizState[tech.slug]?.result && (
-                <QuizForm
-                  quizData={quizState[tech.slug]!.quiz!}
-                  onSubmit={(score) => handleQuizSubmit(tech.slug, score)}
-                />
-              )}
-              {quizState[tech.slug]?.result && (
-                <div className="text-center py-12">
-                  <h2 className="text-2xl font-bold mb-2">
-                    {t("tests.container.result.title")}
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-4">
-                    {t("tests.container.result.description", {
-                      score: quizState[tech.slug]!.result!.score,
-                      total: 15,
-                    })}
-                  </p>
-                  <p className="text-xl">
-                    {t("tests.container.result.suggestedLevel")}:
-                  </p>
-                  <Badge
-                    className="text-2xl mt-2"
-                    variant={
-                      quizState[tech.slug]!.result!.level === "Advanced"
-                        ? "default"
-                        : quizState[tech.slug]!.result!.level ===
-                          "Intermediate"
-                        ? "secondary"
-                        : "outline"
-                    }
-                  >
-                    {t(
-                      `paths.levels.${quizState[
-                        tech.slug
-                      ]!.result!.level.toLowerCase()}`
-                    )}
-                  </Badge>
-                </div>
-              )}
-              {!quizState[tech.slug] && (
-                <div className="flex flex-col items-center justify-center h-64 text-muted-foreground">
-                  <p>{t("tests.container.prompt")}</p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-      ))}
-    </Tabs>
+      </Tabs>
+      {!activeTab && (
+        <Card className="mt-2">
+          <CardContent className="flex flex-col items-center justify-center h-64 text-muted-foreground p-6">
+            <p>{t("tests.container.prompt")}</p>
+          </CardContent>
+        </Card>
+      )}
+    </>
   );
 }
