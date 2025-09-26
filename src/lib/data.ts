@@ -92,13 +92,8 @@ export const learningPaths = (t: Translator): Technology[] => [
             sopraResources: [
               {
                 type: "course",
-                title: "C# Intermediate Learning Track",
-                url: "https://soprasteria.percipio.com/track/3ca3af36-ed2c-49b4-92c6-7e02d7b80d22",
-              },
-              {
-                type: "course",
                 title: "Web Apps with C# & ASP.NET Track",
-                url: "https://soprasteria.percipio.com/track/fed7500e-f1c5-42cf-9b14-2c738633361a",
+                url: "https://soprasteria.percipio.com/track/3ca3af36-ed2c-49b4-92c6-7e02d7b80d22",
               },
             ],
             youtubeResources: [
