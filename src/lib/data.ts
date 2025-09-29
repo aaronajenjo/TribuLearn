@@ -105,15 +105,21 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
               {
                 type: "video",
-                title: "Entity Framework Core Crash Course",
-                url: "https://www.youtube.com/watch?v=lOCUFuTyvaE",
-                duration: "1h 50m",
+                title: "5 Design Patterns That Are ACTUALLY Used By Developers",
+                url: "https://www.youtube.com/watch?v=YMAwgRwjEOQ",
+                duration: "30m",
               },
               {
                 type: "video",
                 title: "C# Async/Await Explained",
                 url: "https://www.youtube.com/watch?v=5a6WCBftjvw",
                 duration: "30m",
+              },
+              {
+                type: "video",
+                title: "Entity Framework Core Crash Course",
+                url: "https://www.youtube.com/watch?v=lOCUFuTyvaE",
+                duration: "1h 50m",
               },
             ],
           },
@@ -183,11 +189,17 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: "Angular Beginner Journey",
                 url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/6c3e8841-d56a-45d2-a6dd-36ac704c9d8d?tab=WATCH",
               },
+              {
+                type: "video",
+                title: "What's New in Angular 17 & 18",
+                url: "https://soprasteria.percipio.com/courses/9d2b542c-d61e-4ffd-a7e0-99df49567f0e/videos/6e3bfbd3-992e-4739-aaf2-6a4b2b5a95f2",
+                duration: "35m"
+              }
             ],
             youtubeResources: [
-                { type: 'video', title: 'Angular for Beginners - Full Course', url: 'https://www.youtube.com/watch?v=k5E2AVpwsko', duration: '11h' },
-                { type: 'video', title: 'Learn Angular in 1 Hour', url: 'https://www.youtube.com/watch?v=2-c3f_gA4sQ', duration: '1h' },
-                { type: 'video', title: 'Angular Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=k_AlE32zM0w', duration: '2h' },
+                { type: 'video', title: 'Angular for Beginners - Full Course', url: 'https://www.youtube.com/watch?v=3qBXWUpoPHo', duration: '11h' },
+                { type: 'video', title: 'Learn Angular in 1 Hour', url: 'https://www.youtube.com/watch?v=f7unUpshmpA', duration: '1h' },
+                { type: 'video', title: 'Angular Component Communication', url: 'https://www.youtube.com/watch?v=MtTAfjiZxtk', duration: '20m' },
             ]
           },
         ],
@@ -205,7 +217,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/a11bcb81-3461-4631-89be-586006d1d293?tab=WATCH",
               },
             ],
-            youtubeResources: []
+            youtubeResources: [
+              { type: 'video', title: 'Angular Dependency Injection', url: 'https://www.youtube.com/watch?v=OFPIGlxunL0', duration: '25m' },
+              { type: 'video', title: 'Angular Migration from v14 to v17', url: 'https://www.youtube.com/watch?v=fbCfniJT_JA', duration: '30m' },
+              { type: 'video', title: 'Modules in Angular 19', url: 'https://www.youtube.com/watch?v=x5PZwb4XurU', duration: '15m' },
+            ]
           },
         ] 
       },
@@ -222,7 +238,9 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/8f0be60e-27a4-4470-95a8-4b57e1ca48e4?tab=WATCH",
               },
             ],
-            youtubeResources: []
+            youtubeResources: [
+              { type: 'course', title: 'Mastering Angular - Full Playlist', url: 'https://www.youtube.com/watch?v=R_It2UgUssg&list=PLoC8Q0moRTSgYzCoo5fklvPT40KQVUorx', duration: '54 videos' },
+            ]
           },
         ] 
       },
