@@ -45,7 +45,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
-import { cn } from "@/lib/utils";
+import { marked } from "marked";
 
 const formSchema = z.object({
   technology: z.string().min(1, "Please select a technology."),
@@ -112,7 +112,8 @@ export function RefactorChallenge() {
             (p) => p.slug === form.getValues("technology")
           )?.name || form.getValues("technology"),
       });
-      setAnalysis(result.analysis);
+      const rawMarkup = marked.parse(result.analysis) as string;
+      setAnalysis(rawMarkup);
     } catch (error) {
       console.error("Failed to analyze solution:", error);
       toast({
@@ -297,15 +298,10 @@ export function RefactorChallenge() {
               {challenge && (
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1" className="border-b-0">
-                    <AccordionTrigger
-                      asChild
-                      disabled={!challenge || isAnalyzing}
-                    >
-                      <Button variant="outline" className="w-full" asChild={false}>
-                        <span>
-                          <FileText className="mr-2" />
-                          {t("refactors.solution.showButton")}
-                        </span>
+                    <AccordionTrigger asChild>
+                      <Button variant="outline" className="w-full" disabled={!challenge || isAnalyzing}>
+                        <FileText className="mr-2" />
+                        {t("refactors.solution.showButton")}
                       </Button>
                     </AccordionTrigger>
                     <AccordionContent className="mt-4">
@@ -359,7 +355,7 @@ export function RefactorChallenge() {
             <CardDescription>
               {t("refactors.analysis.description")}
             </CardDescription>
-          </CardHeader>
+          </Header>
           <CardContent>
              <div
               className="prose prose-sm dark:prose-invert max-w-none p-4 rounded-md border bg-muted/50"
