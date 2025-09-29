@@ -152,10 +152,10 @@ export const learningPaths = (t: Translator): Technology[] => [
                 duration: "30m",
               },
               {
-                type: "video",
+                type: "course",
                 title: ".NET Microservices – Full Course",
                 url: "https://www.youtube.com/watch?v=DgVjEo3OGBI&list=PLpXfHEl2fzl7a7p4ntTmdjmNSD1iEYXrm",
-                duration: "1h 14m",
+                duration: "Multiple videos",
               },
               {
                 type: "video",
@@ -163,6 +163,12 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://www.youtube.com/watch?v=zzNHSeW1nFs",
                 duration: "49m",
               },
+              {
+                type: "course",
+                title: "Advanced C# Topics",
+                url: "https://www.youtube.com/watch?v=dkFYUUWdQYI&list=PLSr9CPTtmP9js0n4XOmI4vfKeVvlS32PA",
+                duration: "Multiple videos"
+              }
             ],
           },
         ] 
@@ -197,8 +203,8 @@ export const learningPaths = (t: Translator): Technology[] => [
               }
             ],
             youtubeResources: [
-                { type: 'video', title: 'Angular for Beginners - Full Course', url: 'https://www.youtube.com/watch?v=3qBXWUpoPHo', duration: '11h' },
-                { type: 'video', title: 'Learn Angular - Full Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=f7unUpshmpA', duration: '1h' },
+                { type: 'video', title: 'Angular for Beginners - Full Course', url: 'https://www.youtube.com/watch?v=3qBXWUpoPHo', duration: '11h 17m' },
+                { type: 'video', title: 'Learn Angular - Full Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=f7unUpshmpA', duration: '1h 12m' },
                 { type: 'video', title: 'Angular Component Communication', url: 'https://www.youtube.com/watch?v=MtTAfjiZxtk', duration: '20m' },
             ]
           },
@@ -269,7 +275,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-              { type: 'video', title: 'Ionic 7 Crash Course | Build a Complete App with Standalone Components', url: 'https://www.youtube.com/watch?v=5Gj4Y8zvl-s', duration: '2h' },
+              { type: 'video', title: 'Ionic 7 Crash Course | Build a Complete App with Standalone Components', url: 'https://www.youtube.com/watch?v=5Gj4Y8zvl-s', duration: '1h 56m' },
               { type: 'video', title: 'Ionic Tutorial #2 - The Basics (How Ionic Works)', url: 'https://www.youtube.com/watch?v=Fh8MmgWWvMs', duration: '11m' },
               { type: 'video', title: 'Ionic Tutorial #4 - Navigation & Pages', url: 'https://www.youtube.com/watch?v=8xf0X4KEIkg', duration: '14m' },
               { type: 'video', title: 'Ionic Tutorial #8 - Data, Events & Lifecycle Hooks', url: 'https://www.youtube.com/watch?v=E-aXqVe2K1g', duration: '13m' },
@@ -381,23 +387,27 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.razor.beginner.module1.title'),
             description: t('technologies.razor.beginner.module1.description'),
-            sopraResources: [
-              {
-                type: "video",
-                title: "Razor Pages in ASP.NET Core",
-                url: "https://www.youtube.com/watch?v=a-i0g_a5-3E",
-                duration: "3h 48m",
-              },
-            ],
+            sopraResources: [],
             youtubeResources: [
-                { type: 'video', title: '.NET Core Razor Pages Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=F0G901I4M44', duration: '2h' },
-                { type: 'video', title: 'Razor Pages for Beginners', url: 'https://www.youtube.com/watch?v=iAm_n2iT4fA', duration: '40m' },
-                { type: 'video', title: 'Creating a Web App with Razor Pages and Entity Framework Core', url: 'https://www.youtube.com/watch?v=13n5f0f5U6Y', duration: '1h 30m' },
+                { type: 'video', title: 'ASP.NET Core Razor Pages Tutorial', url: 'https://www.youtube.com/watch?v=pmWFzzU_NB4', duration: '3h 48m' },
+                { type: 'video', title: 'Razor Pages tutorial for beginners | ASP.NET Core', url: 'https://www.youtube.com/watch?v=oKY60aLOrrs', duration: '40m' },
             ]
           },
         ],
       },
-      { name: "Intermediate", modules: [] },
+      { 
+        name: "Intermediate", 
+        modules: [
+          {
+            title: t('technologies.razor.intermediate.module1.title'),
+            description: t('technologies.razor.intermediate.module1.description'),
+            sopraResources: [],
+            youtubeResources: [
+              { type: 'video', title: 'CRUD Operations in Razor Pages in ASP.NET Core', url: 'https://www.youtube.com/watch?v=ZqlvK5UcXnY', duration: '29m' },
+            ]
+          }
+        ]
+      },
       { name: "Advanced", modules: [] },
     ],
   },

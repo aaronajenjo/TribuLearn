@@ -240,6 +240,12 @@
           "title": "Esenciales de la Sintaxis de Razor",
           "description": "Domina la sintaxis para incrustar código del lado del servidor en las páginas web."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Conceptos Intermedios de Razor",
+          "description": "Aprende sobre técnicas más avanzadas en Razor como operaciones CRUD."
+        }
       }
     }
   },

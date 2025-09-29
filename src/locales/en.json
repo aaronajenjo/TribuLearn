@@ -240,6 +240,12 @@
           "title": "Razor Syntax Essentials",
           "description": "Master the syntax for embedding server-based code into webpages."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Intermediate Razor Concepts",
+          "description": "Learn about more advanced techniques in Razor like CRUD operations."
+        }
       }
     }
   },
