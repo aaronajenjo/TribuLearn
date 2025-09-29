@@ -142,6 +142,18 @@
           "title": "Primeros Pasos con Angular",
           "description": "Configura tu primer proyecto de Angular y comprende su arquitectura."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Conceptos Intermedios de Angular",
+          "description": "Profundiza tus conocimientos de Angular con temas más avanzados."
+        }
+      },
+      "advanced": {
+        "module1": {
+          "title": "Técnicas Avanzadas de Angular",
+          "description": "Domina patrones complejos y características avanzadas en Angular."
+        }
       }
     },
     "ionic": {

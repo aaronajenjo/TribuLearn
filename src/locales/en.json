@@ -142,6 +142,18 @@
           "title": "Getting Started with Angular",
           "description": "Set up your first Angular project and understand its architecture."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Intermediate Angular Concepts",
+          "description": "Deepen your knowledge of Angular with more advanced topics."
+        }
+      },
+      "advanced": {
+        "module1": {
+          "title": "Advanced Angular Techniques",
+          "description": "Master complex patterns and advanced features in Angular."
+        }
       }
     },
     "ionic": {

@@ -180,9 +180,8 @@ export const learningPaths = (t: Translator): Technology[] => [
             sopraResources: [
               {
                 type: "course",
-                title: "Angular for Beginners",
-                url: "https://www.youtube.com/watch?v=3qBXWUpoPHo",
-                duration: "9h 53m",
+                title: "Angular Beginner Journey",
+                url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/6c3e8841-d56a-45d2-a6dd-36ac704c9d8d?tab=WATCH",
               },
             ],
             youtubeResources: [
@@ -193,8 +192,40 @@ export const learningPaths = (t: Translator): Technology[] => [
           },
         ],
       },
-      { name: "Intermediate", modules: [] },
-      { name: "Advanced", modules: [] },
+      { 
+        name: "Intermediate", 
+        modules: [
+          {
+            title: t('technologies.angular.intermediate.module1.title'),
+            description: t('technologies.angular.intermediate.module1.description'),
+            sopraResources: [
+              {
+                type: "course",
+                title: "Angular Intermediate Journey",
+                url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/a11bcb81-3461-4631-89be-586006d1d293?tab=WATCH",
+              },
+            ],
+            youtubeResources: []
+          },
+        ] 
+      },
+      { 
+        name: "Advanced", 
+        modules: [
+          {
+            title: t('technologies.angular.advanced.module1.title'),
+            description: t('technologies.angular.advanced.module1.description'),
+            sopraResources: [
+              {
+                type: "course",
+                title: "Angular Advanced Journey",
+                url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/8f0be60e-27a4-4470-95a8-4b57e1ca48e4?tab=WATCH",
+              },
+            ],
+            youtubeResources: []
+          },
+        ] 
+      },
     ],
   },
   {
