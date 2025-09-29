@@ -127,22 +127,35 @@ export function RefactorChallenge() {
   }
 
   const handleTab = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Tab") {
+    if (e.key === "Tab" && !e.shiftKey) {
       e.preventDefault();
       const start = e.currentTarget.selectionStart;
       const end = e.currentTarget.selectionEnd;
-
-      // set textarea value to: text before caret + tab + text after caret
       e.currentTarget.value =
         e.currentTarget.value.substring(0, start) +
         "  " +
         e.currentTarget.value.substring(end);
-
-      // put caret at right position again
       e.currentTarget.selectionStart = e.currentTarget.selectionEnd =
         start + 2;
-      
       setUserSolution(e.currentTarget.value);
+    }
+
+    if (e.key === "Tab" && e.shiftKey) {
+      e.preventDefault();
+      const start = e.currentTarget.selectionStart;
+      const end = e.currentTarget.selectionEnd;
+      const before_start = e.currentTarget.value.substring(0, start);
+      const after_end = e.currentTarget.value.substring(end);
+      const between = e.currentTarget.value.substring(start, end);
+      const lines = before_start.split('\n');
+      const last_line = lines[lines.length - 1];
+      if (last_line.startsWith("  ")) {
+        lines[lines.length - 1] = last_line.substring(2);
+        const new_before_start = lines.join('\n');
+        e.currentTarget.value = new_before_start + between + after_end;
+        e.currentTarget.selectionStart = e.currentTarget.selectionEnd = start - 2;
+        setUserSolution(e.currentTarget.value);
+      }
     }
   };
 
@@ -235,7 +248,7 @@ export function RefactorChallenge() {
         </Form>
       </Card>
 
-      <div className="grid lg:grid-cols-2 gap-8 items-start">
+      <div className="space-y-8">
         <Card className="flex flex-col">
           <CardHeader>
             <CardTitle>{t("refactors.challenge.title")}</CardTitle>
@@ -244,7 +257,7 @@ export function RefactorChallenge() {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex-1">
-            <ScrollArea className="h-[500px] w-full rounded-md border p-4 bg-muted/50 font-mono text-sm">
+            <ScrollArea className="h-96 w-full rounded-md border p-4 bg-muted/50 font-mono text-sm">
               {isGenerating ? (
                 <div className="flex items-center justify-center h-full text-muted-foreground">
                   <Sparkles className="mr-2 h-4 w-4 animate-pulse" />
@@ -263,74 +276,76 @@ export function RefactorChallenge() {
           </CardContent>
         </Card>
 
-        <div className="space-y-8">
-          <Card className="flex flex-col">
-            <CardHeader>
-              <CardTitle>{t("refactors.solution.title")}</CardTitle>
-              <CardDescription>
-                {t("refactors.solution.description")}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Textarea
-                placeholder={t("refactors.solution.placeholder")}
-                className="h-[500px] text-sm font-mono"
-                value={userSolution}
-                onChange={(e) => setUserSolution(e.target.value)}
-                onKeyDown={handleTab}
-                disabled={!challenge || isAnalyzing}
-              />
-            </CardContent>
-            <CardFooter className="flex-col sm:flex-row gap-2">
-              <Button
-                onClick={onAnalyze}
-                disabled={!challenge || !userSolution || isAnalyzing}
-                className="w-full"
-              >
-                {isAnalyzing ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Search className="mr-2" />
-                )}
-                {t("refactors.solution.analyzeButton")}
-              </Button>
-
-              {challenge && (
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1" className="border-b-0">
-                    <AccordionTrigger asChild>
-                      <Button variant="outline" className="w-full" disabled={!challenge || isAnalyzing}>
-                        <FileText className="mr-2" />
-                        {t("refactors.solution.showButton")}
-                      </Button>
-                    </AccordionTrigger>
-                    <AccordionContent className="mt-4">
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>{t("refactors.optimal.title")}</CardTitle>
-                          <CardDescription>
-                            {t("refactors.optimal.description")}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <ScrollArea className="h-64 w-full rounded-md border p-4 bg-muted/50 font-mono text-sm">
-                            <pre className="whitespace-pre-wrap">
-                              {challenge.optimalSolution}
-                            </pre>
-                          </ScrollArea>
-                        </CardContent>
-                      </Card>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+        <Card className="flex flex-col">
+          <CardHeader>
+            <CardTitle>{t("refactors.solution.title")}</CardTitle>
+            <CardDescription>
+              {t("refactors.solution.description")}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Textarea
+              placeholder={t("refactors.solution.placeholder")}
+              className="h-96 text-sm font-mono"
+              value={userSolution}
+              onChange={(e) => setUserSolution(e.target.value)}
+              onKeyDown={handleTab}
+              disabled={!challenge || isAnalyzing}
+            />
+          </CardContent>
+          <CardFooter className="flex-col sm:flex-row gap-2">
+            <Button
+              onClick={onAnalyze}
+              disabled={!challenge || !userSolution || isAnalyzing}
+              className="w-full"
+            >
+              {isAnalyzing ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Search className="mr-2" />
               )}
-            </CardFooter>
-          </Card>
-        </div>
+              {t("refactors.solution.analyzeButton")}
+            </Button>
+
+            {challenge && (
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1" className="border-b-0">
+                  <AccordionTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full"
+                      disabled={!challenge || isAnalyzing}
+                    >
+                      <FileText className="mr-2" />
+                      {t("refactors.solution.showButton")}
+                    </Button>
+                  </AccordionTrigger>
+                  <AccordionContent className="mt-4">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>{t("refactors.optimal.title")}</CardTitle>
+                        <CardDescription>
+                          {t("refactors.optimal.description")}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <ScrollArea className="h-64 w-full rounded-md border p-4 bg-muted/50 font-mono text-sm">
+                          <pre className="whitespace-pre-wrap">
+                            {challenge.optimalSolution}
+                          </pre>
+                        </ScrollArea>
+                      </CardContent>
+                    </Card>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            )}
+          </CardFooter>
+        </Card>
       </div>
 
       {isAnalyzing && (
-         <Card>
+        <Card>
           <CardHeader>
             <CardTitle>{t("refactors.analysis.title")}</CardTitle>
             <CardDescription>
@@ -355,9 +370,9 @@ export function RefactorChallenge() {
             <CardDescription>
               {t("refactors.analysis.description")}
             </CardDescription>
-          </Header>
+          </CardHeader>
           <CardContent>
-             <div
+            <div
               className="prose prose-sm dark:prose-invert max-w-none p-4 rounded-md border bg-muted/50"
               dangerouslySetInnerHTML={{ __html: analysis }}
             />
@@ -367,3 +382,5 @@ export function RefactorChallenge() {
     </div>
   );
 }
+
+    
