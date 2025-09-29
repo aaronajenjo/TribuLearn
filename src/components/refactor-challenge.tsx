@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -45,6 +45,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   technology: z.string().min(1, "Please select a technology."),
@@ -123,6 +124,26 @@ export function RefactorChallenge() {
       setIsAnalyzing(false);
     }
   }
+
+  const handleTab = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Tab") {
+      e.preventDefault();
+      const start = e.currentTarget.selectionStart;
+      const end = e.currentTarget.selectionEnd;
+
+      // set textarea value to: text before caret + tab + text after caret
+      e.currentTarget.value =
+        e.currentTarget.value.substring(0, start) +
+        "  " +
+        e.currentTarget.value.substring(end);
+
+      // put caret at right position again
+      e.currentTarget.selectionStart = e.currentTarget.selectionEnd =
+        start + 2;
+      
+      setUserSolution(e.currentTarget.value);
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -213,7 +234,7 @@ export function RefactorChallenge() {
         </Form>
       </Card>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8 items-start">
         <Card className="flex flex-col">
           <CardHeader>
             <CardTitle>{t("refactors.challenge.title")}</CardTitle>
@@ -222,7 +243,7 @@ export function RefactorChallenge() {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex-1">
-            <ScrollArea className="h-96 w-full rounded-md border p-4 bg-muted/50 font-mono text-sm">
+            <ScrollArea className="h-[500px] w-full rounded-md border p-4 bg-muted/50 font-mono text-sm">
               {isGenerating ? (
                 <div className="flex items-center justify-center h-full text-muted-foreground">
                   <Sparkles className="mr-2 h-4 w-4 animate-pulse" />
@@ -252,10 +273,10 @@ export function RefactorChallenge() {
             <CardContent>
               <Textarea
                 placeholder={t("refactors.solution.placeholder")}
-                className="flex-1 text-sm font-mono"
-                rows={12}
+                className="h-[500px] text-sm font-mono"
                 value={userSolution}
                 onChange={(e) => setUserSolution(e.target.value)}
+                onKeyDown={handleTab}
                 disabled={!challenge || isAnalyzing}
               />
             </CardContent>
@@ -277,9 +298,10 @@ export function RefactorChallenge() {
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1" className="border-b-0">
                     <AccordionTrigger
+                      asChild
                       disabled={!challenge || isAnalyzing}
                     >
-                      <Button variant="outline" className="w-full" asChild>
+                      <Button variant="outline" className="w-full" asChild={false}>
                         <span>
                           <FileText className="mr-2" />
                           {t("refactors.solution.showButton")}
@@ -311,6 +333,25 @@ export function RefactorChallenge() {
         </div>
       </div>
 
+      {isAnalyzing && (
+         <Card>
+          <CardHeader>
+            <CardTitle>{t("refactors.analysis.title")}</CardTitle>
+            <CardDescription>
+              {t("refactors.analysis.description")}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64 w-full rounded-md border p-4 bg-muted/50 flex items-center justify-center">
+              <div className="flex items-center text-muted-foreground">
+                <Sparkles className="mr-2 h-4 w-4 animate-pulse" />
+                {t("refactors.analysis.generating")}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {analysis && (
         <Card>
           <CardHeader>
@@ -320,19 +361,10 @@ export function RefactorChallenge() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ScrollArea className="h-64 w-full rounded-md border p-4 bg-muted/50">
-              {isAnalyzing ? (
-                <div className="flex items-center justify-center h-full text-muted-foreground">
-                  <Sparkles className="mr-2 h-4 w-4 animate-pulse" />
-                  {t("refactors.analysis.generating")}
-                </div>
-              ) : (
-                <div
-                  className="prose prose-sm dark:prose-invert max-w-none"
-                  dangerouslySetInnerHTML={{ __html: analysis }}
-                />
-              )}
-            </ScrollArea>
+             <div
+              className="prose prose-sm dark:prose-invert max-w-none p-4 rounded-md border bg-muted/50"
+              dangerouslySetInnerHTML={{ __html: analysis }}
+            />
           </CardContent>
         </Card>
       )}

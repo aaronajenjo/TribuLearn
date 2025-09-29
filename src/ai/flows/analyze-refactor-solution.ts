@@ -62,7 +62,7 @@ Your task is to provide a constructive analysis of the user's solution. Compare 
 - What could be improved?
 - Provide specific suggestions for improvement.
 
-Format your response in Markdown.
+Format your response in Markdown. Use headings, lists, and code blocks for clarity.
 `,
 });
 
