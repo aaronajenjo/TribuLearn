@@ -20,6 +20,7 @@ import {
   Code2,
   LayoutDashboard,
   ClipboardList,
+  CodeSquare,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -37,6 +38,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     { href: "/paths", icon: BookOpen, label: t("nav.learningPaths") },
     { href: "/playground", icon: Code2, label: t("nav.playground") },
     { href: "/tests", icon: ClipboardList, label: t("nav.tests") },
+    { href: "/refactors", icon: CodeSquare, label: t("nav.refactors") },
   ];
 
   return (
@@ -45,7 +47,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <SidebarHeader>
           <Link href="/dashboard" className="flex items-center gap-2.5">
             <Icons.logo className="size-7 text-primary" />
-            <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-foreground">
+            <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground">
               Tribu Learning
             </h1>
           </Link>
@@ -68,7 +70,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter>{/* <UserNav /> */}</SidebarFooter>
+        <SidebarFooter></SidebarFooter>
       </Sidebar>
       <SidebarInset>
         <header className="flex h-14 items-center justify-between border-b bg-card px-4 sm:px-6 lg:px-8">

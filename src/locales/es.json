@@ -3,7 +3,8 @@
     "dashboard": "Panel",
     "learningPaths": "Rutas de Aprendizaje",
     "playground": "Playground",
-    "tests": "Tests"
+    "tests": "Tests",
+    "refactors": "Refactors"
   },
   "userNav": {
     "name": "Nuevo Empleado",
@@ -79,6 +80,40 @@
       "solvePlaceholder": "Resuelve el ejercicio aquí..."
     }
   },
+  "refactors": {
+    "page": {
+      "title": "Desafíos de Refactorización con IA",
+      "description": "Mejora la calidad de tu código con tareas de refactorización generadas por IA."
+    },
+    "form": {
+      "title": "Generador de Desafíos",
+      "description": "Selecciona una tecnología y dificultad para generar un fragmento de código para refactorizar.",
+      "generateButton": "Generar Desafío"
+    },
+    "challenge": {
+      "title": "Desafío de Refactorización",
+      "description": "Refactoriza el siguiente código para mejorar su calidad, legibilidad y rendimiento.",
+      "generating": "Generando desafío...",
+      "placeholder": "Tu desafío aparecerá aquí."
+    },
+    "solution": {
+      "title": "Tu Solución",
+      "description": "Escribe tu código refactorizado en el editor de abajo.",
+      "placeholder": "Escribe tu código refactorizado aquí...",
+      "analyzeButton": "Analizar Solución",
+      "showButton": "Mostrar Solución Óptima"
+    },
+    "analysis": {
+      "title": "Análisis de IA",
+      "description": "Aquí está la retroalimentación de la IA sobre tu código refactorizado.",
+      "generating": "Analizando tu solución...",
+      "placeholder": "El análisis de tu solución aparecerá aquí."
+    },
+    "optimal": {
+      "title": "Solución Óptima",
+      "description": "Así es como la IA refactorizaría el código."
+    }
+  },
   "tests": {
     "page": {
       "title": "Tests de Evaluación de Habilidades",
@@ -102,7 +137,7 @@
   "toast": {
     "generationFailed": {
       "title": "Falló la Generación",
-      "description": "Hubo un error al generar el ejercicio. Por favor, inténtalo de nuevo."
+      "description": "Hubo un error al generar el contenido. Por favor, inténtalo de nuevo."
     },
     "quizGenerationFailed": {
       "title": "Falló la Generación del Cuestionario",
@@ -124,7 +159,7 @@
       },
       "intermediate": {
         "module1": {
-          "title": "C# Avanzado y ASP.NET Core",
+          "title": "C# Intermediate Learning Track",
           "description": "Profundiza en la inyección de dependencias, modelos de datos en ASP.NET Core y otros temas avanzados de C#."
         }
       },

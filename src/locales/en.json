@@ -3,7 +3,8 @@
     "dashboard": "Dashboard",
     "learningPaths": "Learning Paths",
     "playground": "Playground",
-    "tests": "Tests"
+    "tests": "Tests",
+    "refactors": "Refactors"
   },
   "userNav": {
     "name": "New Hire",
@@ -79,6 +80,40 @@
       "solvePlaceholder": "Solve the exercise here..."
     }
   },
+  "refactors": {
+    "page": {
+      "title": "AI Refactor Challenges",
+      "description": "Improve your code quality with AI-generated refactoring tasks."
+    },
+    "form": {
+      "title": "Challenge Generator",
+      "description": "Select a technology and difficulty to generate a code snippet to refactor.",
+      "generateButton": "Generate Challenge"
+    },
+    "challenge": {
+      "title": "Refactor Challenge",
+      "description": "Refactor the code below to improve its quality, readability, and performance.",
+      "generating": "Generating challenge...",
+      "placeholder": "Your challenge will appear here."
+    },
+    "solution": {
+      "title": "Your Solution",
+      "description": "Write your refactored code in the editor below.",
+      "placeholder": "Write your refactored code here...",
+      "analyzeButton": "Analyze Solution",
+      "showButton": "Show Optimal Solution"
+    },
+    "analysis": {
+      "title": "AI Analysis",
+      "description": "Here is the AI's feedback on your refactored code.",
+      "generating": "Analyzing your solution...",
+      "placeholder": "The analysis of your solution will appear here."
+    },
+    "optimal": {
+      "title": "Optimal Solution",
+      "description": "This is how the AI would refactor the code."
+    }
+  },
   "tests": {
     "page": {
       "title": "Skill Assessment Tests",
@@ -102,7 +137,7 @@
   "toast": {
     "generationFailed": {
       "title": "Generation Failed",
-      "description": "There was an error generating the exercise. Please try again."
+      "description": "There was an error generating the content. Please try again."
     },
     "quizGenerationFailed": {
       "title": "Quiz Generation Failed",
@@ -124,7 +159,7 @@
       },
       "intermediate": {
         "module1": {
-          "title": "Advanced C# and ASP.NET Core",
+          "title": "C# Intermediate Learning Track",
           "description": "Dive into dependency injection, data models in ASP.NET Core, and other advanced C# topics."
         }
       },
