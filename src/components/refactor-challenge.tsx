@@ -248,7 +248,7 @@ export function RefactorChallenge() {
         </Form>
       </Card>
 
-      <div className="space-y-8">
+      <div className="grid grid-cols-1 gap-8">
         <Card className="flex flex-col">
           <CardHeader>
             <CardTitle>{t("refactors.challenge.title")}</CardTitle>
@@ -382,5 +382,3 @@ export function RefactorChallenge() {
     </div>
   );
 }
-
-    
