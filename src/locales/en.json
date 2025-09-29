@@ -207,6 +207,18 @@
           "title": "Introduction to Blazor",
           "description": "Explore how Blazor lets you build client-side web apps with .NET."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Intermediate Blazor Concepts",
+          "description": "Deepen your Blazor knowledge with topics like components and forms."
+        }
+      },
+      "advanced": {
+        "module1": {
+          "title": "Advanced Blazor Topics",
+          "description": "Master authentication, deployment, and other advanced Blazor features."
+        }
       }
     },
     "razor": {

@@ -302,15 +302,42 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-                { type: 'video', title: 'Blazor Full Course for Beginners [.NET 8]', url: 'https://www.youtube.com/watch?v=w_x3d5gS4_8', duration: '9h' },
-                { type: 'video', title: 'Blazor Crash Course for Beginners [.NET 8]', url: 'https://www.youtube.com/watch?v=p4vG3g0A54A', duration: '2h' },
-                { type: 'video', title: 'Learn Blazor in 1 Hour - Full Course', url: 'https://www.youtube.com/watch?v=M5-3mYf4xVY', duration: '1h' },
+              { type: 'course', title: 'Blazor Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=uuzi3SmCLVo&list=PL6n9fhu94yhVowClAs8-6nYnfsOTma14P', duration: '131 videos' },
+              { type: 'video', title: 'Blazor in 100 Seconds', url: 'https://www.youtube.com/watch?v=w8imy7LT9zY', duration: '2m 17s' },
             ]
           },
         ],
       },
-      { name: "Intermediate", modules: [] },
-      { name: "Advanced", modules: [] },
+      { 
+        name: "Intermediate", 
+        modules: [
+          {
+            title: t('technologies.blazor.intermediate.module1.title'),
+            description: t('technologies.blazor.intermediate.module1.description'),
+            sopraResources: [],
+            youtubeResources: [
+              { type: 'video', title: 'Blazor Components | Ep 3 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=G910vWOdhQ8&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=3', duration: '27m' },
+              { type: 'video', title: 'Blazor Forms and Validation | Ep 5 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=3Gr83lIaENg&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=5', duration: '26m' },
+            ]
+          }
+        ] 
+      },
+      { 
+        name: "Advanced", 
+        modules: [
+          {
+            title: t('technologies.blazor.advanced.module1.title'),
+            description: t('technologies.blazor.advanced.module1.description'),
+            sopraResources: [],
+            youtubeResources: [
+              { type: 'video', title: 'Authentication in Blazor | Ep 12 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=iq2btD9WufI&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=12', duration: '24m' },
+              { type: 'video', title: 'Publishing a Blazor App | Ep 16 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=vi51RBc_TkY&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=16', duration: '10m' },
+              { type: 'video', title: 'How to deploy Blazor app to Azure | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=oprGTwdpDKk&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=24', duration: '9m' },
+              { type: 'video', title: 'Publish to IIS | Ep 28 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=STtxYvPxPl4&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=28', duration: '10m' },
+            ]
+          }
+        ] 
+      },
     ],
   },
   {

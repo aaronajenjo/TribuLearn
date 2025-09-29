@@ -207,6 +207,18 @@
           "title": "Introducción a Blazor",
           "description": "Explora cómo Blazor te permite construir aplicaciones web del lado del cliente con .NET."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Conceptos Intermedios de Blazor",
+          "description": "Profundiza tus conocimientos de Blazor con temas como componentes y formularios."
+        }
+      },
+      "advanced": {
+        "module1": {
+          "title": "Temas Avanzados de Blazor",
+          "description": "Domina la autenticación, el despliegue y otras características avanzadas de Blazor."
+        }
       }
     },
     "razor": {
