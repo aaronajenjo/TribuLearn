@@ -310,15 +310,15 @@ export function RefactorChallenge() {
             {challenge && (
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1" className="border-b-0">
-                  <AccordionTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className="w-full"
-                      disabled={!challenge || isAnalyzing}
-                    >
-                      <FileText className="mr-2" />
-                      {t("refactors.solution.showButton")}
-                    </Button>
+                  <AccordionTrigger>
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        disabled={!challenge || isAnalyzing}
+                      >
+                        <FileText className="mr-2" />
+                        {t("refactors.solution.showButton")}
+                      </Button>
                   </AccordionTrigger>
                   <AccordionContent className="mt-4">
                     <Card>
