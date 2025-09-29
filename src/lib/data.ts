@@ -61,7 +61,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             ],
             youtubeResources: [
                 { type: 'video', title: 'C# Tutorial For Beginners - Learn C# in 1 Hour', url: 'https://www.youtube.com/watch?v=gfkTfcpWqAY', duration: '1h' },
-                { type: 'video', title: 'C# Full Course for free', url: 'https://www.youtube.com/watch?v=wxznTygnRfQ', duration: '6h' },
+                { type: 'video', title: 'C# Full Course for free C#', url: 'https://www.youtube.com/watch?v=wxznTygnRfQ', duration: '6h' },
                 { type: 'video', title: 'C# Tutorial - Full Course for Beginners', url: 'https://www.youtube.com/watch?v=GhQdlIFylQ8', duration: '4h 26m' },
                 { type: 'video', title: 'Master Design Patterns & SOLID Principles in C# - Full OOP Course for Beginners', url: 'https://www.youtube.com/watch?v=rylaiB2uH2A', duration: '3h 36m' },
                 { type: 'video', title: '7 Patrones de Diseño que todo Programador Debería Conocer', url: 'https://www.youtube.com/watch?v=rqOaZf4xMlI', duration: '20m' },
@@ -99,8 +99,8 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
               {
                 type: "video",
-                title: "Building an API with ASP.NET Core",
-                url: "https://www.youtube.com/watch?v=e1hpjbClopA&pp=ygUdYXNwLm5ldCBjb3JlIHdlYiBhcGkgdHV0b3JpYWw%3D",
+                title: "Building REST API using ASP.NET Core and Entity Framework Core",
+                url: "https://www.youtube.com/watch?v=e1hpjbClopA",
                 duration: "2h 45m",
               },
               {
@@ -111,9 +111,9 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
               {
                 type: "video",
-                title: "C# Async/Await Explained",
+                title: "C# Async/Await Explained in 20 Minutes",
                 url: "https://www.youtube.com/watch?v=5a6WCBftjvw",
-                duration: "30m",
+                duration: "20m",
               },
               {
                 type: "video",
@@ -198,7 +198,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             ],
             youtubeResources: [
                 { type: 'video', title: 'Angular for Beginners - Full Course', url: 'https://www.youtube.com/watch?v=3qBXWUpoPHo', duration: '11h' },
-                { type: 'video', title: 'Learn Angular in 1 Hour', url: 'https://www.youtube.com/watch?v=f7unUpshmpA', duration: '1h' },
+                { type: 'video', title: 'Learn Angular - Full Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=f7unUpshmpA', duration: '1h' },
                 { type: 'video', title: 'Angular Component Communication', url: 'https://www.youtube.com/watch?v=MtTAfjiZxtk', duration: '20m' },
             ]
           },
@@ -218,9 +218,9 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-              { type: 'video', title: 'Angular Dependency Injection', url: 'https://www.youtube.com/watch?v=OFPIGlxunL0', duration: '25m' },
+              { type: 'video', title: 'Angular Dependency Injection - A Deep Dive', url: 'https://www.youtube.com/watch?v=OFPIGlxunL0', duration: '25m' },
               { type: 'video', title: 'Angular Migration from v14 to v17', url: 'https://www.youtube.com/watch?v=fbCfniJT_JA', duration: '30m' },
-              { type: 'video', title: 'Modules in Angular 19', url: 'https://www.youtube.com/watch?v=x5PZwb4XurU', duration: '15m' },
+              { type: 'video', title: 'Are Modules required in Angular 19?', url: 'https://www.youtube.com/watch?v=x5PZwb4XurU', duration: '15m' },
             ]
           },
         ] 
@@ -239,7 +239,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-              { type: 'course', title: 'Mastering Angular - Full Playlist', url: 'https://www.youtube.com/watch?v=R_It2UgUssg&list=PLoC8Q0moRTSgYzCoo5fklvPT40KQVUorx', duration: '54 videos' },
+              { type: 'course', title: 'Mastering Angular', url: 'https://www.youtube.com/watch?v=R_It2UgUssg&list=PLoC8Q0moRTSgYzCoo5fklvPT40KQVUorx', duration: '54 videos' },
             ]
           },
         ] 
@@ -269,9 +269,9 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-                { type: 'video', title: 'Ionic 7 Crash Course', url: 'https://www.youtube.com/watch?v=r2ga-i-s20c', duration: '2h' },
+                { type: 'video', title: 'Ionic 7 Crash Course | Build a Complete App with Standalone Components', url: 'https://www.youtube.com/watch?v=r2ga-i-s20c', duration: '2h' },
                 { type: 'video', title: 'Learn Ionic in 1 Hour', url: 'https://www.youtube.com/watch?v=u5pybe_8YCE', duration: '1h' },
-                { type: 'video', title: 'Build Your First Ionic App', url: 'https://www.youtube.com/watch?v=s50z8b3i-4Y', duration: '45m' },
+                { type: 'video', title: 'Build Your First Ionic App: A Beginner\'s Guide', url: 'https://www.youtube.com/watch?v=s50z8b3i-4Y', duration: '45m' },
             ]
           },
         ],
@@ -302,9 +302,9 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-                { type: 'video', title: 'Blazor Full Course for Beginners', url: 'https://www.youtube.com/watch?v=w_x3d5gS4_8', duration: '9h' },
-                { type: 'video', title: 'Blazor Crash Course', url: 'https://www.youtube.com/watch?v=p4vG3g0A54A', duration: '2h' },
-                { type: 'video', title: 'Learn Blazor in 1 Hour', url: 'https://www.youtube.com/watch?v=M5-3mYf4xVY', duration: '1h' },
+                { type: 'video', title: 'Blazor Full Course for Beginners [.NET 8]', url: 'https://www.youtube.com/watch?v=w_x3d5gS4_8', duration: '9h' },
+                { type: 'video', title: 'Blazor Crash Course for Beginners [.NET 8]', url: 'https://www.youtube.com/watch?v=p4vG3g0A54A', duration: '2h' },
+                { type: 'video', title: 'Learn Blazor in 1 Hour - Full Course', url: 'https://www.youtube.com/watch?v=M5-3mYf4xVY', duration: '1h' },
             ]
           },
         ],
@@ -336,9 +336,9 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-                { type: 'video', title: '.NET Core Razor Pages Tutorial', url: 'https://www.youtube.com/watch?v=F0G901I4M44', duration: '2h' },
+                { type: 'video', title: '.NET Core Razor Pages Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=F0G901I4M44', duration: '2h' },
                 { type: 'video', title: 'Razor Pages for Beginners', url: 'https://www.youtube.com/watch?v=iAm_n2iT4fA', duration: '40m' },
-                { type: 'video', title: 'Creating a Web App with Razor Pages', url: 'https://www.youtube.com/watch?v=13n5f0f5U6Y', duration: '1h 30m' },
+                { type: 'video', title: 'Creating a Web App with Razor Pages and Entity Framework Core', url: 'https://www.youtube.com/watch?v=13n5f0f5U6Y', duration: '1h 30m' },
             ]
           },
         ],
