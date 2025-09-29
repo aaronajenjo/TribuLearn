@@ -269,15 +269,42 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
             ],
             youtubeResources: [
-                { type: 'video', title: 'Ionic 7 Crash Course | Build a Complete App with Standalone Components', url: 'https://www.youtube.com/watch?v=r2ga-i-s20c', duration: '2h' },
-                { type: 'video', title: 'Learn Ionic in 1 Hour', url: 'https://www.youtube.com/watch?v=u5pybe_8YCE', duration: '1h' },
-                { type: 'video', title: 'Build Your First Ionic App: A Beginner\'s Guide', url: 'https://www.youtube.com/watch?v=s50z8b3i-4Y', duration: '45m' },
+              { type: 'video', title: 'Ionic 7 Crash Course | Build a Complete App with Standalone Components', url: 'https://www.youtube.com/watch?v=5Gj4Y8zvl-s', duration: '2h' },
+              { type: 'video', title: 'Ionic Tutorial #2 - The Basics (How Ionic Works)', url: 'https://www.youtube.com/watch?v=Fh8MmgWWvMs', duration: '11m' },
+              { type: 'video', title: 'Ionic Tutorial #4 - Navigation & Pages', url: 'https://www.youtube.com/watch?v=8xf0X4KEIkg', duration: '14m' },
+              { type: 'video', title: 'Ionic Tutorial #8 - Data, Events & Lifecycle Hooks', url: 'https://www.youtube.com/watch?v=E-aXqVe2K1g', duration: '13m' },
             ]
           },
         ],
       },
-      { name: "Intermediate", modules: [] },
-      { name: "Advanced", modules: [] },
+      { 
+        name: "Intermediate", 
+        modules: [
+          {
+            title: t('technologies.ionic.intermediate.module1.title'),
+            description: t('technologies.ionic.intermediate.module1.description'),
+            sopraResources: [],
+            youtubeResources: [
+              { type: 'video', title: 'Ionic Tutorial #9 - HTTP Requests', url: 'https://www.youtube.com/watch?v=_p4lL3dhovY', duration: '11m' },
+              { type: 'video', title: 'Ionic Tutorial #13 - Storing Data with Storage', url: 'https://www.youtube.com/watch?v=WshbmpP5JuY', duration: '12m' },
+            ]
+          }
+        ] 
+      },
+      { 
+        name: "Advanced", 
+        modules: [
+          {
+            title: t('technologies.ionic.advanced.module1.title'),
+            description: t('technologies.ionic.advanced.module1.description'),
+            sopraResources: [],
+            youtubeResources: [
+              { type: 'video', title: 'Ionic Tutorial #19 - Authentication', url: 'https://www.youtube.com/watch?v=PZ8stXVoXjE', duration: '16m' },
+              { type: 'video', title: 'Ionic Tutorial #28 - Building for Android & IOS', url: 'https://www.youtube.com/watch?v=4y3AeFDdFVY', duration: '11m' },
+            ]
+          }
+        ] 
+      },
     ],
   },
   {

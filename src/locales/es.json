@@ -198,6 +198,18 @@
           "title": "Fundamentos del Framework Ionic",
           "description": "Aprende los conceptos centrales de Ionic para construir aplicaciones móviles."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Conceptos Intermedios de Ionic",
+          "description": "Explora temas intermedios como peticiones HTTP y almacenamiento de datos."
+        }
+      },
+      "advanced": {
+        "module1": {
+          "title": "Conceptos Avanzados de Ionic",
+          "description": "Domina temas avanzados como autenticación y compilaciones nativas."
+        }
       }
     },
     "blazor": {
