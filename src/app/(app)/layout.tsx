@@ -75,7 +75,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <SidebarInset>
         <header className="flex h-14 items-center justify-between border-b bg-card px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <SidebarTrigger className="md:hidden" />
+            <SidebarTrigger />
             <h2 className="text-lg font-semibold font-headline">
               {navItems.find((item) => pathname.startsWith(item.href))?.label ||
                 "Tribu"}
