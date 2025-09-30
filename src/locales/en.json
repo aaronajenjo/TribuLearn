@@ -14,27 +14,8 @@
     "logout": "Log out"
   },
   "dashboard": {
-    "continueLearning": {
-      "title": "Continue Learning",
-      "description": "Pick up where you left off in your C# journey.",
-      "button": "Resume Path"
-    },
-    "chart": {
-      "title": "Overall Progress",
-      "description": "Your activity in the last 6 months.",
-      "label": "Modules Completed"
-    },
-    "achievements": {
-      "title": "Achievements",
-      "description": "Milestones you've reached.",
-      "firstSteps": {
-        "title": "First Steps",
-        "description": "Completed your first module."
-      },
-      "pathfinder": {
-        "title": "Pathfinder",
-        "description": "Started a new learning path."
-      }
+    "quickAccess": {
+      "title": "Quick Access"
     },
     "explorePaths": {
       "title": "Explore Learning Paths"

@@ -14,27 +14,8 @@
     "logout": "Cerrar sesión"
   },
   "dashboard": {
-    "continueLearning": {
-      "title": "Continuar Aprendiendo",
-      "description": "Continúa donde lo dejaste en tu viaje de C#.",
-      "button": "Reanudar Ruta"
-    },
-    "chart": {
-      "title": "Progreso General",
-      "description": "Tu actividad en los últimos 6 meses.",
-      "label": "Módulos Completados"
-    },
-    "achievements": {
-      "title": "Logros",
-      "description": "Hitos que has alcanzado.",
-      "firstSteps": {
-        "title": "Primeros Pasos",
-        "description": "Completaste tu primer módulo."
-      },
-      "pathfinder": {
-        "title": "Explorador",
-        "description": "Comenzaste una nueva ruta de aprendizaje."
-      }
+    "quickAccess": {
+      "title": "Acceso Rápido"
     },
     "explorePaths": {
       "title": "Explorar Rutas de Aprendizaje"
