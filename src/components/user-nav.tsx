@@ -20,6 +20,7 @@ import {
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Languages, LogOut, Settings } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
+import Image from "next/image";
 
 const avatarImage = PlaceHolderImages.find(
   (image) => image.id === "user-avatar"
@@ -31,14 +32,13 @@ export function UserNav() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-          <Avatar className="h-10 w-10">
-            <AvatarImage
-              src={avatarImage?.imageUrl}
-              alt="User Avatar"
-              data-ai-hint={avatarImage?.imageHint}
-            />
-            <AvatarFallback>NH</AvatarFallback>
-          </Avatar>
+          <Image
+            src="/aeroline-logo.png"
+            alt="Aeroline Logo"
+            width={40}
+            height={40}
+            className="h-10 w-10"
+          />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
