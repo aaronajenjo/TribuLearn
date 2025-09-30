@@ -17,15 +17,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Languages, LogOut, Settings } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
-import Image from 'next/image';
 
 export function UserNav() {
   const { locale, setLocale, t } = useLocale();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger>
         <div className="relative w-32 h-10 cursor-pointer">
-          <Image src="/sopra-steria-aeroline-background.png" alt="Sopra Steria Aeroline Logo" fill style={{objectFit: "contain"}} unoptimized />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/sopra-steria-aeroline-background.png"
+            alt="Sopra Steria Aeroline Logo"
+            className="h-full w-full object-contain"
+          />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
