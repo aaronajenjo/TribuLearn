@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -88,7 +89,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   ?.label || "Tribu"}
               </h2>
             </div>
-            <UserNav />
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+              <UserNav />
+            </div>
           </header>
           <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
             {children}
