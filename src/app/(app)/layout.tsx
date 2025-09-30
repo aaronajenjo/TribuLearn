@@ -43,7 +43,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar collapsible="icon">
         <SidebarHeader>
           <Link href="/dashboard" className="flex items-center gap-2.5">
             <Icons.logo className="size-7 text-primary" />
