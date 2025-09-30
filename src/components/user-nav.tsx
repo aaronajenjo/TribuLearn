@@ -1,6 +1,5 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -17,36 +16,16 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Languages, LogOut, Settings } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
-import Image from "next/image";
-
-const avatarImage = PlaceHolderImages.find(
-  (image) => image.id === "user-avatar"
-);
 
 export function UserNav() {
   const { locale, setLocale, t } = useLocale();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-          <Avatar className="h-10 w-10">
-            {avatarImage && (
-              <AvatarImage
-                src={avatarImage.imageUrl}
-                alt={t("userNav.name")}
-                data-ai-hint={avatarImage.imageHint}
-              />
-            )}
-            <AvatarFallback>
-              {t("userNav.name")
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </AvatarFallback>
-          </Avatar>
+        <Button variant="ghost">
+          <span>{t("userNav.name")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
