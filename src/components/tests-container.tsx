@@ -9,12 +9,13 @@ import {
 } from "@/components/ui/tabs";
 import { generateQuiz } from "@/ai/flows/generate-quiz";
 import type { Technology } from "@/lib/data";
-import { Loader2 } from "lucide-react";
+import { Loader2, Eye, RotateCw } from "lucide-react";
 import { QuizForm, Quiz } from "@/components/quiz-form";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { useLocale } from "@/hooks/use-locale";
+import { Button } from "./ui/button";
 
 type QuizState = {
   [key: string]: {
@@ -22,6 +23,7 @@ type QuizState = {
     isLoading: boolean;
     error: string | null;
     result: { score: number; level: string } | null;
+    showResults: boolean;
   };
 };
 
@@ -45,7 +47,13 @@ export function TestsContainer({
   const loadQuiz = async (slug: string) => {
     setQuizState((prev) => ({
       ...prev,
-      [slug]: { quiz: null, isLoading: true, error: null, result: null },
+      [slug]: {
+        quiz: null,
+        isLoading: true,
+        error: null,
+        result: null,
+        showResults: false,
+      },
     }));
 
     try {
@@ -83,9 +91,22 @@ export function TestsContainer({
     }
     setQuizState((prev) => ({
       ...prev,
-      [slug]: { ...prev[slug], result: { score, level } },
+      [slug]: { ...prev[slug], result: { score, level }, showResults: true },
     }));
   };
+
+  const handleViewAnswers = (slug: string) => {
+    setQuizState((prev) => ({
+      ...prev,
+      [slug]: { ...prev[slug], showResults: false },
+    }));
+  };
+
+  const handleRetry = (slug: string) => {
+    loadQuiz(slug);
+  };
+
+  const currentQuizState = quizState[activeTab];
 
   return (
     <>
@@ -101,55 +122,72 @@ export function TestsContainer({
           <TabsContent key={tech.id} value={tech.slug}>
             <Card>
               <CardContent className="p-6">
-                {quizState[tech.slug]?.isLoading && (
+                {currentQuizState?.isLoading && (
                   <div className="flex items-center justify-center h-64 text-muted-foreground">
                     <Loader2 className="mr-2 h-6 w-6 animate-spin" />
                     {t("tests.container.generating")}
                   </div>
                 )}
-                {quizState[tech.slug]?.error && (
+                {currentQuizState?.error && (
                   <div className="flex items-center justify-center h-64 text-destructive">
-                    {quizState[tech.slug]?.error}
+                    {currentQuizState?.error}
                   </div>
                 )}
-                {quizState[tech.slug]?.quiz && !quizState[tech.slug]?.result && (
-                  <QuizForm
-                    quizData={quizState[tech.slug]!.quiz!}
-                    onSubmit={(score) => handleQuizSubmit(tech.slug, score)}
-                  />
-                )}
-                {quizState[tech.slug]?.result && (
-                  <div className="text-center py-12">
-                    <h2 className="text-2xl font-bold mb-2">
-                      {t("tests.container.result.title")}
-                    </h2>
-                    <p className="text-lg text-muted-foreground mb-4">
-                      {t("tests.container.result.description", {
-                        score: quizState[tech.slug]!.result!.score,
-                        total: 15,
-                      })}
-                    </p>
-                    <p className="text-xl">
-                      {t("tests.container.result.suggestedLevel")}:
-                    </p>
-                    <Badge
-                      className="text-2xl mt-2"
-                      variant={
-                        quizState[tech.slug]!.result!.level === "Advanced"
-                          ? "default"
-                          : quizState[tech.slug]!.result!.level ===
-                            "Intermediate"
-                          ? "secondary"
-                          : "outline"
-                      }
-                    >
-                      {t(
-                        `paths.levels.${quizState[
-                          tech.slug
-                        ]!.result!.level.toLowerCase()}`
-                      )}
-                    </Badge>
-                  </div>
+                {currentQuizState?.quiz && (
+                  <>
+                    {currentQuizState.result && currentQuizState.showResults ? (
+                      <div className="text-center py-12">
+                        <h2 className="text-2xl font-bold mb-2">
+                          {t("tests.container.result.title")}
+                        </h2>
+                        <p className="text-lg text-muted-foreground mb-4">
+                          {t("tests.container.result.description", {
+                            score: currentQuizState.result.score,
+                            total: 15,
+                          })}
+                        </p>
+                        <p className="text-xl">
+                          {t("tests.container.result.suggestedLevel")}:
+                        </p>
+                        <Badge
+                          className="text-2xl mt-2"
+                          variant={
+                            currentQuizState.result.level === "Advanced"
+                              ? "default"
+                              : currentQuizState.result.level ===
+                                "Intermediate"
+                              ? "secondary"
+                              : "outline"
+                          }
+                        >
+                          {t(
+                            `paths.levels.${currentQuizState.result.level.toLowerCase()}`
+                          )}
+                        </Badge>
+                        <div className="mt-8 flex justify-center gap-4">
+                          <Button
+                            onClick={() => handleViewAnswers(tech.slug)}
+                          >
+                            <Eye className="mr-2" />
+                            {t("tests.container.result.viewAnswers")}
+                          </Button>
+                          <Button
+                            variant="outline"
+                            onClick={() => handleRetry(tech.slug)}
+                          >
+                            <RotateCw className="mr-2" />
+                            {t("tests.container.result.retry")}
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <QuizForm
+                        quizData={currentQuizState.quiz}
+                        onSubmit={(score) => handleQuizSubmit(tech.slug, score)}
+                        submitted={!!currentQuizState.result}
+                      />
+                    )}
+                  </>
                 )}
               </CardContent>
             </Card>

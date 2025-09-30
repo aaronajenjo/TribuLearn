@@ -107,7 +107,9 @@
       "result": {
         "title": "¡Test Completado!",
         "description": "Respondiste {score} de {total} preguntas correctamente.",
-        "suggestedLevel": "Tu nivel sugerido es"
+        "suggestedLevel": "Tu nivel sugerido es",
+        "viewAnswers": "Ver Respuestas",
+        "retry": "Reintentar"
       }
     }
   },

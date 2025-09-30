@@ -27,9 +27,10 @@ export type Quiz = GenerateQuizOutput;
 interface QuizFormProps {
   quizData: Quiz;
   onSubmit: (score: number) => void;
+  submitted: boolean;
 }
 
-export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
+export function QuizForm({ quizData, onSubmit, submitted }: QuizFormProps) {
   const { t } = useLocale();
   const form = useForm({
     defaultValues: {
@@ -42,7 +43,7 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
     name: "answers",
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(submitted);
   const [questionResults, setQuestionResults] = useState<(boolean | null)[]>(
     Array(quizData.questions.length).fill(null)
   );
@@ -58,7 +59,7 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
       return isCorrect;
     });
     setQuestionResults(results);
-    setSubmitted(true);
+    setIsSubmitted(true);
     onSubmit(score);
   });
 
@@ -81,10 +82,10 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
                   <p className="font-semibold mb-4 flex items-start">
                     <span className="mr-2">{index + 1}.</span>
                     <span>{question.question}</span>
-                    {submitted && result === true && (
+                    {isSubmitted && result === true && (
                       <CheckCircle2 className="ml-2 size-5 text-green-500 shrink-0" />
                     )}
-                    {submitted && result === false && (
+                    {isSubmitted && result === false && (
                       <XCircle className="ml-2 size-5 text-red-500 shrink-0" />
                     )}
                   </p>
@@ -93,7 +94,7 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
                       form.setValue(`answers.${index}.value`, value)
                     }
                     defaultValue={userAnswer}
-                    disabled={submitted}
+                    disabled={isSubmitted}
                   >
                     {question.options.map((option, optionIndex) => {
                       const isCorrectAnswer =
@@ -107,10 +108,10 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
                           key={optionIndex}
                           className={cn(
                             "flex items-center space-x-3 space-y-0 rounded-md border p-3 transition-colors",
-                            submitted &&
+                            isSubmitted &&
                               isCorrectAnswer &&
                               "border-green-500 bg-green-100 text-green-900 dark:bg-green-900/30 dark:text-green-200 dark:border-green-500/50",
-                            submitted &&
+                            isSubmitted &&
                               !isCorrectAnswer &&
                               isUserAnswer &&
                               "border-red-500 bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200 dark:border-red-500/50"
@@ -119,7 +120,7 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
                           <FormControl>
                             <RadioGroupItem
                               value={optionIndex.toString()}
-                              disabled={submitted}
+                              disabled={isSubmitted}
                             />
                           </FormControl>
                           <FormLabel className="font-normal flex-1 cursor-pointer">
@@ -133,9 +134,9 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
               );
             })}
           </CardContent>
-          {!submitted && (
+          {!isSubmitted && (
             <CardFooter>
-              <Button type="submit" disabled={submitted} className="w-full">
+              <Button type="submit" disabled={isSubmitted} className="w-full">
                 {t("quiz.submitButton")}
               </Button>
             </CardFooter>
