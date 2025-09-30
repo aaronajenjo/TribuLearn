@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,9 +24,9 @@ export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative w-32 h-10">
+        <div className="relative w-32 h-10 cursor-pointer">
           <Image src="/sopra-steria-aeroline-background.png" alt="Sopra Steria Aeroline Logo" fill style={{objectFit: "contain"}} />
-        </Button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">

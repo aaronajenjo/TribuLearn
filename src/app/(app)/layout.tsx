@@ -53,7 +53,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               href="/dashboard"
               className="flex items-center gap-2.5 overflow-hidden"
             >
-              <Image src="/logo.svg" alt="Tribu Learning Logo" width={32} height={32} className="size-8" />
+              <Image src="/sopra_logo.png" alt="Sopra Steria Logo" width={32} height={32} className="size-8" />
               <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground truncate">
                 Tribu Learning
               </h1>
