@@ -68,7 +68,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     asChild
                     isActive={pathname.startsWith(item.href)}
                     tooltip={item.label}
-                    className="py-2 hover:bg-primary hover:text-primary-foreground data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground"
+                    className="py-2 data-[active=true]:bg-primary data-[active=true]:text-primary-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   >
                     <Link href={item.href}>
                       <item.icon />
@@ -84,17 +84,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarFooter>
         </Sidebar>
         <div className="flex-1">
-          <header className="flex h-14 items-center border-b bg-card sticky top-0 z-10 w-full">
-            <div className="flex-1 flex items-center justify-between px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center gap-2">
-                <h2 className="text-lg font-semibold font-headline">
-                  {navItems.find((item) => pathname.startsWith(item.href))
-                    ?.label || "Tribu"}
-                </h2>
-              </div>
-              <div className="flex items-center gap-4">
-                <UserNav />
-              </div>
+          <header className="flex h-14 items-center justify-between border-b bg-card sticky top-0 z-10 w-full px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-2">
+              <h2 className="text-lg font-semibold font-headline">
+                {navItems.find((item) => pathname.startsWith(item.href))
+                  ?.label || "Tribu"}
+              </h2>
+            </div>
+            <div className="flex items-center gap-4">
+              <UserNav />
             </div>
           </header>
           <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
