@@ -10,7 +10,6 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarProvider,
-  SidebarTrigger,
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { UserNav } from "@/components/ui/user-nav";
@@ -43,27 +42,27 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <Sidebar collapsible="icon">
+      <Sidebar collapsible="none">
         <SidebarHeader className="mb-4">
           <Link
             href="/dashboard"
             className="flex items-center gap-2.5 overflow-hidden"
           >
             <Icons.logo className="size-7 text-primary shrink-0" />
-            <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground truncate group-data-[state=collapsed]:hidden">
+            <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground truncate">
               Tribu Learning
             </h1>
           </Link>
         </SidebarHeader>
         <SidebarContent>
-          <SidebarMenu className="px-2 space-y-2">
+          <SidebarMenu className="px-2 space-y-1">
             {navItems.map((item) => (
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
                   isActive={pathname.startsWith(item.href)}
                   tooltip={item.label}
-                  className="py-6"
+                  className="py-3"
                 >
                   <Link href={item.href}>
                     <item.icon />
@@ -74,7 +73,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarTrigger className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 hidden md:flex size-7" />
         <SidebarFooter></SidebarFooter>
       </Sidebar>
       <SidebarInset>
