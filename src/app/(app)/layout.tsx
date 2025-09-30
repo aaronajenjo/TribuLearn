@@ -54,7 +54,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               Tribu Learning
             </h1>
           </Link>
-          <SidebarTrigger className="size-7 absolute top-3.5 right-2" />
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu className="px-2 space-y-2">
@@ -75,6 +74,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             ))}
           </SidebarMenu>
         </SidebarContent>
+        <SidebarTrigger className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 hidden md:flex size-7" />
         <SidebarFooter></SidebarFooter>
       </Sidebar>
       <SidebarInset>
