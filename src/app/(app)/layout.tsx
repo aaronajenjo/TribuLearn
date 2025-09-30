@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from 'next/image';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -53,7 +52,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               href="/dashboard"
               className="flex items-center gap-2.5 overflow-hidden"
             >
-              <Image src="/sopra_logo.png" alt="Sopra Steria Logo" width={32} height={32} className="size-8" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/sopra_logo.png" alt="Sopra Steria Logo" width={32} height={32} className="size-8" />
               <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground truncate">
                 Tribu Learning
               </h1>
