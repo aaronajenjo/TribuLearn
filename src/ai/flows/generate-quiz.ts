@@ -12,6 +12,7 @@ import {z} from 'genkit';
 
 const GenerateQuizInputSchema = z.object({
   technology: z.string().describe('The technology for which to generate the quiz (e.g., C#, Angular).'),
+  language: z.string().describe('The language for the quiz (e.g., "en", "es").'),
 });
 export type GenerateQuizInput = z.infer<typeof GenerateQuizInputSchema>;
 
@@ -38,6 +39,7 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateQuizInputSchema},
   output: {schema: GenerateQuizOutputSchema},
   prompt: `You are a software development instructor. Generate a 15-question multiple-choice quiz for the given technology. The quiz should have a mix of beginner, intermediate, and advanced questions to accurately assess the user's skill level. Each question must have 4 options.
+The entire response must be in the language with this ISO 639-1 code: {{{language}}}.
 
 Technology: {{{technology}}}
 `,

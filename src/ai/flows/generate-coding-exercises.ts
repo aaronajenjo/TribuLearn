@@ -21,6 +21,7 @@ const GenerateCodingExerciseInputSchema = z.object({
   difficulty: z
     .enum(['beginner', 'intermediate', 'advanced'])
     .describe('The difficulty level of the exercise.'),
+  language: z.string().describe('The language for the exercise (e.g., "en", "es").'),
 });
 export type GenerateCodingExerciseInput = z.infer<
   typeof GenerateCodingExerciseInputSchema
@@ -44,6 +45,7 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateCodingExerciseInputSchema},
   output: {schema: GenerateCodingExerciseOutputSchema},
   prompt: `You are a software development instructor. Generate a coding exercise for the given technology and difficulty level.
+The entire response must be in the language with this ISO 639-1 code: {{{language}}}.
 
 Technology: {{{technology}}}
 Difficulty: {{{difficulty}}}

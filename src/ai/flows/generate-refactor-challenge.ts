@@ -13,6 +13,7 @@ const GenerateRefactorChallengeInputSchema = z.object({
   difficulty: z
     .enum(['beginner', 'intermediate', 'advanced'])
     .describe('The difficulty level of the challenge.'),
+  language: z.string().describe('The language for the challenge (e.g., "en", "es").'),
 });
 export type GenerateRefactorChallengeInput = z.infer<
   typeof GenerateRefactorChallengeInputSchema
@@ -37,6 +38,7 @@ const prompt = ai.definePrompt({
   input: { schema: GenerateRefactorChallengeInputSchema },
   output: { schema: GenerateRefactorChallengeOutputSchema },
   prompt: `You are a senior software development instructor. Your task is to generate a code refactoring challenge.
+The entire response for the "codeToRefactor" field must be in the language with this ISO 639-1 code: {{{language}}}. The "optimalSolution" must be only code.
 
 Provide a snippet of code that has clear opportunities for refactoring based on the specified technology and difficulty level. The code should be functional but poorly written (e.g., long methods, duplicate code, poor naming, not using best practices).
 

@@ -35,7 +35,7 @@ export function TestsContainer({
   const [activeTab, setActiveTab] = useState("");
   const [quizState, setQuizState] = useState<QuizState>({});
   const { toast } = useToast();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const handleTabChange = async (value: string) => {
     setActiveTab(value);
@@ -59,7 +59,10 @@ export function TestsContainer({
     try {
       const technologyName =
         technologies.find((t) => t.slug === slug)?.name || slug;
-      const result = await generateQuiz({ technology: technologyName });
+      const result = await generateQuiz({
+        technology: technologyName,
+        language: locale,
+      });
       setQuizState((prev) => ({
         ...prev,
         [slug]: { ...prev[slug], quiz: result, isLoading: false },

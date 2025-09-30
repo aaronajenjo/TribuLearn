@@ -11,6 +11,7 @@ const AnalyzeRefactorSolutionInputSchema = z.object({
   userSolution: z.string().describe("The user's refactored code solution."),
   optimalSolution: z.string().describe('The optimal refactored version of the code for comparison.'),
   technology: z.string().describe('The programming language or framework of the code.'),
+  language: z.string().describe('The language for the analysis (e.g., "en", "es").'),
 });
 export type AnalyzeRefactorSolutionInput = z.infer<
   typeof AnalyzeRefactorSolutionInputSchema
@@ -36,6 +37,7 @@ const prompt = ai.definePrompt({
   input: { schema: AnalyzeRefactorSolutionInputSchema },
   output: { schema: AnalyzeRefactorSolutionOutputSchema },
   prompt: `You are an expert code reviewer. Analyze the user's attempt to refactor a piece of code.
+The entire response must be in the language with this ISO 639-1 code: {{{language}}}.
 
 Technology: {{{technology}}}
 

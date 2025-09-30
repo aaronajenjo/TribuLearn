@@ -47,7 +47,7 @@ export function PlaygroundForm() {
   const [generatedExercise, setGeneratedExercise] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { toast } = useToast();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -68,6 +68,7 @@ export function PlaygroundForm() {
       const result = await generateCodingExercise({
         ...values,
         technology: technologyName,
+        language: locale,
       });
 
       setGeneratedExercise(result.exercise);

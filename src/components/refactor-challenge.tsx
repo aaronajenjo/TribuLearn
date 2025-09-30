@@ -62,7 +62,7 @@ export function RefactorChallenge() {
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const { toast } = useToast();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -84,6 +84,7 @@ export function RefactorChallenge() {
       const result = await generateRefactorChallenge({
         ...values,
         technology: technologyName,
+        language: locale,
       });
       setChallenge(result);
     } catch (error) {
@@ -111,6 +112,7 @@ export function RefactorChallenge() {
           learningPaths(t).find(
             (p) => p.slug === form.getValues("technology")
           )?.name || form.getValues("technology"),
+        language: locale,
       });
       const rawMarkup = marked.parse(result.analysis) as string;
       setAnalysis(rawMarkup);
