@@ -37,12 +37,21 @@ const prompt = ai.definePrompt({
   name: 'generateRefactorChallengePrompt',
   input: { schema: GenerateRefactorChallengeInputSchema },
   output: { schema: GenerateRefactorChallengeOutputSchema },
-  prompt: `You are a senior software development instructor. Your task is to generate a code refactoring challenge.
+  prompt: `You are a senior software development instructor creating code refactoring challenges.
 The entire response for the "codeToRefactor" field must be in the language with this ISO 639-1 code: {{{language}}}. The "optimalSolution" must be only code.
 
-Provide a snippet of code that has clear opportunities for refactoring based on the specified technology and difficulty level. The code should be functional but poorly written (e.g., long methods, duplicate code, poor naming, not using best practices).
+Your task is to generate a code snippet that is a small method, but contains multiple anti-patterns and areas for improvement. The code should be functional but poorly written. Focus on things like:
+- Bad variable names
+- Magic numbers
+- Deeply nested logic
+- Long methods that could be broken down
+- Duplicate code
+- Not using language features correctly
+- Inefficient algorithms or loops
 
-Also, provide the optimal, refactored version of the code.
+If the technology is C#, please include poorly optimized Entity Framework queries where applicable (e.g., N+1 problems, missing AsNoTracking(), or inefficient filtering).
+
+Also, provide the optimal, refactored version of the code that addresses all the issues.
 
 Technology: {{{technology}}}
 Difficulty: {{{difficulty}}}
