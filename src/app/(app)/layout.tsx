@@ -79,7 +79,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               ))}
             </SidebarMenu>
           </SidebarContent>
-          <SidebarFooter></SidebarFooter>
+          <SidebarFooter>
+            <LanguageSwitcher />
+          </SidebarFooter>
         </Sidebar>
         <div className="flex-1">
           <header className="flex h-14 items-center justify-between border-b bg-card px-4 sm:px-6 lg:p-8 sticky top-0 z-10">
@@ -90,7 +92,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </h2>
             </div>
             <div className="flex items-center gap-4">
-              <LanguageSwitcher />
               <UserNav />
             </div>
           </header>

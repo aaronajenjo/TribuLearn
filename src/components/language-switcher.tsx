@@ -10,6 +10,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Languages } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
+import {
+  SidebarMenuButton
+} from "@/components/ui/sidebar";
 
 export function LanguageSwitcher() {
   const { locale, setLocale, t } = useLocale();
@@ -17,12 +20,15 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Languages className="size-5" />
-          <span className="sr-only">{t("userNav.language")}</span>
-        </Button>
+        <SidebarMenuButton
+          variant="ghost"
+          className="w-full justify-start"
+        >
+          <Languages/>
+          <span>{t("userNav.language")}</span>
+        </SidebarMenuButton>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" side="top" className="mb-2 w-56">
         <DropdownMenuRadioGroup
           value={locale}
           onValueChange={(value) => setLocale(value as "en" | "es")}
