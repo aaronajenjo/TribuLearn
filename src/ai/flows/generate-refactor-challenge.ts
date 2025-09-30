@@ -39,6 +39,7 @@ const prompt = ai.definePrompt({
   output: { schema: GenerateRefactorChallengeOutputSchema },
   prompt: `You are a senior software development instructor creating code refactoring challenges.
 The entire response for the "codeToRefactor" field must be in the language with this ISO 639-1 code: {{{language}}}. The "optimalSolution" must be only code.
+Both the 'codeToRefactor' and 'optimalSolution' must be well-indented.
 
 Your task is to generate a code snippet that is a small method, but contains multiple anti-patterns and areas for improvement. The code should be functional but poorly written. Focus on things like:
 - Bad variable names
