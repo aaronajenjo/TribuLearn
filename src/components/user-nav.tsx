@@ -32,13 +32,21 @@ export function UserNav() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-          <Image
-            src="/aeroline-logo.png"
-            alt="Aeroline Logo"
-            width={40}
-            height={40}
-            className="h-10 w-10"
-          />
+          <Avatar className="h-10 w-10">
+            {avatarImage && (
+              <AvatarImage
+                src={avatarImage.imageUrl}
+                alt={t("userNav.name")}
+                data-ai-hint={avatarImage.imageHint}
+              />
+            )}
+            <AvatarFallback>
+              {t("userNav.name")
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
+            </AvatarFallback>
+          </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
