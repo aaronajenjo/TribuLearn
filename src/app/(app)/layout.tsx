@@ -45,12 +45,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <Sidebar collapsible="icon">
         <SidebarHeader>
-          <Link href="/dashboard" className="flex items-center gap-2.5">
+          <Link
+            href="/dashboard"
+            className="flex items-center gap-2.5 overflow-hidden"
+          >
             <Icons.logo className="size-7 text-primary" />
-            <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground">
+            <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground truncate">
               Tribu Learning
             </h1>
           </Link>
+          <SidebarTrigger className="size-7 absolute top-3.5 right-2" />
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
@@ -75,7 +79,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <SidebarInset>
         <header className="flex h-14 items-center justify-between border-b bg-card px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <SidebarTrigger />
             <h2 className="text-lg font-semibold font-headline">
               {navItems.find((item) => pathname.startsWith(item.href))?.label ||
                 "Tribu"}
