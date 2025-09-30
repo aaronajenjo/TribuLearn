@@ -23,7 +23,7 @@ export function UserNav() {
   const { locale, setLocale, t } = useLocale();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger>
         <div className="relative w-32 h-10 cursor-pointer">
           <Image src="/sopra-steria-aeroline-background.png" alt="Sopra Steria Aeroline Logo" fill style={{objectFit: "contain"}} />
         </div>
