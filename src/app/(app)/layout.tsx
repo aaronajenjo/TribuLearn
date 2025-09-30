@@ -84,7 +84,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarFooter>
         </Sidebar>
         <div className="flex-1">
-          <header className="flex h-14 items-center justify-between border-b bg-card sticky top-0 z-10 w-full px-4 sm:px-6 lg:px-8">
+          <header className="flex h-14 items-center justify-between border-b bg-card sticky top-0 z-10 px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-semibold font-headline">
                 {navItems.find((item) => pathname.startsWith(item.href))
