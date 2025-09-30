@@ -74,7 +74,7 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
             {fields.map((field, index) => {
               const question = quizData.questions[index];
               const result = questionResults[index];
-              const userAnswer = form.getValues(`answers.${index}.value`);
+              const userAnswer = form.watch(`answers.${index}.value`);
 
               return (
                 <div key={field.id}>
@@ -106,14 +106,14 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
                         <FormItem
                           key={optionIndex}
                           className={cn(
-                            "flex items-center space-x-3 space-y-0 rounded-md p-2 transition-colors",
+                            "flex items-center space-x-3 space-y-0 rounded-md border p-3 transition-colors",
                             submitted &&
                               isCorrectAnswer &&
-                              "bg-green-100 text-green-800",
+                              "border-green-500 bg-green-100 text-green-900 dark:bg-green-900/30 dark:text-green-200 dark:border-green-500/50",
                             submitted &&
                               !isCorrectAnswer &&
                               isUserAnswer &&
-                              "bg-red-100 text-red-800"
+                              "border-red-500 bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-200 dark:border-red-500/50"
                           )}
                         >
                           <FormControl>
@@ -122,7 +122,7 @@ export function QuizForm({ quizData, onSubmit }: QuizFormProps) {
                               disabled={submitted}
                             />
                           </FormControl>
-                          <FormLabel className="font-normal flex-1">
+                          <FormLabel className="font-normal flex-1 cursor-pointer">
                             {option}
                           </FormLabel>
                         </FormItem>
