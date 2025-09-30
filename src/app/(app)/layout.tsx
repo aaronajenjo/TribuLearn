@@ -43,7 +43,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <div className="flex">
+      <div className="flex w-full">
         <Sidebar
           collapsible="none"
           className="h-screen sticky top-0"
@@ -86,10 +86,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <div className="flex-1">
           <header className="flex h-14 items-center justify-between border-b bg-card sticky top-0 z-10 px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-semibold font-headline">
+              <h1 className="text-lg font-semibold font-headline">
                 {navItems.find((item) => pathname.startsWith(item.href))
                   ?.label || "Tribu"}
-              </h2>
+              </h1>
             </div>
             <div className="flex items-center gap-4">
               <UserNav />
