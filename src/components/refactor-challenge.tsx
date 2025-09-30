@@ -384,5 +384,3 @@ export function RefactorChallenge() {
     </div>
   );
 }
-
-    
