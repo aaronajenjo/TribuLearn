@@ -36,18 +36,11 @@ jobs:
         run: |
           mkdir deploy
           cp package.json deploy/
-          [ -f package-lock.json ] && cp package-lock.json deploy/
-          
-          # Copia .next sin cache, evitando problemas con nombres raros
-          if [ -d .next ]; then
-            mkdir -p deploy/.next
-            cp -r .next/* deploy/.next/
-            rm -rf deploy/.next/cache || true
-          fi
-
-          [ -d public ] && cp -r public deploy/
-          [ -f next.config.js ] && cp next.config.js deploy/
-          [ -f .env ] && cp .env deploy/
+          if [ -f package-lock.json ]; then cp package-lock.json deploy/; fi
+          if [ -d .next ]; then rsync -av --exclude 'cache' .next/ deploy/.next/; fi
+          if [ -d public ]; then cp -r public deploy/; fi
+          if [ -f next.config.js ]; then cp next.config.js deploy/; fi
+          if [ -f .env ]; then cp .env deploy/; fi
 
       # Crea un ZIP limpio (necesario para ZipDeploy)
       - name: Create zip package
