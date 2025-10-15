@@ -52,4 +52,4 @@ jobs:
           app-name: 'tribu-learning'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_797D5A5DC06648D091B01DD4D343B425 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_02F60B91759B473D87833C276A74B076 }}
