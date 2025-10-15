@@ -1,77 +1,55 @@
-name: Build and deploy Next.js app to Azure Web App - tribu-learning
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy Node.js app to Azure Web App - tribu-learning
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
-
-# Evita despliegues simultáneos (clave para evitar el error 409)
-concurrency:
-  group: deploy-tribu-learning
-  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read #This is required for actions/checkout
 
     steps:
-      - name: 🧾 Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: 🧩 Set up Node.js
+      - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
 
-      - name: 📦 Install dependencies and build
+      - name: npm install, build, and test
         run: |
-          npm ci
-          npm run build
+          npm install
+          npm run build --if-present
+          npm run test --if-present
 
-      - name: 🧹 Prepare clean deploy package
-        run: |
-          mkdir deploy
-          cp package.json package-lock.json deploy/
-          cp -r public deploy/
-          cp -r .next deploy/
-          if [ -f next.config.js ]; then cp next.config.js deploy/; fi
-          if [ -f .env ]; then cp .env deploy/; fi
-
-          # 🔥 Borra cache innecesario para reducir tamaño
-          rm -rf deploy/.next/cache || true
-
-          # ✅ Crear ZIP limpio en la raíz (no dentro de deploy/)
-          cd deploy
-          zip -r ../deploy.zip .
-
-      - name: 📤 Upload artifact
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: nextjs-app
-          path: deploy.zip
+          name: node-app
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-
+    
     steps:
-      - name: 📥 Download build artifact
+      - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: nextjs-app
-
-      - name: 🚀 Deploy to Azure Web App (ZipDeploy)
+          name: node-app
+      
+      - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'tribu-learning'
           slot-name: 'Production'
-          package: './deploy.zip'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}
-          type: zip
-
-      - name: 🔎 Verify deployment
-        run: |
-          echo "Verifying deployment..."
-          sleep 25
-          curl -I https://tribu-learning.azurewebsites.net || echo "⚠️ Could not verify app is online"
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_797D5A5DC06648D091B01DD4D343B425 }}
