@@ -72,20 +72,13 @@ jobs:
           package: './deploy.zip'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}
           type: zip
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}
 
-      - name: Install dependencies on App Service
-        run: |
-          az webapp ssh --name tribu-learning --resource-group epadwebs-resource --command "npm ci --ignore-scripts"
-      
       # Verificación post-deploy
       - name: Verify deployment
         run: |
           echo "Verifying deployment..."
           sleep 30
           curl -I https://tribu-learning.azurewebsites.net || echo "⚠️ Could not verify app is online"
+
 
 
