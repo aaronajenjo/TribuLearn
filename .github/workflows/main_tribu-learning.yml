@@ -36,11 +36,11 @@ jobs:
         run: |
           mkdir deploy
           cp package.json deploy/
-          if [ -f package-lock.json ]; then cp package-lock.json deploy/; fi
-          if [ -d .next ]; then rsync -av --exclude 'cache' .next/ deploy/.next/; fi
-          if [ -d public ]; then cp -r public deploy/; fi
-          if [ -f next.config.js ]; then cp next.config.js deploy/; fi
-          if [ -f .env ]; then cp .env deploy/; fi
+          [ -f package-lock.json ] && cp package-lock.json deploy/
+          [ -d .next ] && rsync -av --exclude 'cache' .next/ deploy/.next/
+          [ -d public ] && cp -r public deploy/
+          [ -f next.config.js ] && cp next.config.js deploy/
+          [ -f .env ] && cp .env deploy/
 
       # Crea un ZIP limpio (necesario para ZipDeploy)
       - name: Create zip package
@@ -72,13 +72,6 @@ jobs:
           package: './deploy.zip'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}
           type: zip
-
-      # Startup command recomendado para Next.js 15 y Node 22
-      - name: Configure startup command
-        run: |
-          az webapp config set --name tribu-learning \
-            --resource-group epadwebs-resource \
-            --startup-file "npm ci --ignore-scripts && npm run start"
 
       # Verificación post-deploy
       - name: Verify deployment
