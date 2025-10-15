@@ -42,7 +42,7 @@ jobs:
           if [ -f next.config.js ]; then cp next.config.js deploy/; fi
           if [ -f .env ]; then cp .env deploy/; fi
 
-      # Crea un ZIP limpio (necesario para forzar ZipDeploy)
+      # Crea un ZIP limpio (necesario para ZipDeploy)
       - name: Create zip package
         run: cd deploy && zip -r ../deploy.zip .
 
@@ -62,6 +62,7 @@ jobs:
         with:
           name: nextjs-app
 
+      # Despliegue usando ZipDeploy
       - name: Deploy to Azure Web App (ZipDeploy)
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -72,9 +73,16 @@ jobs:
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}
           type: zip
 
-      # Verificación post-deploy (opcional)
+      # Startup command recomendado para Next.js 15 y Node 22
+      - name: Configure startup command
+        run: |
+          az webapp config set --name tribu-learning \
+            --resource-group <TU_RESOURCE_GROUP> \
+            --startup-file "npm ci --ignore-scripts && npm run start"
+
+      # Verificación post-deploy
       - name: Verify deployment
         run: |
           echo "Verifying deployment..."
-          sleep 20
+          sleep 30
           curl -I https://tribu-learning.azurewebsites.net || echo "⚠️ Could not verify app is online"
