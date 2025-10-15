@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-# Evita despliegues simultáneos (clave para evitar el error 409)
+# Evita que varios despliegues corran al mismo tiempo
 concurrency:
   group: deploy-tribu-learning
   cancel-in-progress: true
@@ -31,7 +31,7 @@ jobs:
       - name: Verify build output
         run: ls -la .next || echo ".next folder not found"
 
-      # Crea carpeta limpia para el despliegue
+      # Crear carpeta limpia para deploy
       - name: Prepare deploy package
         run: |
           mkdir deploy
@@ -42,9 +42,12 @@ jobs:
           if [ -f next.config.js ]; then cp next.config.js deploy/; fi
           if [ -f .env ]; then cp .env deploy/; fi
 
-      # Crea un ZIP limpio (necesario para forzar ZipDeploy)
+      # Crear ZIP para Kudu ZipDeploy
       - name: Create zip package
-        run: cd deploy && zip -r ../deploy.zip .
+        run: |
+          cd deploy
+          zip -r ../deploy.zip .
+          cd ..
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -62,15 +65,17 @@ jobs:
         with:
           name: nextjs-app
 
-      - name: Deploy to Azure Web App (ZipDeploy)
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'tribu-learning'
-          slot-name: 'Production'
-          package: './deploy.zip'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}
-          type: zip
+      # Espera breve para asegurarse que app no tiene deploy pendiente
+      - name: Wait before deploy
+        run: sleep 10
+
+      # Deploy mediante Kudu ZipDeploy
+      - name: Deploy via Kudu ZipDeploy
+        run: |
+          echo "Deploying via Kudu ZipDeploy..."
+          curl -X POST -u "${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}" \
+            -F "package=@deploy.zip" \
+            https://tribu-learning.scm.azurewebsites.net/api/zipdeploy?isAsync=true
 
       # Verificación post-deploy (opcional)
       - name: Verify deployment
