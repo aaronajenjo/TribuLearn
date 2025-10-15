@@ -77,7 +77,7 @@ jobs:
       - name: Configure startup command
         run: |
           az webapp config set --name tribu-learning \
-            --resource-group <TU_RESOURCE_GROUP> \
+            --resource-group epadwebs-resource \
             --startup-file "npm ci --ignore-scripts && npm run start"
 
       # Verificación post-deploy
@@ -86,3 +86,4 @@ jobs:
           echo "Verifying deployment..."
           sleep 30
           curl -I https://tribu-learning.azurewebsites.net || echo "⚠️ Could not verify app is online"
+
