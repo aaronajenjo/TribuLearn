@@ -37,7 +37,14 @@ jobs:
           mkdir deploy
           cp package.json deploy/
           [ -f package-lock.json ] && cp package-lock.json deploy/
-          [ -d .next ] && rsync -av --exclude 'cache' .next/ deploy/.next/
+          
+          # Copia .next sin cache, evitando problemas con nombres raros
+          if [ -d .next ]; then
+            mkdir -p deploy/.next
+            cp -r .next/* deploy/.next/
+            rm -rf deploy/.next/cache || true
+          fi
+
           [ -d public ] && cp -r public deploy/
           [ -f next.config.js ] && cp next.config.js deploy/
           [ -f .env ] && cp .env deploy/
