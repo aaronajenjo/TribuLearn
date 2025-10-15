@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Evita que dos despliegues corran a la vez (previene el error 409)
 concurrency:
   group: deploy-tribu-learning
   cancel-in-progress: true
@@ -14,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -26,13 +28,19 @@ jobs:
           npm ci
           npm run build
 
+      - name: Verify build output
+        run: ls -la .next || echo ".next folder not found"
+
+      # Crea una carpeta limpia para el despliegue
       - name: Prepare deploy package
         run: |
           mkdir deploy
-          cp -r package.json package-lock.json .next public deploy/
-          # Si usas TypeScript o env files:
-          [ -f next.config.js ] && cp next.config.js deploy/
-          [ -f .env ] && cp .env deploy/
+          cp package.json deploy/
+          if [ -f package-lock.json ]; then cp package-lock.json deploy/; fi
+          if [ -d .next ]; then cp -r .next deploy/; fi
+          if [ -d public ]; then cp -r public deploy/; fi
+          if [ -f next.config.js ]; then cp next.config.js deploy/; fi
+          if [ -f .env ]; then cp .env deploy/; fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -51,9 +59,17 @@ jobs:
           name: nextjs-app
 
       - name: Deploy to Azure Web App
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'tribu-learning'
           slot-name: 'Production'
           package: './'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A8D7601D7B7947A49FE29EAA99D24A02 }}
+
+      # (Opcional) Verificación post-deploy
+      - name: Verify deployment
+        run: |
+          echo "Verifying deployment..."
+          sleep 20
+          curl -I https://tribu-learning.azurewebsites.net || echo "⚠️ Could not verify app is online"
