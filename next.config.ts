@@ -1,17 +1,13 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
-  experimental: {
-    appDir: true
-  },
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -34,7 +30,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  devIndicators: false
+  devIndicators: false,
+  webpack(config) {
+    config.resolve.alias['@'] = require('path').resolve(__dirname);
+    return config;
+  },
 };
 
 export default nextConfig;
