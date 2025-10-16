@@ -27,7 +27,7 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Add .deployment file to disable build in Azure
+      - name: Add .deployment file to disable Azure build
         run: echo -e "[config]\nSCM_DO_BUILD_DURING_DEPLOYMENT=false" > .deployment
 
       - name: Prepare deployment package
