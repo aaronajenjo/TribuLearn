@@ -21,26 +21,19 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next.js app
-        run: npm run build
-
-      - name: Prepare deployment package
-        run: |
-          mkdir deploy
-          cp -r .next deploy/
-          cp -r public deploy/
-          cp package.json deploy/
-          cp next.config.ts deploy/
-          cp -r node_modules deploy/
-
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
         with:
           name: nextjs-app
-          path: deploy
+          path: |
+            ./
+            !node_modules/
+            !**/*.test.*
+            !**/__tests__/
+            !**/*.md
+            !.git/
+            !.github/
+            !.vscode/
 
   deploy:
     runs-on: ubuntu-latest
@@ -60,4 +53,3 @@ jobs:
           slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_02F60B91759B473D87833C276A74B076 }}
-
