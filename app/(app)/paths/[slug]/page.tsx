@@ -19,14 +19,14 @@ import { Button } from "@/components/ui/button";
 import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
-import React, { use } from "react";
+import React from "react";
 
 export default function PathDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = use(params);
+  const { slug } = params;
   const { t } = useLocale();
   const path = learningPaths(t).find((p) => p.slug === slug);
 

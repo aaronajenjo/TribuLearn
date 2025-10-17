@@ -54,7 +54,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               className="flex items-center gap-2.5 overflow-hidden"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/sopra_logo.png" alt="Sopra Steria Logo" width={32} height={32} className="size-8" />
+              <img src="/sopra_logo.png" alt="Sopra Logo" width={32} height={32} className="size-8" />
               <h1 className="text-lg font-bold font-headline tracking-tighter text-sidebar-primary-foreground truncate">
                 Tribu Learning
               </h1>
