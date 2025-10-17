@@ -5,8 +5,8 @@ export function UserNav() {
     <div className="relative w-32 h-10">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/sopra_logo_2.png"
-        alt="Sopra Aeroline Logo"
+        src="/sopra-steria-aeroline-background.png"
+        alt="Sopra Steria Aeroline Logo"
         className="h-full w-full object-contain"
       />
     </div>
