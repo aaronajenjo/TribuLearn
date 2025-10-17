@@ -87,7 +87,7 @@ export default function PathDetailPage({
                             {t("paths.detail.resources")}:
                           </h4>
                           <ul className="space-y-3">
-                            {module.sopraResources.map((resource) => (
+                            {module.sopraSteriaResources.map((resource) => (
                               <li key={resource.title}>
                                 <Link
                                   href={resource.url}
@@ -109,17 +109,17 @@ export default function PathDetailPage({
                           </ul>
                         </div>
                       ) : (
-                        <Tabs defaultValue="Sopra" className="w-full">
+                        <Tabs defaultValue="SopraSteria" className="w-full">
                           <TabsList className="grid w-full grid-cols-2">
-                            <TabsTrigger value="Sopra">Sopra</TabsTrigger>
+                            <TabsTrigger value="SopraSteria">Sopra Steria</TabsTrigger>
                             <TabsTrigger value="Youtube">Youtube</TabsTrigger>
                           </TabsList>
-                          <TabsContent value="Sopra">
+                          <TabsContent value="SopraSteria">
                             <h4 className="font-semibold mb-4 mt-4">
                               {t("paths.detail.resources")}:
                             </h4>
                             <ul className="space-y-3">
-                              {module.sopraResources.map((resource) => (
+                              {module.sopraSteriaResources.map((resource) => (
                                 <li key={resource.title}>
                                   <Link
                                     href={resource.url}
@@ -152,7 +152,7 @@ export default function PathDetailPage({
                                   </Link>
                                 </li>
                               ))}
-                              {module.sopraResources.length === 0 && (
+                              {module.sopraSteriaResources.length === 0 && (
                                 <p className="text-muted-foreground text-sm">
                                   {t("paths.detail.noResources")}
                                 </p>

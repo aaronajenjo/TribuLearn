@@ -10,7 +10,7 @@ export type Resource = {
 export type Module = {
   title: string;
   description: string;
-  sopraResources: Resource[];
+  sopraSteriaResources: Resource[];
   youtubeResources: Resource[];
   quiz?: {
     title: string;
@@ -52,7 +52,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.csharp.beginner.module1.title'),
             description: t('technologies.csharp.beginner.module1.description'),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "course",
                 title: "C# Development Fundamentals Journey",
@@ -70,7 +70,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.csharp.beginner.module2.title'),
             description: t('technologies.csharp.beginner.module2.description'),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "article",
                 title: "C# Data Types Explained",
@@ -89,7 +89,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             description: t(
               "technologies.csharp.intermediate.module1.description"
             ),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "course",
                 title: "C# Intermediate Learning Track",
@@ -131,7 +131,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t("technologies.csharp.advanced.module1.title"),
             description: t("technologies.csharp.advanced.module1.description"),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "course",
                 title: "C# Advanced Learning Track",
@@ -189,7 +189,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.angular.beginner.module1.title'),
             description: t('technologies.angular.beginner.module1.description'),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "course",
                 title: "Angular Beginner Journey",
@@ -216,7 +216,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.angular.intermediate.module1.title'),
             description: t('technologies.angular.intermediate.module1.description'),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "course",
                 title: "Angular Intermediate Journey",
@@ -237,7 +237,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.angular.advanced.module1.title'),
             description: t('technologies.angular.advanced.module1.description'),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "course",
                 title: "Angular Advanced Journey",
@@ -266,7 +266,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.ionic.beginner.module1.title'),
             description: t('technologies.ionic.beginner.module1.description'),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "video",
                 title: "Intro to Ionic",
@@ -289,7 +289,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.ionic.intermediate.module1.title'),
             description: t('technologies.ionic.intermediate.module1.description'),
-            sopraResources: [],
+            sopraSteriaResources: [],
             youtubeResources: [
               { type: 'video', title: 'Ionic Tutorial #9 - HTTP Requests', url: 'https://www.youtube.com/watch?v=_p4lL3dhovY', duration: '11m' },
               { type: 'video', title: 'Ionic Tutorial #13 - Storing Data with Storage', url: 'https://www.youtube.com/watch?v=WshbmpP5JuY', duration: '12m' },
@@ -303,7 +303,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.ionic.advanced.module1.title'),
             description: t('technologies.ionic.advanced.module1.description'),
-            sopraResources: [],
+            sopraSteriaResources: [],
             youtubeResources: [
               { type: 'video', title: 'Ionic Tutorial #19 - Authentication', url: 'https://www.youtube.com/watch?v=PZ8stXVoXjE', duration: '16m' },
               { type: 'video', title: 'Ionic Tutorial #28 - Building for Android & IOS', url: 'https://www.youtube.com/watch?v=4y3AeFDdFVY', duration: '11m' },
@@ -327,7 +327,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.blazor.beginner.module1.title'),
             description: t('technologies.blazor.beginner.module1.description'),
-            sopraResources: [
+            sopraSteriaResources: [
               {
                 type: "article",
                 title: "Blazor: A New Era for C# Web Devs",
@@ -347,7 +347,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.blazor.intermediate.module1.title'),
             description: t('technologies.blazor.intermediate.module1.description'),
-            sopraResources: [],
+            sopraSteriaResources: [],
             youtubeResources: [
               { type: 'video', title: 'Blazor Components | Ep 3 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=G910vWOdhQ8&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=3', duration: '27m' },
               { type: 'video', title: 'Blazor Forms and Validation | Ep 5 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=3Gr83lIaENg&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=5', duration: '26m' },
@@ -361,7 +361,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.blazor.advanced.module1.title'),
             description: t('technologies.blazor.advanced.module1.description'),
-            sopraResources: [],
+            sopraSteriaResources: [],
             youtubeResources: [
               { type: 'video', title: 'Authentication in Blazor | Ep 12 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=iq2btD9WufI&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=12', duration: '24m' },
               { type: 'video', title: 'Publishing a Blazor App | Ep 16 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=vi51RBc_TkY&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=16', duration: '10m' },
@@ -387,7 +387,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.razor.beginner.module1.title'),
             description: t('technologies.razor.beginner.module1.description'),
-            sopraResources: [],
+            sopraSteriaResources: [],
             youtubeResources: [
                 { type: 'video', title: 'ASP.NET Core Razor Pages Tutorial', url: 'https://www.youtube.com/watch?v=pmWFzzU_NB4', duration: '3h 48m' },
                 { type: 'video', title: 'Razor Pages tutorial for beginners | ASP.NET Core', url: 'https://www.youtube.com/watch?v=oKY60aLOrrs', duration: '40m' },
@@ -401,7 +401,7 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.razor.intermediate.module1.title'),
             description: t('technologies.razor.intermediate.module1.description'),
-            sopraResources: [],
+            sopraSteriaResources: [],
             youtubeResources: [
               { type: 'video', title: 'CRUD Operations in Razor Pages in ASP.NET Core', url: 'https://www.youtube.com/watch?v=ZqlvK5UcXnY', duration: '29m' },
             ]
