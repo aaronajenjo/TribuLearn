@@ -4,12 +4,6 @@ import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
 import { notFound } from "next/navigation";
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -20,6 +14,7 @@ import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
 import React from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function PathDetailPage({
   params,
@@ -35,6 +30,17 @@ export default function PathDetailPage({
   }
 
   const Icon = Icons[path.icon];
+
+  const typeIcons = {
+    video: PlayCircle,
+    article: FileText,
+    course: BookOpen,
+  };
+
+  const sourceIcons = {
+    youtube: Icons.youtube,
+    sopra: Icons.sopra,
+  };
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -79,19 +85,15 @@ export default function PathDetailPage({
                         {module.description}
                       </p>
 
-                      <Tabs defaultValue="SopraSteria" className="w-full">
-                        <TabsList className="grid w-full grid-cols-2">
-                          <TabsTrigger value="SopraSteria">
-                            Sopra Steria
-                          </TabsTrigger>
-                          <TabsTrigger value="Youtube">Youtube</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="SopraSteria">
-                          <h4 className="font-semibold mb-4 mt-4">
-                            {t("paths.detail.resources")}:
-                          </h4>
-                          <ul className="space-y-3">
-                            {module.sopraSteriaResources?.map((resource) => (
+                      <div>
+                        <h4 className="font-semibold mb-4 mt-4">
+                          {t("paths.detail.resources")}:
+                        </h4>
+                        <ul className="space-y-3">
+                          {module.resources.map((resource) => {
+                            const TypeIcon = typeIcons[resource.type];
+                            const SourceIcon = sourceIcons[resource.source];
+                            return (
                               <li key={resource.title}>
                                 <Link
                                   href={resource.url}
@@ -99,16 +101,11 @@ export default function PathDetailPage({
                                   rel="noopener noreferrer"
                                   className="flex items-center gap-3 group"
                                 >
-                                  <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                    {resource.type === "video" && (
-                                      <PlayCircle className="text-primary" />
-                                    )}
-                                    {resource.type === "article" && (
-                                      <FileText className="text-primary" />
-                                    )}
-                                    {resource.type === "course" && (
-                                      <BookOpen className="text-primary" />
-                                    )}
+                                  <div className="flex items-center gap-2">
+                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                      <TypeIcon className="text-primary size-5" />
+                                    </div>
+                                    <SourceIcon className="size-5" />
                                   </div>
                                   <div className="flex-1">
                                     <p className="font-medium group-hover:underline">
@@ -123,60 +120,15 @@ export default function PathDetailPage({
                                   </div>
                                 </Link>
                               </li>
-                            ))}
-                            {(module.sopraSteriaResources?.length === 0 || !module.sopraSteriaResources) && (
-                              <p className="text-muted-foreground text-sm">
-                                {t("paths.detail.noResources")}
-                              </p>
-                            )}
-                          </ul>
-                        </TabsContent>
-                        <TabsContent value="Youtube">
-                          <h4 className="font-semibold mb-4 mt-4">
-                            {t("paths.detail.resources")}:
-                          </h4>
-                          <ul className="space-y-3">
-                            {module.youtubeResources?.map((resource) => (
-                              <li key={resource.title}>
-                                <Link
-                                  href={resource.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center gap-3 group"
-                                >
-                                  <div className="p-2 rounded-md bg-muted group-hover:bg-primary/1e-f1c5-42cf-9b14-2c738633361a0 transition-colors">
-                                    {resource.type === "video" && (
-                                      <PlayCircle className="text-primary" />
-                                    )}
-                                    {resource.type === "article" && (
-                                      <FileText className="text-primary" />
-                                    )}
-                                    {resource.type === "course" && (
-                                      <BookOpen className="text-primary" />
-                                    )}
-                                  </div>
-                                  <div className="flex-1">
-                                    <p className="font-medium group-hover:underline">
-                                      {resource.title}
-                                    </p>
-                                    {resource.duration && (
-                                      <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                        <Clock className="size-3" />
-                                        {resource.duration}
-                                      </p>
-                                    )}
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
-                            {(module.youtubeResources?.length === 0 || !module.youtubeResources) && (
-                              <p className="text-muted-foreground text-sm">
-                                {t("paths.detail.noResources")}
-                              </p>
-                            )}
-                          </ul>
-                        </TabsContent>
-                      </Tabs>
+                            );
+                          })}
+                          {module.resources.length === 0 && (
+                            <p className="text-muted-foreground text-sm">
+                              {t("paths.detail.noResources")}
+                            </p>
+                          )}
+                        </ul>
+                      </div>
 
                       {module.quiz && (
                         <Button variant="outline" className="mt-4">
@@ -201,3 +153,5 @@ export default function PathDetailPage({
     </div>
   );
 }
+
+    
