@@ -2,7 +2,13 @@
 
 import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 import {
   Accordion,
   AccordionContent,
@@ -10,16 +16,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Clock, Puzzle } from "lucide-react";
+import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
 import React from "react";
-import type { Resource } from "@/lib/data";
 
-export default function PathDetailPage() {
-  const params = useParams();
-  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
-
+export default function PathDetailPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
   const { t } = useLocale();
   const path = learningPaths(t).find((p) => p.slug === slug);
 
@@ -28,18 +35,6 @@ export default function PathDetailPage() {
   }
 
   const Icon = Icons[path.icon];
-
-  const typeIcons: { [key in Resource["type"]]: React.ComponentType<any> } = {
-    video: Icons.youtube,
-    article: Icons.sopra,
-    course: Icons.sopra,
-  };
-
-  const sourceIcons: { [key in Resource["source"]]: React.ComponentType<any> } =
-    {
-      youtube: Icons.youtube,
-      sopra: Icons.sopra,
-    };
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -57,12 +52,16 @@ export default function PathDetailPage() {
         </div>
       </header>
 
-      <div className="w-full">
-        {path.levels.map((level) => (
-          <div key={level.name} className="mb-8">
-            <h2 className="text-2xl font-bold font-headline mb-4 border-b pb-2">
+      <Tabs defaultValue="Beginner" className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+          {path.levels.map((level) => (
+            <TabsTrigger key={level.name} value={level.name}>
               {t(`paths.levels.${level.name.toLowerCase()}`)}
-            </h2>
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {path.levels.map((level) => (
+          <TabsContent key={level.name} value={level.name}>
             <Accordion
               type="single"
               collapsible
@@ -80,15 +79,15 @@ export default function PathDetailPage() {
                         {module.description}
                       </p>
 
-                      <div>
-                        <h4 className="font-semibold mb-4 mt-4">
-                          {t("paths.detail.resources")}:
-                        </h4>
-                        <ul className="space-y-3">
-                          {module.resources?.map((resource) => {
-                            const TypeIcon = typeIcons[resource.type];
-                            const SourceIcon = sourceIcons[resource.source];
-                            return (
+                      {path.slug === "csharp" &&
+                      module.title ===
+                        t("technologies.csharp.beginner.module2.title") ? (
+                        <div>
+                          <h4 className="font-semibold mb-4">
+                            {t("paths.detail.resources")}:
+                          </h4>
+                          <ul className="space-y-3">
+                            {module.sopraResources.map((resource) => (
                               <li key={resource.title}>
                                 <Link
                                   href={resource.url}
@@ -96,35 +95,117 @@ export default function PathDetailPage() {
                                   rel="noopener noreferrer"
                                   className="flex items-center gap-3 group"
                                 >
-                                  <div className="flex items-center gap-2">
-                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                      <TypeIcon className="text-primary size-5" />
-                                    </div>
-                                    <SourceIcon className="size-5" />
+                                  <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                    <FileText className="text-primary" />
                                   </div>
                                   <div className="flex-1">
                                     <p className="font-medium group-hover:underline">
                                       {resource.title}
                                     </p>
-                                    {resource.duration && (
-                                      <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                        <Clock className="size-3" />
-                                        {resource.duration}
-                                      </p>
-                                    )}
                                   </div>
                                 </Link>
                               </li>
-                            );
-                          })}
-                          {(!module.resources ||
-                            module.resources.length === 0) && (
-                            <p className="text-muted-foreground text-sm">
-                              {t("paths.detail.noResources")}
-                            </p>
-                          )}
-                        </ul>
-                      </div>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : (
+                        <Tabs defaultValue="Sopra" className="w-full">
+                          <TabsList className="grid w-full grid-cols-2">
+                            <TabsTrigger value="Sopra">Sopra</TabsTrigger>
+                            <TabsTrigger value="Youtube">Youtube</TabsTrigger>
+                          </TabsList>
+                          <TabsContent value="Sopra">
+                            <h4 className="font-semibold mb-4 mt-4">
+                              {t("paths.detail.resources")}:
+                            </h4>
+                            <ul className="space-y-3">
+                              {module.sopraResources.map((resource) => (
+                                <li key={resource.title}>
+                                  <Link
+                                    href={resource.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 group"
+                                  >
+                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                      {resource.type === "video" && (
+                                        <PlayCircle className="text-primary" />
+                                      )}
+                                      {resource.type === "article" && (
+                                        <FileText className="text-primary" />
+                                      )}
+                                      {resource.type === "course" && (
+                                        <BookOpen className="text-primary" />
+                                      )}
+                                    </div>
+                                    <div className="flex-1">
+                                      <p className="font-medium group-hover:underline">
+                                        {resource.title}
+                                      </p>
+                                      {resource.duration && (
+                                        <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                                          <Clock className="size-3" />
+                                          {resource.duration}
+                                        </p>
+                                      )}
+                                    </div>
+                                  </Link>
+                                </li>
+                              ))}
+                              {module.sopraResources.length === 0 && (
+                                <p className="text-muted-foreground text-sm">
+                                  {t("paths.detail.noResources")}
+                                </p>
+                              )}
+                            </ul>
+                          </TabsContent>
+                          <TabsContent value="Youtube">
+                            <h4 className="font-semibold mb-4 mt-4">
+                              {t("paths.detail.resources")}:
+                            </h4>
+                            <ul className="space-y-3">
+                              {module.youtubeResources.map((resource) => (
+                                <li key={resource.title}>
+                                  <Link
+                                    href={resource.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 group"
+                                  >
+                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/1e-f1c5-42cf-9b14-2c738633361a0 transition-colors">
+                                      {resource.type === "video" && (
+                                        <PlayCircle className="text-primary" />
+                                      )}
+                                      {resource.type === "article" && (
+                                        <FileText className="text-primary" />
+                                      )}
+                                      {resource.type === "course" && (
+                                        <BookOpen className="text-primary" />
+                                      )}
+                                    </div>
+                                    <div className="flex-1">
+                                      <p className="font-medium group-hover:underline">
+                                        {resource.title}
+                                      </p>
+                                      {resource.duration && (
+                                        <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                                          <Clock className="size-3" />
+                                          {resource.duration}
+                                        </p>
+                                      )}
+                                    </div>
+                                  </Link>
+                                </li>
+                              ))}
+                              {module.youtubeResources.length === 0 && (
+                                <p className="text-muted-foreground text-sm">
+                                  {t("paths.detail.noResources")}
+                                </p>
+                              )}
+                            </ul>
+                          </TabsContent>
+                        </Tabs>
+                      )}
 
                       {module.quiz && (
                         <Button variant="outline" className="mt-4">
@@ -143,9 +224,9 @@ export default function PathDetailPage() {
                 </div>
               )}
             </Accordion>
-          </div>
+          </TabsContent>
         ))}
-      </div>
+      </Tabs>
     </div>
   );
 }
