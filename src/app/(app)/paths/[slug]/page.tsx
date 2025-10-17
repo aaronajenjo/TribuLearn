@@ -14,7 +14,6 @@ import { Clock, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
 import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Resource } from "@/lib/data";
 
 export default function PathDetailPage() {
@@ -58,16 +57,12 @@ export default function PathDetailPage() {
         </div>
       </header>
 
-      <Tabs defaultValue="Beginner" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          {path.levels.map((level) => (
-            <TabsTrigger key={level.name} value={level.name}>
-              {t(`paths.levels.${level.name.toLowerCase()}`)}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+      <div className="w-full">
         {path.levels.map((level) => (
-          <TabsContent key={level.name} value={level.name}>
+          <div key={level.name} className="mb-8">
+            <h2 className="text-2xl font-bold font-headline mb-4 border-b pb-2">
+              {t(`paths.levels.${level.name.toLowerCase()}`)}
+            </h2>
             <Accordion
               type="single"
               collapsible
@@ -122,7 +117,8 @@ export default function PathDetailPage() {
                               </li>
                             );
                           })}
-                          {module.resources?.length === 0 && (
+                          {(!module.resources ||
+                            module.resources.length === 0) && (
                             <p className="text-muted-foreground text-sm">
                               {t("paths.detail.noResources")}
                             </p>
@@ -147,9 +143,9 @@ export default function PathDetailPage() {
                 </div>
               )}
             </Accordion>
-          </TabsContent>
+          </div>
         ))}
-      </Tabs>
+      </div>
     </div>
   );
 }
