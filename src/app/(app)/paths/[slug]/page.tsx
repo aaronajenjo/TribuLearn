@@ -2,7 +2,7 @@
 
 import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import {
   Accordion,
   AccordionContent,
@@ -10,18 +10,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
+import { Clock, Puzzle } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { Resource } from "@/lib/data";
 
-export default function PathDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+export default function PathDetailPage() {
+  const params = useParams();
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+
   const { t } = useLocale();
   const path = learningPaths(t).find((p) => p.slug === slug);
 
@@ -31,16 +30,17 @@ export default function PathDetailPage({
 
   const Icon = Icons[path.icon];
 
-  const typeIcons = {
-    video: PlayCircle,
-    article: FileText,
-    course: BookOpen,
+  const typeIcons: { [key in Resource["type"]]: React.ComponentType<any> } = {
+    video: Icons.youtube,
+    article: Icons.sopra,
+    course: Icons.sopra,
   };
 
-  const sourceIcons = {
-    youtube: Icons.youtube,
-    sopra: Icons.sopra,
-  };
+  const sourceIcons: { [key in Resource["source"]]: React.ComponentType<any> } =
+    {
+      youtube: Icons.youtube,
+      sopra: Icons.sopra,
+    };
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -90,7 +90,7 @@ export default function PathDetailPage({
                           {t("paths.detail.resources")}:
                         </h4>
                         <ul className="space-y-3">
-                          {module.resources.map((resource) => {
+                          {module.resources?.map((resource) => {
                             const TypeIcon = typeIcons[resource.type];
                             const SourceIcon = sourceIcons[resource.source];
                             return (
@@ -122,7 +122,7 @@ export default function PathDetailPage({
                               </li>
                             );
                           })}
-                          {module.resources.length === 0 && (
+                          {module.resources?.length === 0 && (
                             <p className="text-muted-foreground text-sm">
                               {t("paths.detail.noResources")}
                             </p>
@@ -153,5 +153,3 @@ export default function PathDetailPage({
     </div>
   );
 }
-
-    
