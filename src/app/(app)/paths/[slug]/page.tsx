@@ -2,7 +2,7 @@
 
 import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import {
   Tabs,
   TabsContent,
@@ -21,12 +21,9 @@ import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
 import React from "react";
 
-export default function PathDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+export default function PathDetailPage() {
+  const params = useParams();
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   const { t } = useLocale();
   const path = learningPaths(t).find((p) => p.slug === slug);
 
@@ -69,153 +66,77 @@ export default function PathDetailPage({
               defaultValue="item-0"
             >
               {level.modules.length > 0 ? (
-                level.modules.map((module, index) => (
-                  <AccordionItem key={module.title} value={`item-${index}`}>
-                    <AccordionTrigger className="text-lg font-semibold">
-                      {module.title}
-                    </AccordionTrigger>
-                    <AccordionContent className="space-y-4">
-                      <p className="text-muted-foreground">
-                        {module.description}
-                      </p>
+                level.modules.map((module, index) => {
+                  const allResources = [
+                    ...(module.sopraResources || []).map(r => ({ ...r, source: 'sopra' })),
+                    ...(module.youtubeResources || []).map(r => ({ ...r, source: 'youtube' }))
+                  ];
 
-                      {path.slug === "csharp" &&
-                      module.title ===
-                        t("technologies.csharp.beginner.module2.title") ? (
+                  return (
+                    <AccordionItem key={module.title} value={`item-${index}`}>
+                      <AccordionTrigger className="text-lg font-semibold">
+                        {module.title}
+                      </AccordionTrigger>
+                      <AccordionContent className="space-y-4">
+                        <p className="text-muted-foreground">
+                          {module.description}
+                        </p>
+                        
                         <div>
-                          <h4 className="font-semibold mb-4">
+                          <h4 className="font-semibold mb-4 mt-4">
                             {t("paths.detail.resources")}:
                           </h4>
-                          <ul className="space-y-3">
-                            {module.sopraResources.map((resource) => (
-                              <li key={resource.title}>
-                                <Link
-                                  href={resource.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center gap-3 group"
-                                >
-                                  <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                    <FileText className="text-primary" />
-                                  </div>
-                                  <div className="flex-1">
-                                    <p className="font-medium group-hover:underline">
-                                      {resource.title}
-                                    </p>
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
+                          {allResources.length > 0 ? (
+                            <ul className="space-y-3">
+                              {allResources.map((resource) => {
+                                const SourceIcon = Icons[resource.source as keyof typeof Icons];
+                                return (
+                                  <li key={resource.title}>
+                                    <Link
+                                      href={resource.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center gap-3 group"
+                                    >
+                                      <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                        {resource.type === "video" && <PlayCircle className="text-primary" />}
+                                        {resource.type === "article" && <FileText className="text-primary" />}
+                                        {resource.type === "course" && <BookOpen className="text-primary" />}
+                                        {SourceIcon && <SourceIcon className="size-4" />}
+                                      </div>
+                                      <div className="flex-1">
+                                        <p className="font-medium group-hover:underline">
+                                          {resource.title}
+                                        </p>
+                                        {resource.duration && (
+                                          <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                                            <Clock className="size-3" />
+                                            {resource.duration}
+                                          </p>
+                                        )}
+                                      </div>
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          ) : (
+                             <p className="text-muted-foreground text-sm">
+                              {t("paths.detail.noResources")}
+                            </p>
+                          )}
                         </div>
-                      ) : (
-                        <Tabs defaultValue="Sopra" className="w-full">
-                          <TabsList className="grid w-full grid-cols-2">
-                            <TabsTrigger value="Sopra">Sopra</TabsTrigger>
-                            <TabsTrigger value="Youtube">Youtube</TabsTrigger>
-                          </TabsList>
-                          <TabsContent value="Sopra">
-                            <h4 className="font-semibold mb-4 mt-4">
-                              {t("paths.detail.resources")}:
-                            </h4>
-                            <ul className="space-y-3">
-                              {module.sopraResources.map((resource) => (
-                                <li key={resource.title}>
-                                  <Link
-                                    href={resource.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 group"
-                                  >
-                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                      {resource.type === "video" && (
-                                        <PlayCircle className="text-primary" />
-                                      )}
-                                      {resource.type === "article" && (
-                                        <FileText className="text-primary" />
-                                      )}
-                                      {resource.type === "course" && (
-                                        <BookOpen className="text-primary" />
-                                      )}
-                                    </div>
-                                    <div className="flex-1">
-                                      <p className="font-medium group-hover:underline">
-                                        {resource.title}
-                                      </p>
-                                      {resource.duration && (
-                                        <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                          <Clock className="size-3" />
-                                          {resource.duration}
-                                        </p>
-                                      )}
-                                    </div>
-                                  </Link>
-                                </li>
-                              ))}
-                              {module.sopraResources.length === 0 && (
-                                <p className="text-muted-foreground text-sm">
-                                  {t("paths.detail.noResources")}
-                                </p>
-                              )}
-                            </ul>
-                          </TabsContent>
-                          <TabsContent value="Youtube">
-                            <h4 className="font-semibold mb-4 mt-4">
-                              {t("paths.detail.resources")}:
-                            </h4>
-                            <ul className="space-y-3">
-                              {module.youtubeResources.map((resource) => (
-                                <li key={resource.title}>
-                                  <Link
-                                    href={resource.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 group"
-                                  >
-                                    <div className="p-2 rounded-md bg-muted group-hover:bg-primary/1e-f1c5-42cf-9b14-2c738633361a0 transition-colors">
-                                      {resource.type === "video" && (
-                                        <PlayCircle className="text-primary" />
-                                      )}
-                                      {resource.type === "article" && (
-                                        <FileText className="text-primary" />
-                                      )}
-                                      {resource.type === "course" && (
-                                        <BookOpen className="text-primary" />
-                                      )}
-                                    </div>
-                                    <div className="flex-1">
-                                      <p className="font-medium group-hover:underline">
-                                        {resource.title}
-                                      </p>
-                                      {resource.duration && (
-                                        <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                          <Clock className="size-3" />
-                                          {resource.duration}
-                                        </p>
-                                      )}
-                                    </div>
-                                  </Link>
-                                </li>
-                              ))}
-                              {module.youtubeResources.length === 0 && (
-                                <p className="text-muted-foreground text-sm">
-                                  {t("paths.detail.noResources")}
-                                </p>
-                              )}
-                            </ul>
-                          </TabsContent>
-                        </Tabs>
-                      )}
 
-                      {module.quiz && (
-                        <Button variant="outline" className="mt-4">
-                          <Puzzle className="mr-2" />
-                          {t("paths.detail.takeQuiz")}: {module.quiz.title}
-                        </Button>
-                      )}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))
+                        {module.quiz && (
+                          <Button variant="outline" className="mt-4">
+                            <Puzzle className="mr-2" />
+                            {t("paths.detail.takeQuiz")}: {module.quiz.title}
+                          </Button>
+                        )}
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })
               ) : (
                 <div className="text-center py-12 text-muted-foreground">
                   <p>
