@@ -19,7 +19,6 @@ export default {
       typography: (theme: (arg0: string) => any) => ({
         DEFAULT: {
           css: {
-            img: false,
             h1: {
               fontWeight: '700',
             },
