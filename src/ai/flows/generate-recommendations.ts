@@ -23,7 +23,7 @@ export type GenerateRecommendationsInput = z.infer<typeof GenerateRecommendation
 
 const RecommendationSchema = z.object({
   title: z.string().describe('The title of the recommended course or video search query.'),
-  url: z.string().url().describe('The URL to the resource. For YouTube, this should be a search URL.'),
+  url: z.string().url().describe('The URL to the resource. For YouTube or Udemy, this should be a search URL.'),
   description: z.string().describe('A brief explanation of why this resource is being recommended based on the failed questions.'),
 });
 export type Recommendation = z.infer<typeof RecommendationSchema>;
@@ -54,7 +54,10 @@ The user failed the following questions:
 
 Based on the questions they got wrong and their current skill level, your task is to recommend resources to help them improve.
 
-1.  **Udemy Courses**: Recommend 2 highly-rated, relevant courses from Udemy. Provide the title, a valid URL, and a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining *specifically* how it addresses the concepts they struggled with.
+1.  **Udemy Course Searches**: Recommend 2 relevant course searches for Udemy. For each recommendation:
+    - Create a concise, descriptive title that would be a good search query (e.g., "Complete C# Masterclass" or "Angular - The Complete Guide").
+    - For the URL, create a valid Udemy search URL by encoding the title and appending it to 'https://www.udemy.com/courses/search/?q='. For example, for the title "Complete C# Masterclass", the URL should be "https://www.udemy.com/courses/search/?q=Complete+C%23+Masterclass".
+    - Provide a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining *specifically* how it addresses the concepts they struggled with.
 
 2.  **YouTube Video Searches**: Recommend 3 video searches for YouTube. For each recommendation:
     - Create a concise, descriptive title that would be a good search query (e.g., "C# LINQ Tutorial for Beginners" or "Angular Reactive Forms Deep Dive").
