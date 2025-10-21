@@ -1,10 +1,11 @@
 "use client";
 
 import { GenerateRecommendationsOutput, Recommendation } from "@/ai/flows/generate-recommendations";
-import { Loader2, Sparkles, Youtube, GraduationCap } from "lucide-react";
+import { Sparkles, Youtube, GraduationCap, BookMarked } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Icons } from "./icons";
 
 interface RecommendationsDisplayProps {
   isLoading: boolean;
@@ -41,10 +42,20 @@ export function RecommendationsDisplay({ isLoading, recommendations }: Recommend
   
   const hasUdemy = recommendations.udemy && recommendations.udemy.length > 0;
   const hasYoutube = recommendations.youtube && recommendations.youtube.length > 0;
+  const hasOpenWebinars = recommendations.openWebinars && recommendations.openWebinars.length > 0;
+  const hasPercipio = recommendations.percipio && recommendations.percipio.length > 0;
 
   return (
     <div className="space-y-6">
        <h3 className="text-xl font-bold text-center">Personalized Learning Plan</h3>
+       {hasPercipio && (
+        <div>
+          <h4 className="font-semibold text-lg mb-3 flex items-center gap-2"><Icons.sopra className="size-5" /> Percipio Courses</h4>
+          <div className="space-y-4">
+            {recommendations.percipio.map(rec => <RecommendationCard key={rec.url} recommendation={rec} Icon={Icons.sopra} />)}
+          </div>
+        </div>
+       )}
        {hasUdemy && (
         <div>
           <h4 className="font-semibold text-lg mb-3 flex items-center gap-2"><GraduationCap className="size-5" /> Udemy Courses</h4>
@@ -61,7 +72,15 @@ export function RecommendationsDisplay({ isLoading, recommendations }: Recommend
           </div>
         </div>
        )}
-       {!hasUdemy && !hasYoutube && (
+        {hasOpenWebinars && (
+        <div>
+          <h4 className="font-semibold text-lg mb-3 flex items-center gap-2"><BookMarked className="size-5" /> OpenWebinars Courses</h4>
+          <div className="space-y-4">
+            {recommendations.openWebinars.map(rec => <RecommendationCard key={rec.url} recommendation={rec} Icon={BookMarked} />)}
+          </div>
+        </div>
+       )}
+       {!hasUdemy && !hasYoutube && !hasOpenWebinars && !hasPercipio && (
          <p className="text-center text-muted-foreground">No specific recommendations could be generated at this time.</p>
        )}
     </div>
