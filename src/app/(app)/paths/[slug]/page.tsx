@@ -4,12 +4,6 @@ import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
 import { notFound, useParams } from "next/navigation";
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -49,105 +43,119 @@ export default function PathDetailPage() {
         </div>
       </header>
 
-      <Tabs defaultValue="Beginner" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          {path.levels.map((level) => (
-            <TabsTrigger key={level.name} value={level.name}>
-              {t(`paths.levels.${level.name.toLowerCase()}`)}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        {path.levels.map((level) => (
-          <TabsContent key={level.name} value={level.name}>
-            <Accordion
-              type="single"
-              collapsible
-              className="w-full"
-              defaultValue="item-0"
-            >
-              {level.modules.length > 0 ? (
-                level.modules.map((module, index) => {
-                  const allResources = [
-                    ...(module.sopraResources || []).map(r => ({ ...r, source: 'sopra' })),
-                    ...(module.youtubeResources || []).map(r => ({ ...r, source: 'youtube' }))
-                  ];
+      {path.levels.map((level) => (
+        <div key={level.name}>
+          <h2 className="text-2xl font-bold font-headline mt-8 mb-4 border-b pb-2">
+            {t(`paths.levels.${level.name.toLowerCase()}`)}
+          </h2>
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+            defaultValue="item-0"
+          >
+            {level.modules.length > 0 ? (
+              level.modules.map((module, index) => {
+                const allResources = [
+                  ...(module.sopraResources || []).map((r) => ({
+                    ...r,
+                    source: "sopra",
+                  })),
+                  ...(module.youtubeResources || []).map((r) => ({
+                    ...r,
+                    source: "youtube",
+                  })),
+                ];
 
-                  return (
-                    <AccordionItem key={module.title} value={`item-${index}`}>
-                      <AccordionTrigger className="text-lg font-semibold">
-                        {module.title}
-                      </AccordionTrigger>
-                      <AccordionContent className="space-y-4">
-                        <p className="text-muted-foreground">
-                          {module.description}
-                        </p>
-                        
-                        <div>
-                          <h4 className="font-semibold mb-4 mt-4">
-                            {t("paths.detail.resources")}:
-                          </h4>
-                          {allResources.length > 0 ? (
-                            <ul className="space-y-3">
-                              {allResources.map((resource) => {
-                                const SourceIcon = Icons[resource.source as keyof typeof Icons];
-                                return (
-                                  <li key={resource.title}>
-                                    <Link
-                                      href={resource.url}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="flex items-center gap-3 group"
-                                    >
-                                      <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                        {resource.type === "video" && <PlayCircle className="text-primary" />}
-                                        {resource.type === "article" && <FileText className="text-primary" />}
-                                        {resource.type === "course" && <BookOpen className="text-primary" />}
-                                        {SourceIcon && <SourceIcon className="size-4" />}
-                                      </div>
-                                      <div className="flex-1">
-                                        <p className="font-medium group-hover:underline">
-                                          {resource.title}
+                return (
+                  <AccordionItem
+                    key={module.title}
+                    value={`item-${index}`}
+                  >
+                    <AccordionTrigger className="text-lg font-semibold">
+                      {module.title}
+                    </AccordionTrigger>
+                    <AccordionContent className="space-y-4">
+                      <p className="text-muted-foreground">
+                        {module.description}
+                      </p>
+
+                      <div>
+                        <h4 className="font-semibold mb-4 mt-4">
+                          {t("paths.detail.resources")}:
+                        </h4>
+                        {allResources.length > 0 ? (
+                          <ul className="space-y-3">
+                            {allResources.map((resource, resIndex) => {
+                              const SourceIcon =
+                                Icons[
+                                  resource.source as keyof typeof Icons
+                                ];
+                              return (
+                                <li key={`${resource.title}-${resIndex}`}>
+                                  <Link
+                                    href={resource.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 group"
+                                  >
+                                    <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                      {resource.type === "video" && (
+                                        <PlayCircle className="text-primary" />
+                                      )}
+                                      {resource.type === "article" && (
+                                        <FileText className="text-primary" />
+                                      )}
+                                      {resource.type === "course" && (
+                                        <BookOpen className="text-primary" />
+                                      )}
+                                      {SourceIcon && (
+                                        <SourceIcon className="size-4" />
+                                      )}
+                                    </div>
+                                    <div className="flex-1">
+                                      <p className="font-medium group-hover:underline">
+                                        {resource.title}
+                                      </p>
+                                      {resource.duration && (
+                                        <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                                          <Clock className="size-3" />
+                                          {resource.duration}
                                         </p>
-                                        {resource.duration && (
-                                          <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                            <Clock className="size-3" />
-                                            {resource.duration}
-                                          </p>
-                                        )}
-                                      </div>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          ) : (
-                             <p className="text-muted-foreground text-sm">
-                              {t("paths.detail.noResources")}
-                            </p>
-                          )}
-                        </div>
-
-                        {module.quiz && (
-                          <Button variant="outline" className="mt-4">
-                            <Puzzle className="mr-2" />
-                            {t("paths.detail.takeQuiz")}: {module.quiz.title}
-                          </Button>
+                                      )}
+                                    </div>
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        ) : (
+                          <p className="text-muted-foreground text-sm">
+                            {t("paths.detail.noResources")}
+                          </p>
                         )}
-                      </AccordionContent>
-                    </AccordionItem>
-                  );
-                })
-              ) : (
-                <div className="text-center py-12 text-muted-foreground">
-                  <p>
-                    {t("paths.detail.comingSoon", { levelName: level.name })}
-                  </p>
-                </div>
-              )}
-            </Accordion>
-          </TabsContent>
-        ))}
-      </Tabs>
+                      </div>
+
+                      {module.quiz && (
+                        <Button variant="outline" className="mt-4">
+                          <Puzzle className="mr-2" />
+                          {t("paths.detail.takeQuiz")}: {module.quiz.title}
+                        </Button>
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })
+            ) : (
+              <div className="text-center py-12 text-muted-foreground">
+                <p>
+                  {t("paths.detail.comingSoon", { levelName: level.name })}
+                </p>
+              </div>
+            )}
+          </Accordion>
+        </div>
+      ))}
     </div>
   );
 }
