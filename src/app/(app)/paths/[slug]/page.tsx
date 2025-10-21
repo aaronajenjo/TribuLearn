@@ -69,7 +69,7 @@ export default function PathDetailPage() {
 
                 return (
                   <AccordionItem
-                    key={module.title}
+                    key={`${module.title}-${index}`}
                     value={`item-${index}`}
                   >
                     <AccordionTrigger className="text-lg font-semibold">
