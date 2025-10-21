@@ -22,15 +22,15 @@ const GenerateRecommendationsInputSchema = z.object({
 export type GenerateRecommendationsInput = z.infer<typeof GenerateRecommendationsInputSchema>;
 
 const RecommendationSchema = z.object({
-  title: z.string().describe('The title of the recommended course or video.'),
-  url: z.string().url().describe('The URL to the resource.'),
+  title: z.string().describe('The title of the recommended course or video search query.'),
+  url: z.string().url().describe('The URL to the resource. For YouTube, this should be a search URL.'),
   description: z.string().describe('A brief explanation of why this resource is being recommended based on the failed questions.'),
 });
 export type Recommendation = z.infer<typeof RecommendationSchema>;
 
 const GenerateRecommendationsOutputSchema = z.object({
   udemy: z.array(RecommendationSchema).describe('An array of recommended courses from Udemy.'),
-  youtube: z.array(RecommendationSchema).describe('An array of recommended videos from YouTube.'),
+  youtube: z.array(RecommendationSchema).describe('An array of recommended video searches from YouTube.'),
 });
 export type GenerateRecommendationsOutput = z.infer<typeof GenerateRecommendationsOutputSchema>;
 
@@ -52,11 +52,15 @@ The user failed the following questions:
   - Correct Answer: {{{correctAnswer}}}
 {{/each}}
 
-Based on the questions they got wrong and their current skill level, your task is to recommend highly-rated, relevant courses from Udemy and videos from YouTube to help them improve.
+Based on the questions they got wrong and their current skill level, your task is to recommend resources to help them improve.
 
-For each recommendation, provide a title, a valid URL, and a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining *specifically* how it will help them understand the concepts they struggled with.
+1.  **Udemy Courses**: Recommend 2 highly-rated, relevant courses from Udemy. Provide the title, a valid URL, and a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining *specifically* how it addresses the concepts they struggled with.
 
-Find 2 relevant courses on Udemy and 3 relevant videos on YouTube.
+2.  **YouTube Video Searches**: Recommend 3 video searches for YouTube. For each recommendation:
+    - Create a concise, descriptive title that would be a good search query (e.g., "C# LINQ Tutorial for Beginners" or "Angular Reactive Forms Deep Dive").
+    - For the URL, create a valid YouTube search URL by encoding the title and appending it to 'https://www.youtube.com/results?search_query='. For example, for the title "C# LINQ Tutorial", the URL should be "https://www.youtube.com/results?search_query=C%23+LINQ+Tutorial".
+    - Provide a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining what concepts the user will find by searching for this topic.
+
 The entire response must be in the language with this ISO 639-1 code: {{{language}}}.
 `,
 });
