@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Tabs,
   TabsContent,
@@ -16,14 +16,33 @@ import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { useLocale } from "@/hooks/use-locale";
 import { Button } from "./ui/button";
+import {
+  generateRecommendations,
+  GenerateRecommendationsOutput,
+} from "@/ai/flows/generate-recommendations";
+import { RecommendationsDisplay } from "./recommendations-display";
+
+type FailedQuestion = {
+  question: string;
+  userAnswer: string;
+  correctAnswer: string;
+};
+
+type QuizResult = {
+  score: number;
+  level: string;
+  failedQuestions: FailedQuestion[];
+};
 
 type QuizState = {
   [key: string]: {
     quiz: Quiz | null;
     isLoading: boolean;
     error: string | null;
-    result: { score: number; level: string } | null;
+    result: QuizResult | null;
     showResults: boolean;
+    recommendations: GenerateRecommendationsOutput | null;
+    isRecommending: boolean;
   };
 };
 
@@ -53,6 +72,8 @@ export function TestsContainer({
         error: null,
         result: null,
         showResults: false,
+        recommendations: null,
+        isRecommending: false,
       },
     }));
 
@@ -85,7 +106,7 @@ export function TestsContainer({
     }
   };
 
-  const handleQuizSubmit = (slug: string, score: number) => {
+  const handleQuizSubmit = (slug: string, score: number, failedQuestions: FailedQuestion[]) => {
     let level = "Beginner";
     if (score > 10) {
       level = "Advanced";
@@ -94,7 +115,7 @@ export function TestsContainer({
     }
     setQuizState((prev) => ({
       ...prev,
-      [slug]: { ...prev[slug], result: { score, level }, showResults: true },
+      [slug]: { ...prev[slug], result: { score, level, failedQuestions }, showResults: true },
     }));
   };
 
@@ -108,8 +129,37 @@ export function TestsContainer({
   const handleRetry = (slug: string) => {
     loadQuiz(slug);
   };
-
+  
   const currentQuizState = quizState[activeTab];
+
+  useEffect(() => {
+    const fetchRecommendations = async () => {
+      if (currentQuizState?.result && !currentQuizState.recommendations && !currentQuizState.isRecommending) {
+        setQuizState(prev => ({ ...prev, [activeTab]: { ...prev[activeTab], isRecommending: true }}));
+        try {
+          const technologyName = technologies.find(t => t.slug === activeTab)?.name || activeTab;
+          const recommendations = await generateRecommendations({
+            technology: technologyName,
+            level: currentQuizState.result.level,
+            failedQuestions: currentQuizState.result.failedQuestions,
+            language: locale,
+          });
+          setQuizState(prev => ({ ...prev, [activeTab]: { ...prev[activeTab], recommendations, isRecommending: false }}));
+        } catch (error) {
+          console.error("Failed to generate recommendations:", error);
+           toast({
+            variant: "destructive",
+            title: t("toast.generationFailed.title"),
+            description: "Failed to generate learning recommendations.",
+          });
+          setQuizState(prev => ({ ...prev, [activeTab]: { ...prev[activeTab], isRecommending: false }}));
+        }
+      }
+    };
+
+    fetchRecommendations();
+  }, [currentQuizState?.result, activeTab, technologies, locale, toast, t]);
+
 
   return (
     <>
@@ -182,11 +232,17 @@ export function TestsContainer({
                             {t("tests.container.result.retry")}
                           </Button>
                         </div>
+                         <div className="mt-8 text-left">
+                          <RecommendationsDisplay
+                            isLoading={currentQuizState.isRecommending}
+                            recommendations={currentQuizState.recommendations}
+                          />
+                        </div>
                       </div>
                     ) : (
                       <QuizForm
                         quizData={currentQuizState.quiz}
-                        onSubmit={(score) => handleQuizSubmit(tech.slug, score)}
+                        onSubmit={(score, failedQuestions) => handleQuizSubmit(tech.slug, score, failedQuestions)}
                         submitted={!!currentQuizState.result}
                       />
                     )}

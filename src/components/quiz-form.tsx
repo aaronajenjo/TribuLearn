@@ -24,9 +24,15 @@ import { CheckCircle2, XCircle } from "lucide-react";
 
 export type Quiz = GenerateQuizOutput;
 
+type FailedQuestion = {
+  question: string;
+  userAnswer: string;
+  correctAnswer: string;
+};
+
 interface QuizFormProps {
   quizData: Quiz;
-  onSubmit: (score: number) => void;
+  onSubmit: (score: number, failedQuestions: FailedQuestion[]) => void;
   submitted: boolean;
 }
 
@@ -50,17 +56,25 @@ export function QuizForm({ quizData, onSubmit, submitted }: QuizFormProps) {
 
   const handleSubmit = form.handleSubmit((data) => {
     let score = 0;
+    const failedQuestions: FailedQuestion[] = [];
     const results = data.answers.map((answer, index) => {
+      const question = quizData.questions[index];
       const isCorrect =
-        parseInt(answer.value) === quizData.questions[index].correctAnswer;
+        parseInt(answer.value) === question.correctAnswer;
       if (isCorrect) {
         score++;
+      } else {
+        failedQuestions.push({
+          question: question.question,
+          userAnswer: question.options[parseInt(answer.value)] || "No answer",
+          correctAnswer: question.options[question.correctAnswer],
+        });
       }
       return isCorrect;
     });
     setQuestionResults(results);
     setIsSubmitted(true);
-    onSubmit(score);
+    onSubmit(score, failedQuestions);
   });
 
   return (
