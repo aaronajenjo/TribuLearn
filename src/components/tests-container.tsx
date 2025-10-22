@@ -164,7 +164,7 @@ export function TestsContainer({
   return (
     <>
       <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="flex-wrap h-auto">
           {technologies.map((tech) => (
             <TabsTrigger key={tech.id} value={tech.slug}>
               {tech.name}
