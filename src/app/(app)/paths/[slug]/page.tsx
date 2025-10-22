@@ -100,6 +100,9 @@ export default function PathDetailPage() {
                                     className="flex items-center gap-3 group"
                                   >
                                     <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                      {SourceIcon && (
+                                        <SourceIcon className="size-4" />
+                                      )}
                                       {resource.type === "video" && (
                                         <PlayCircle className="text-primary" />
                                       )}
@@ -108,9 +111,6 @@ export default function PathDetailPage() {
                                       )}
                                       {resource.type === "course" && (
                                         <BookOpen className="text-primary" />
-                                      )}
-                                      {SourceIcon && (
-                                        <SourceIcon className="size-4" />
                                       )}
                                     </div>
                                     <div className="flex-1">
