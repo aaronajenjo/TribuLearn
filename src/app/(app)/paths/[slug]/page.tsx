@@ -45,9 +45,13 @@ export default function PathDetailPage() {
       </header>
 
       <Tabs defaultValue="Beginner" className="w-full">
-        <TabsList>
+        <TabsList className="w-full">
           {path.levels.map((level) => (
-            <TabsTrigger key={level.name} value={level.name}>
+            <TabsTrigger
+              key={level.name}
+              value={level.name}
+              className="flex-1"
+            >
               {t(`paths.levels.${level.name.toLowerCase()}`)}
             </TabsTrigger>
           ))}
@@ -94,7 +98,7 @@ export default function PathDetailPage() {
                             <ul className="space-y-3">
                               {allResources.map((resource, resIndex) => {
                                 const SourceIcon =
-                                  resource.source ? Icons[resource.source] : null;
+                                  resource.source && Icons[resource.source];
                                 return (
                                   <li key={`${resource.title}-${resIndex}`}>
                                     <Link
