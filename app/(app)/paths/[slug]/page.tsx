@@ -125,6 +125,7 @@ export default function PathDetailPage({
                                     className="flex items-center gap-3 group"
                                   >
                                     <div className="p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                      
                                       {resource.type === "video" && (
                                         <PlayCircle className="text-primary" />
                                       )}

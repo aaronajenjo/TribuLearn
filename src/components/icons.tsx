@@ -8,7 +8,7 @@ export const Icons = {
   ),
   sopra: (props: SVGProps<SVGSVGElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src="/sopra_logo.png" alt="Sopra Logo" width={16} height={16} {...props} />
+    <img src="/sopra_steria_logo.png" alt="Sopra Steria Logo" width={16} height={16} {...props} />
   ),
   youtube: (props: SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -19,7 +19,8 @@ export const Icons = {
     </svg>
   ),
   openWebinars: (props: SVGProps<SVGSVGElement>) => (
-    <BookMarked {...props} />
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/sopra_steria_logo.png" alt="Sopra Steria Logo" width={16} height={16} {...props} />
   ),
   csharp: (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 128 128" {...props}>
