@@ -2,7 +2,7 @@
 
 import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import {
   Accordion,
   AccordionContent,
@@ -15,9 +15,12 @@ import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
 import React from "react";
 
-export default function PathDetailPage() {
-  const params = useParams();
-  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+export default function PathDetailPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
   const { t } = useLocale();
   const path = learningPaths(t).find((p) => p.slug === slug);
 
