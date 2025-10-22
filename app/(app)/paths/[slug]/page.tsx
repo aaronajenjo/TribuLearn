@@ -52,7 +52,7 @@ export default function PathDetailPage() {
             type="single"
             collapsible
             className="w-full"
-            defaultValue="item-0"
+            defaultValue="none"
           >
             {level.modules.length > 0 ? (
               level.modules.map((module, index) => {

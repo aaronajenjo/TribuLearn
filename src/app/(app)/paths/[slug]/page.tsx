@@ -45,24 +45,16 @@ export default function PathDetailPage() {
       </header>
 
       <Tabs defaultValue="Beginner" className="w-full">
-        <TabsList className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
           {path.levels.map((level) => (
-            <TabsTrigger
-              key={level.name}
-              value={level.name}
-              className="flex-1"
-            >
+            <TabsTrigger key={level.name} value={level.name}>
               {t(`paths.levels.${level.name.toLowerCase()}`)}
             </TabsTrigger>
           ))}
         </TabsList>
         {path.levels.map((level) => (
           <TabsContent key={level.name} value={level.name}>
-            <Accordion
-              type="single"
-              collapsible
-              className="w-full"
-            >
+            <Accordion type="single" collapsible className="w-full">
               {level.modules.length > 0 ? (
                 level.modules.map((module, index) => {
                   const allResources = [
