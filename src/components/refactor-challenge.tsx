@@ -295,7 +295,7 @@ export function RefactorChallenge() {
               disabled={!challenge || isAnalyzing}
             />
           </CardContent>
-          <CardFooter className="flex-col sm:flex-row gap-2">
+          <CardFooter className="flex flex-col sm:flex-row gap-2">
             <Button
               onClick={onAnalyze}
               disabled={!challenge || !userSolution || isAnalyzing}
@@ -312,7 +312,7 @@ export function RefactorChallenge() {
             {challenge && (
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1" className="border-b-0">
-                  <AccordionTrigger>
+                  <AccordionTrigger asChild>
                       <Button
                         variant="outline"
                         className="w-full"
@@ -384,3 +384,5 @@ export function RefactorChallenge() {
     </div>
   );
 }
+
+    
