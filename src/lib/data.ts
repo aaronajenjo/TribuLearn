@@ -5,6 +5,7 @@ export type Resource = {
   title: string;
   url: string;
   duration?: string;
+  source?: "sopra" | "youtube" | "openWebinars" | "percipio";
 };
 
 export type Module = {
