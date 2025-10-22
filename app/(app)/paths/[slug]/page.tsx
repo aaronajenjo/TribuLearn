@@ -53,7 +53,7 @@ export default function PathDetailPage({
       </header>
 
       <Tabs defaultValue="Beginner" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="flex w-full grid-cols-3">
           {path.levels.map((level) => (
             <TabsTrigger key={level.name} value={level.name}>
               {t(`paths.levels.${level.name.toLowerCase()}`)}
@@ -110,10 +110,7 @@ export default function PathDetailPage({
                         </div>
                       ) : (
                         <Tabs defaultValue="Sopra" className="w-full">
-                          <TabsList className="grid w-full grid-cols-2">
-                            <TabsTrigger value="Sopra">Sopra</TabsTrigger>
-                            <TabsTrigger value="Youtube">Youtube</TabsTrigger>
-                          </TabsList>
+                          
                           <TabsContent value="Sopra">
                             <h4 className="font-semibold mb-4 mt-4">
                               {t("paths.detail.resources")}:
@@ -158,12 +155,8 @@ export default function PathDetailPage({
                                 </p>
                               )}
                             </ul>
-                          </TabsContent>
-                          <TabsContent value="Youtube">
-                            <h4 className="font-semibold mb-4 mt-4">
-                              {t("paths.detail.resources")}:
-                            </h4>
-                            <ul className="space-y-3">
+                            
+                            <ul className="space-y-3 pt-3">
                               {module.youtubeResources.map((resource) => (
                                 <li key={resource.title}>
                                   <Link
@@ -197,11 +190,7 @@ export default function PathDetailPage({
                                   </Link>
                                 </li>
                               ))}
-                              {module.youtubeResources.length === 0 && (
-                                <p className="text-muted-foreground text-sm">
-                                  {t("paths.detail.noResources")}
-                                </p>
-                              )}
+                              
                             </ul>
                           </TabsContent>
                         </Tabs>
