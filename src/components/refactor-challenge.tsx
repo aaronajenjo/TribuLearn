@@ -192,11 +192,13 @@ export function RefactorChallenge() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {learningPaths(t).map((path) => (
-                          <SelectItem key={path.id} value={path.slug}>
-                            {path.name}
-                          </SelectItem>
-                        ))}
+                        {learningPaths(t)
+                          .filter((path) => path.slug !== "azure")
+                          .map((path) => (
+                            <SelectItem key={path.id} value={path.slug}>
+                              {path.name}
+                            </SelectItem>
+                          ))}
                       </SelectContent>
                     </Select>
                     <FormMessage />
