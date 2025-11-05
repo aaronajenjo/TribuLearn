@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Card,
@@ -46,6 +46,7 @@ import {
   AccordionTrigger,
 } from "./ui/accordion";
 import { marked } from "marked";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   technology: z.string().min(1, "Please select a technology."),
@@ -312,15 +313,12 @@ export function RefactorChallenge() {
             {challenge && (
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1" className="border-b-0">
-                  <AccordionTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className="w-full"
-                        disabled={!challenge || isAnalyzing}
-                      >
-                        <FileText className="mr-2" />
-                        {t("refactors.solution.showButton")}
-                      </Button>
+                  <AccordionTrigger
+                    className={cn(buttonVariants({ variant: "outline" }), "w-full")}
+                    disabled={!challenge || isAnalyzing}
+                  >
+                    <FileText className="mr-2" />
+                    {t("refactors.solution.showButton")}
                   </AccordionTrigger>
                   <AccordionContent className="mt-4">
                     <Card>
@@ -384,5 +382,3 @@ export function RefactorChallenge() {
     </div>
   );
 }
-
-    
