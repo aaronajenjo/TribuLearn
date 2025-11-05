@@ -247,6 +247,12 @@
           "title": "Introducción a Azure",
           "description": "Aprende sobre los servicios principales de Azure como App Service, Azure SQL y cuentas de almacenamiento."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Soluciones de Web App en Azure",
+          "description": "Profundiza en el desarrollo y la gestión de aplicaciones web en Azure."
+        }
       }
     }
   },

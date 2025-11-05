@@ -247,6 +247,12 @@
           "title": "Introduction to Azure",
           "description": "Learn about core Azure services like App Service, Azure SQL, and storage accounts."
         }
+      },
+      "intermediate": {
+        "module1": {
+          "title": "Azure Web App Solutions",
+          "description": "Dive deeper into developing and managing web applications on Azure."
+        }
       }
     }
   },

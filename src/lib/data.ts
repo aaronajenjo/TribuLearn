@@ -439,7 +439,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             sopraResources: [
               {
                 type: "course",
-                title: "Introduction to Spring & Spring Boot",
+                title: "Journeys: Spring and Spring Boot Track 1: Introduction to Spring",
                 url: "https://soprasteria.percipio.com/track/80a077c4-06ed-4e66-bab9-582b7d018f45",
                 source: "sopra"
               },
@@ -472,12 +472,42 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.azure.beginner.module1.title'),
             description: t('technologies.azure.beginner.module1.description'),
-            sopraResources: [],
+            sopraResources: [
+              {
+                type: 'course',
+                title: 'Microsoft Azure Fundamentals: Azure App Service',
+                url: 'https://soprasteria.percipio.com/courses/8181e388-d853-48f6-ab59-f249cc5fe6b1/videos/9939d2d4-f5a0-40d5-991a-a724d6ebeb1a',
+                source: 'sopra'
+              }
+            ],
             youtubeResources: []
           }
         ],
       },
-      { name: "Intermediate", modules: [] },
+      { 
+        name: "Intermediate", 
+        modules: [
+          {
+            title: t('technologies.azure.intermediate.module1.title'),
+            description: t('technologies.azure.intermediate.module1.description'),
+            sopraResources: [
+              {
+                type: 'course',
+                title: 'Developing Solutions for Microsoft Azure: Web Apps',
+                url: 'https://soprasteria.percipio.com/courses/fd5ff768-97c5-4a8c-acee-a5c6a18cb005/videos/bd683d8b-d67a-4f7c-a3df-ce2740ac4f54',
+                source: 'sopra'
+              },
+              {
+                type: 'course',
+                title: 'Developing Solutions for Microsoft Azure: App Service',
+                url: 'https://soprasteria.percipio.com/courses/040a4466-ca29-4695-85bb-b256fefbba3a/videos/fb1a74ee-7136-4f0b-8a22-05ceeb5cde3c',
+                source: 'sopra'
+              }
+            ],
+            youtubeResources: []
+          }
+        ] 
+      },
       { name: "Advanced", modules: [] },
     ],
   },
