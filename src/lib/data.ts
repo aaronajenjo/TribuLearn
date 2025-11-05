@@ -230,6 +230,18 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://sopra.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/a11bcb81-3461-4631-89be-586006d1d293?tab=WATCH",
                 source: "sopra"
               },
+              {
+                type: "course",
+                title: "Angular: Reactive Programming With RxJS and Observables",
+                url: "https://soprasteria.percipio.com/courses/332682fa-aac9-458d-99ee-7994ff79fd33/videos/915a31be-de06-44c0-ba3a-c42422bea6d0",
+                source: "sopra"
+              },
+              {
+                type: "course",
+                title: "Angular, Reactive, & Observable",
+                url: "https://soprasteria.percipio.com/courses/9d1a4440-2b81-11e8-853f-8d6ca00f7963/videos/dd1a3d20-2b81-11e8-853f-8d6ca00f7963",
+                source: "sopra"
+              }
             ],
             youtubeResources: [
               { type: 'video', title: 'Angular Dependency Injection - A Deep Dive', url: 'https://www.youtube.com/watch?v=OFPIGlxunL0', duration: '25m' },
