@@ -99,6 +99,12 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://sopra.percipio.com/track/fed7500e-f1c5-42cf-9b14-2c738633361a",
                 source: "sopra"
               },
+              {
+                type: "course",
+                title: "Beginner Entity Framework: Journey",
+                url: "https://soprasteria.percipio.com/channels/2a72d751-29dd-11e7-bd7f-0d8c9c4bc919",
+                source: "sopra"
+              }
             ],
             youtubeResources: [
               {
@@ -142,6 +148,12 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://sopra.percipio.com/track/ba25d689-0c0e-4585-92b7-640ed1651c7d",
                 source: "sopra"
               },
+              {
+                type: "course",
+                title: "Advanced Data Access with EF Core: Journey",
+                url: "https://soprasteria.percipio.com/courses/9476f300-31c2-11e8-97b6-bfc623ee1d51/videos/8e1b8250-31d6-11e8-97b6-bfc623ee1d51",
+                source: "sopra"
+              }
             ],
             youtubeResources: [
               {
