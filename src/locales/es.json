@@ -230,6 +230,24 @@
           "description": "Aprende sobre técnicas más avanzadas en Razor como operaciones CRUD."
         }
       }
+    },
+    "java": {
+      "description": "Aprende el robusto lenguaje orientado a objetos que impulsa aplicaciones a nivel empresarial.",
+      "beginner": {
+        "module1": {
+          "title": "Fundamentos de Java",
+          "description": "Comprende los conceptos básicos de la sintaxis de Java, la JVM y los principios de la orientación a objetos."
+        }
+      }
+    },
+    "azure": {
+      "description": "Despliega y gestiona aplicaciones y servicios a través de la plataforma de computación en la nube de Microsoft.",
+      "beginner": {
+        "module1": {
+          "title": "Introducción a Azure",
+          "description": "Aprende sobre los servicios principales de Azure como App Service, Azure SQL y cuentas de almacenamiento."
+        }
+      }
     }
   },
   "months": {
