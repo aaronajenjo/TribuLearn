@@ -443,6 +443,12 @@ export const learningPaths = (t: Translator): Technology[] => [
                 url: "https://soprasteria.percipio.com/track/80a077c4-06ed-4e66-bab9-582b7d018f45",
                 source: "sopra"
               },
+              {
+                type: "article",
+                title: "Official Spring Projects",
+                url: "https://spring.io/projects",
+                source: "sopra"
+              },
             ],
             youtubeResources: []
           }
