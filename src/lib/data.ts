@@ -436,7 +436,14 @@ export const learningPaths = (t: Translator): Technology[] => [
           {
             title: t('technologies.java.beginner.module1.title'),
             description: t('technologies.java.beginner.module1.description'),
-            sopraResources: [],
+            sopraResources: [
+              {
+                type: "course",
+                title: "Introduction to Spring & Spring Boot",
+                url: "https://soprasteria.percipio.com/track/80a077c4-06ed-4e66-bab9-582b7d018f45",
+                source: "sopra"
+              },
+            ],
             youtubeResources: []
           }
         ],
