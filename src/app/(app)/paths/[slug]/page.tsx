@@ -1,14 +1,9 @@
+
 "use client";
 
 import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
 import { notFound, useParams } from "next/navigation";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
@@ -54,9 +49,19 @@ export default function PathDetailPage() {
         </TabsList>
         {path.levels.map((level) => (
           <TabsContent key={level.name} value={level.name}>
-            <Accordion type="single" collapsible className="w-full">
-              {level.modules.length > 0 ? (
-                level.modules.map((module, index) => {
+            {level.modules.length > 0 ? (
+              <Tabs
+                defaultValue={level.modules[0]?.title}
+                className="w-full mt-4"
+              >
+                <TabsList className="flex-wrap h-auto justify-start">
+                  {level.modules.map((module) => (
+                    <TabsTrigger key={module.title} value={module.title}>
+                      {module.title}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                {level.modules.map((module, index) => {
                   const allResources = [
                     ...(module.sopraResources || []).map((r) => ({
                       ...r,
@@ -69,20 +74,18 @@ export default function PathDetailPage() {
                   ];
 
                   return (
-                    <AccordionItem
+                    <TabsContent
                       key={`${module.title}-${index}`}
-                      value={`item-${index}`}
+                      value={module.title}
+                      className="mt-4"
                     >
-                      <AccordionTrigger className="text-lg font-semibold">
-                        {module.title}
-                      </AccordionTrigger>
-                      <AccordionContent className="space-y-4">
-                        <p className="text-muted-foreground">
+                      <div className="p-6 border rounded-lg bg-card">
+                        <p className="text-muted-foreground mb-4">
                           {module.description}
                         </p>
 
                         <div>
-                          <h4 className="font-semibold mb-4 mt-4">
+                          <h4 className="font-semibold mb-4">
                             {t("paths.detail.resources")}:
                           </h4>
                           {allResources.length > 0 ? (
@@ -103,13 +106,13 @@ export default function PathDetailPage() {
                                           <SourceIcon className="size-4" />
                                         )}
                                         {resource.type === "video" && (
-                                          <PlayCircle className="text-primary" />
+                                          <PlayCircle className="text-primary size-4" />
                                         )}
                                         {resource.type === "article" && (
-                                          <FileText className="text-primary" />
+                                          <FileText className="text-primary size-4" />
                                         )}
                                         {resource.type === "course" && (
-                                          <BookOpen className="text-primary" />
+                                          <BookOpen className="text-primary size-4" />
                                         )}
                                       </div>
                                       <div className="flex-1">
@@ -136,26 +139,27 @@ export default function PathDetailPage() {
                         </div>
 
                         {module.quiz && (
-                          <Button variant="outline" className="mt-4">
+                          <Button variant="outline" className="mt-6">
                             <Puzzle className="mr-2" />
                             {t("paths.detail.takeQuiz")}: {module.quiz.title}
                           </Button>
                         )}
-                      </AccordionContent>
-                    </AccordionItem>
+                      </div>
+                    </TabsContent>
                   );
-                })
-              ) : (
-                <div className="text-center py-12 text-muted-foreground">
-                  <p>
-                    {t("paths.detail.comingSoon", { levelName: level.name })}
-                  </p>
-                </div>
-              )}
-            </Accordion>
+                })}
+              </Tabs>
+            ) : (
+              <div className="text-center py-12 text-muted-foreground border rounded-lg bg-card mt-4">
+                <p>
+                  {t("paths.detail.comingSoon", { levelName: level.name })}
+                </p>
+              </div>
+            )}
           </TabsContent>
         ))}
       </Tabs>
     </div>
   );
 }
+
