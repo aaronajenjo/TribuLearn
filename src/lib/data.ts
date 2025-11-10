@@ -68,6 +68,13 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'C# Tutorial - Full Course for Beginners', url: 'https://www.youtube.com/watch?v=GhQdlIFylQ8', duration: '4h 26m' },
               { type: 'video', title: 'Master Design Patterns & SOLID Principles in C# - Full OOP Course for Beginners', url: 'https://www.youtube.com/watch?v=rylaiB2uH2A', duration: '3h 36m' },
               { type: 'video', title: '7 Patrones de Diseño que todo Programador Debería Conocer', url: 'https://www.youtube.com/watch?v=rqOaZf4xMlI', duration: '20m' },
+            ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Design Patterns in C# and .NET',
+                url: 'https://www.udemy.com/course/design-patterns-csharp-dotnet/',
+              }
             ]
           },
           {
@@ -133,6 +140,13 @@ export const learningPaths = (t: Translator): Technology[] => [
                 duration: "1h 50m",
               },
             ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'C# Intermediate: Classes, Interfaces and OOP',
+                url: 'https://www.udemy.com/course/csharp-intermediate-classes-interfaces-and-oop/'
+              }
+            ]
           },
         ],
       },
