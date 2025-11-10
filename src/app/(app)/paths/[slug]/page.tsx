@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Icons } from "@/components/icons";
@@ -39,7 +38,7 @@ export default function PathDetailPage() {
         </div>
       </header>
 
-      <Tabs defaultValue="Beginner" className="w-full">
+      <Tabs defaultValue={path.levels[0]?.name || "Beginner"} className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           {path.levels.map((level) => (
             <TabsTrigger key={level.name} value={level.name}>
@@ -48,121 +47,119 @@ export default function PathDetailPage() {
           ))}
         </TabsList>
         {path.levels.map((level) => (
-          <TabsContent key={level.name} value={level.name}>
-            <div className="mt-4">
-              {level.modules.length > 0 ? (
-                <Tabs
-                  defaultValue={level.modules[0]?.title}
-                  className="w-full"
-                >
-                  <TabsList className="flex-wrap h-auto">
-                    {level.modules.map((module, index) => (
-                      <TabsTrigger
-                        key={`${module.title}-${index}`}
-                        value={module.title}
-                      >
-                        {module.title}
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
+          <TabsContent key={level.name} value={level.name} className="mt-4">
+            {level.modules.length > 0 ? (
+              <Tabs
+                defaultValue={level.modules[0]?.title}
+                className="w-full flex flex-col"
+              >
+                <TabsList className="flex-wrap h-auto self-start">
+                  {level.modules.map((module, index) => (
+                    <TabsTrigger
+                      key={`${module.title}-${index}`}
+                      value={module.title}
+                    >
+                      {module.title}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
 
-                  {level.modules.map((module, index) => {
-                    const allResources = [
-                      ...(module.sopraResources || []).map((r) => ({
-                        ...r,
-                        source: "sopra" as const,
-                      })),
-                      ...(module.youtubeResources || []).map((r) => ({
-                        ...r,
-                        source: "youtube" as const,
-                      })),
-                    ];
-                    return (
-                      <TabsContent
-                        key={`${module.title}-${index}-content`}
-                        value={module.title}
-                        className="p-4 border rounded-md mt-2"
-                      >
-                        <div className="space-y-4">
-                          <p className="text-muted-foreground">
-                            {module.description}
-                          </p>
+                {level.modules.map((module, index) => {
+                  const allResources = [
+                    ...(module.sopraResources || []).map((r) => ({
+                      ...r,
+                      source: "sopra" as const,
+                    })),
+                    ...(module.youtubeResources || []).map((r) => ({
+                      ...r,
+                      source: "youtube" as const,
+                    })),
+                  ];
+                  return (
+                    <TabsContent
+                      key={`${module.title}-${index}-content`}
+                      value={module.title}
+                      className="p-4 border rounded-md mt-2"
+                    >
+                      <div className="space-y-4">
+                        <p className="text-muted-foreground">
+                          {module.description}
+                        </p>
 
-                          <div>
-                            <h4 className="font-semibold mb-4 mt-4">
-                              {t("paths.detail.resources")}:
-                            </h4>
-                            {allResources.length > 0 ? (
-                              <ul className="space-y-3">
-                                {allResources.map((resource, resIndex) => {
-                                  const SourceIcon =
-                                    resource.source
-                                      ? Icons[resource.source]
-                                      : null;
-                                  return (
-                                    <li key={`${resource.title}-${resIndex}`}>
-                                      <Link
-                                        href={resource.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 group"
-                                      >
-                                        <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                          {SourceIcon && (
-                                            <SourceIcon className="size-4" />
-                                          )}
-                                          {resource.type === "video" && (
-                                            <PlayCircle className="text-primary" />
-                                          )}
-                                          {resource.type === "article" && (
-                                            <FileText className="text-primary" />
-                                          )}
-                                          {resource.type === "course" && (
-                                            <BookOpen className="text-primary" />
-                                          )}
-                                        </div>
-                                        <div className="flex-1">
-                                          <p className="font-medium group-hover:underline">
-                                            {resource.title}
+                        <div>
+                          <h4 className="font-semibold mb-4 mt-4">
+                            {t("paths.detail.resources")}:
+                          </h4>
+                          {allResources.length > 0 ? (
+                            <ul className="space-y-3">
+                              {allResources.map((resource, resIndex) => {
+                                const SourceIcon =
+                                  resource.source
+                                    ? Icons[resource.source]
+                                    : null;
+                                return (
+                                  <li key={`${resource.title}-${resIndex}`}>
+                                    <Link
+                                      href={resource.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center gap-3 group"
+                                    >
+                                      <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                        {SourceIcon && (
+                                          <SourceIcon className="size-4" />
+                                        )}
+                                        {resource.type === "video" && (
+                                          <PlayCircle className="text-primary" />
+                                        )}
+                                        {resource.type === "article" && (
+                                          <FileText className="text-primary" />
+                                        )}
+                                        {resource.type === "course" && (
+                                          <BookOpen className="text-primary" />
+                                        )}
+                                      </div>
+                                      <div className="flex-1">
+                                        <p className="font-medium group-hover:underline">
+                                          {resource.title}
+                                        </p>
+                                        {resource.duration && (
+                                          <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                                            <Clock className="size-3" />
+                                            {resource.duration}
                                           </p>
-                                          {resource.duration && (
-                                            <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                              <Clock className="size-3" />
-                                              {resource.duration}
-                                            </p>
-                                          )}
-                                        </div>
-                                      </Link>
-                                    </li>
-                                  );
-                                })}
-                              </ul>
-                            ) : (
-                              <p className="text-muted-foreground text-sm">
-                                {t("paths.detail.noResources")}
-                              </p>
-                            )}
-                          </div>
-
-                          {module.quiz && (
-                            <Button variant="outline" className="mt-4">
-                              <Puzzle className="mr-2" />
-                              {t("paths.detail.takeQuiz")}: {module.quiz.title}
-                            </Button>
+                                        )}
+                                      </div>
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          ) : (
+                            <p className="text-muted-foreground text-sm">
+                              {t("paths.detail.noResources")}
+                            </p>
                           )}
                         </div>
-                      </TabsContent>
-                    );
-                  })}
-                </Tabs>
-              ) : (
-                <div className="text-center py-12 text-muted-foreground">
-                  <p>
-                    {t("paths.detail.comingSoon", { levelName: level.name })}
-                  </p>
-                </div>
-              )}
-            </div>
+
+                        {module.quiz && (
+                          <Button variant="outline" className="mt-4">
+                            <Puzzle className="mr-2" />
+                            {t("paths.detail.takeQuiz")}: {module.quiz.title}
+                          </Button>
+                        )}
+                      </div>
+                    </TabsContent>
+                  );
+                })}
+              </Tabs>
+            ) : (
+              <div className="text-center py-12 text-muted-foreground border rounded-md">
+                <p>
+                  {t("paths.detail.comingSoon", { levelName: level.name })}
+                </p>
+              </div>
+            )}
           </TabsContent>
         ))}
       </Tabs>
