@@ -31,9 +31,11 @@
       "resources": "Resources",
       "takeQuiz": "Take Quiz",
       "comingSoon": "Content for the {levelName} level is coming soon!",
-      "noResources": "No resources available for this section yet."
+      "noResources": "No resources available for this section yet.",
+      "selectLevel": "Select a level to see the content."
     },
     "levels": {
+      "title": "Levels",
       "beginner": "Beginner",
       "intermediate": "Intermediate",
       "advanced": "Advanced"

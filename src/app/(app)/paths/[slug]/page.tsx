@@ -3,27 +3,45 @@
 import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
 import { notFound, useParams } from "next/navigation";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
+import {
+  FileText,
+  BookOpen,
+  Clock,
+  PlayCircle,
+  Puzzle,
+  ChevronRight,
+} from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "@/hooks/use-locale";
 import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export default function PathDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
   const { t } = useLocale();
   const path = learningPaths(t).find((p) => p.slug === slug);
+  const [activeLevel, setActiveLevel] = React.useState(
+    path?.levels[0]?.name || ""
+  );
 
   if (!path) {
     notFound();
   }
 
   const Icon = Icons[path.icon];
+  const currentLevelData = path.levels.find((l) => l.name === activeLevel);
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
       <header className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
         <div className="p-4 bg-card rounded-lg border shrink-0">
           <Icon className="size-12" />
@@ -38,50 +56,64 @@ export default function PathDetailPage() {
         </div>
       </header>
 
-      <Tabs defaultValue={path.levels[0]?.name || "Beginner"} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          {path.levels.map((level) => (
-            <TabsTrigger key={level.name} value={level.name}>
-              {t(`paths.levels.${level.name.toLowerCase()}`)}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        {path.levels.map((level) => (
-          <TabsContent key={level.name} value={level.name} className="mt-4">
-            {level.modules.length > 0 ? (
-              <Tabs
-                defaultValue={level.modules[0]?.title}
-                className="w-full flex flex-col"
-              >
-                <TabsList className="flex-wrap h-auto self-start">
-                  {level.modules.map((module, index) => (
-                    <TabsTrigger
-                      key={`${module.title}-${index}`}
-                      value={module.title}
-                    >
-                      {module.title}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <aside className="md:col-span-1">
+          <nav className="sticky top-20">
+            <h3 className="text-lg font-semibold mb-3 px-2">
+              {t("paths.levels.title", {
+                defaultValue: "Niveles",
+              })}
+            </h3>
+            <div className="flex flex-col gap-1">
+              {path.levels.map((level) => (
+                <button
+                  key={level.name}
+                  onClick={() => setActiveLevel(level.name)}
+                  className={cn(
+                    "flex items-center justify-between text-left p-2 rounded-md transition-colors",
+                    activeLevel === level.name
+                      ? "bg-primary text-primary-foreground"
+                      : "hover:bg-muted"
+                  )}
+                >
+                  <span className="font-medium">
+                    {t(`paths.levels.${level.name.toLowerCase()}`)}
+                  </span>
+                  <ChevronRight
+                    className={cn(
+                      "size-5 transition-transform",
+                      activeLevel === level.name ? "transform translate-x-1" : ""
+                    )}
+                  />
+                </button>
+              ))}
+            </div>
+          </nav>
+        </aside>
 
-                {level.modules.map((module, index) => {
-                  const allResources = [
-                    ...(module.sopraResources || []).map((r) => ({
-                      ...r,
-                      source: "sopra" as const,
-                    })),
-                    ...(module.youtubeResources || []).map((r) => ({
-                      ...r,
-                      source: "youtube" as const,
-                    })),
-                  ];
-                  return (
-                    <TabsContent
-                      key={`${module.title}-${index}-content`}
-                      value={module.title}
-                      className="p-4 border rounded-md mt-2"
+        <main className="md:col-span-3">
+          {currentLevelData ? (
+            <div>
+              <h2 className="text-3xl font-bold font-headline mb-6">
+                {t(`paths.levels.${currentLevelData.name.toLowerCase()}`)}
+              </h2>
+              {currentLevelData.modules.length > 0 ? (
+                <Accordion
+                  type="single"
+                  collapsible
+                  className="w-full space-y-4"
+                  defaultValue="item-0"
+                >
+                  {currentLevelData.modules.map((module, index) => (
+                    <AccordionItem
+                      key={`${module.title}-${index}`}
+                      value={`item-${index}`}
+                      className="border rounded-lg overflow-hidden"
                     >
-                      <div className="space-y-4">
+                      <AccordionTrigger className="text-lg font-semibold px-6 py-4 bg-card hover:bg-muted/50 transition-colors">
+                        {module.title}
+                      </AccordionTrigger>
+                      <AccordionContent className="p-6 bg-card space-y-4">
                         <p className="text-muted-foreground">
                           {module.description}
                         </p>
@@ -90,9 +122,21 @@ export default function PathDetailPage() {
                           <h4 className="font-semibold mb-4 mt-4">
                             {t("paths.detail.resources")}:
                           </h4>
-                          {allResources.length > 0 ? (
+                          {[
+                            ...(module.sopraResources || []),
+                            ...(module.youtubeResources || []),
+                          ].length > 0 ? (
                             <ul className="space-y-3">
-                              {allResources.map((resource, resIndex) => {
+                              {[
+                                ...(module.sopraResources || []).map((r) => ({
+                                  ...r,
+                                  source: "sopra" as const,
+                                })),
+                                ...(module.youtubeResources || []).map((r) => ({
+                                  ...r,
+                                  source: "youtube" as const,
+                                })),
+                              ].map((resource, resIndex) => {
                                 const SourceIcon =
                                   resource.source
                                     ? Icons[resource.source]
@@ -148,21 +192,31 @@ export default function PathDetailPage() {
                             {t("paths.detail.takeQuiz")}: {module.quiz.title}
                           </Button>
                         )}
-                      </div>
-                    </TabsContent>
-                  );
-                })}
-              </Tabs>
-            ) : (
-              <div className="text-center py-12 text-muted-foreground border rounded-md">
-                <p>
-                  {t("paths.detail.comingSoon", { levelName: level.name })}
-                </p>
-              </div>
-            )}
-          </TabsContent>
-        ))}
-      </Tabs>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              ) : (
+                <Card>
+                  <CardContent className="text-center py-12 text-muted-foreground">
+                    <p>
+                      {t("paths.detail.comingSoon", {
+                        levelName: currentLevelData.name,
+                      })}
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          ) : (
+            <Card>
+              <CardContent className="text-center py-12 text-muted-foreground">
+                <p>{t("paths.detail.selectLevel", {defaultValue: "Selecciona un nivel para ver el contenido."})}</p>
+              </CardContent>
+            </Card>
+          )}
+        </main>
+      </div>
     </div>
   );
 }

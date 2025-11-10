@@ -31,9 +31,11 @@
       "resources": "Recursos",
       "takeQuiz": "Hacer Cuestionario",
       "comingSoon": "¡El contenido para el nivel {levelName} llegará pronto!",
-      "noResources": "Aún no hay recursos disponibles para esta sección."
+      "noResources": "Aún no hay recursos disponibles para esta sección.",
+      "selectLevel": "Selecciona un nivel para ver el contenido."
     },
     "levels": {
+      "title": "Niveles",
       "beginner": "Principiante",
       "intermediate": "Intermedio",
       "advanced": "Avanzado"
