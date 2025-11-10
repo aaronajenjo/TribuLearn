@@ -1,4 +1,5 @@
 import { Icons } from "@/components/icons";
+import { BrainCircuit } from "lucide-react";
 
 export type Resource = {
   type: "video" | "article" | "course";
@@ -35,9 +36,77 @@ export type Technology = {
   levels: Level[];
 };
 
+export type SoftSkill = {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  icon: React.ElementType;
+  imageId: string;
+  modules: Module[];
+};
+
+
 type Translator = (key: string,
   params?: { [key: string]: string | number }
 ) => string;
+
+export const softSkillsData = (t: Translator): SoftSkill[] => [
+  {
+    id: "communication",
+    slug: "communication",
+    name: t("softskills.types.communication"),
+    description: t("softskills.descriptions.communication"),
+    icon: BrainCircuit,
+    imageId: "softskill-communication",
+    modules: [
+      {
+        title: "Effective Communication Strategies",
+        description: "Learn how to communicate more effectively with your team and clients.",
+        sopraResources: [],
+        youtubeResources: [],
+        udemyResources: []
+      }
+    ]
+  },
+  {
+    id: "conflict-resolution",
+    slug: "conflict-resolution",
+    name: t("softskills.types.conflictResolution"),
+    description: t("softskills.descriptions.conflictResolution"),
+    icon: BrainCircuit,
+    imageId: "softskill-conflict",
+    modules: []
+  },
+  {
+    id: "leadership",
+    slug: "leadership",
+    name: t("softskills.types.leadership"),
+    description: t("softskills.descriptions.leadership"),
+    icon: BrainCircuit,
+    imageId: "softskill-leadership",
+    modules: []
+  },
+  {
+    id: "teamwork",
+    slug: "teamwork",
+    name: t("softskills.types.teamwork"),
+    description: t("softskills.descriptions.teamwork"),
+    icon: BrainCircuit,
+    imageId: "softskill-teamwork",
+    modules: []
+  },
+  {
+    id: "adaptability",
+    slug: "adaptability",
+    name: t("softskills.types.adaptability"),
+    description: t("softskills.descriptions.adaptability"),
+    icon: BrainCircuit,
+    imageId: "softskill-adaptability",
+    modules: []
+  }
+];
+
 
 export const learningPaths = (t: Translator): Technology[] => [
   {

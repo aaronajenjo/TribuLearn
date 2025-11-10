@@ -302,9 +302,14 @@
     },
     "courses": {
       "page": {
-        "title": "Soft Skills Development",
+        "title": "Soft Skills Courses",
         "description": "Browse courses on leadership, management, and other essential soft skills."
-      }
+      },
+      "detail": {
+        "title": "{skillName} Courses",
+        "comingSoon": "Courses for {skillName} are coming soon!"
+      },
+      "categories": "Categories"
     },
     "types": {
       "communication": "Communication",
@@ -312,6 +317,13 @@
       "leadership": "Leadership",
       "teamwork": "Teamwork",
       "adaptability": "Adaptability"
+    },
+    "descriptions": {
+      "communication": "Learn to convey ideas clearly and effectively.",
+      "conflictResolution": "Develop skills to navigate and resolve disagreements.",
+      "leadership": "Inspire and guide individuals and teams.",
+      "teamwork": "Collaborate effectively with others to achieve common goals.",
+      "adaptability": "Thrive in changing environments and embrace new challenges."
     }
   }
 }

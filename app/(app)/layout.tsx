@@ -69,7 +69,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/sopra_logo.png"
+                src="/sopra_steria_logo.png"
                 alt="Sopra Steria Logo"
                 width={32}
                 height={32}

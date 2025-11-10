@@ -302,9 +302,14 @@
     },
     "courses": {
       "page": {
-        "title": "Desarrollo de Habilidades Blandas",
+        "title": "Cursos de Habilidades Blandas",
         "description": "Explora cursos sobre liderazgo, gestión y otras habilidades blandas esenciales."
-      }
+      },
+      "detail": {
+        "title": "Cursos de {skillName}",
+        "comingSoon": "¡Los cursos para {skillName} llegarán pronto!"
+      },
+      "categories": "Categorías"
     },
     "types": {
       "communication": "Comunicación",
@@ -312,6 +317,13 @@
       "leadership": "Liderazgo",
       "teamwork": "Trabajo en Equipo",
       "adaptability": "Adaptabilidad"
+    },
+    "descriptions": {
+      "communication": "Aprende a transmitir ideas de forma clara y eficaz.",
+      "conflictResolution": "Desarrolla habilidades para navegar y resolver desacuerdos.",
+      "leadership": "Inspira y guía a individuos y equipos.",
+      "teamwork": "Colabora eficazmente con otros para alcanzar objetivos comunes.",
+      "adaptability": "Prospérate en entornos cambiantes y abraza nuevos desafíos."
     }
   }
 }
