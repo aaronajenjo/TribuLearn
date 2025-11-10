@@ -74,6 +74,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'Design Patterns in C# and .NET',
                 url: 'https://www.udemy.com/course/design-patterns-csharp-dotnet/',
+              },
+              {
+                type: 'course',
+                title: 'Introducción al Testing de Software para Principiantes',
+                url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
               }
             ]
           },
@@ -202,6 +207,13 @@ export const learningPaths = (t: Translator): Technology[] => [
                 duration: "Multiple videos"
               }
             ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Creando Web APIs Profesionales con ASP.NET Core',
+                url: 'https://www.udemy.com/course/creando-web-apis-profesionales-con-aspnet-core-22/'
+              }
+            ]
           },
         ] 
       },
@@ -247,6 +259,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Angular: De Cero a Experto',
                 url: 'https://www.udemy.com/course/angular-fernando-herrera',
                 duration: '33h'
+              },
+              {
+                type: 'course',
+                title: 'Introducción al Testing de Software para Principiantes',
+                url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
               }
             ]
           },
@@ -343,6 +360,13 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Ionic Tutorial #2 - The Basics (How Ionic Works)', url: 'https://www.youtube.com/watch?v=Fh8MmgWWvMs', duration: '11m' },
               { type: 'video', title: 'Ionic Tutorial #4 - Navigation & Pages', url: 'https://www.youtube.com/watch?v=8xf0X4KEIkg', duration: '14m' },
               { type: 'video', title: 'Ionic Tutorial #8 - Data, Events & Lifecycle Hooks', url: 'https://www.youtube.com/watch?v=E-aXqVe2K1g', duration: '13m' },
+            ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Introducción al Testing de Software para Principiantes',
+                url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
+              }
             ]
           },
         ],
@@ -402,6 +426,13 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
               { type: 'course', title: 'Blazor Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=uuzi3SmCLVo&list=PL6n9fhu94yhVowClAs8-6nYnfsOTma14P', duration: '131 videos' },
               { type: 'video', title: 'Blazor in 100 Seconds', url: 'https://www.youtube.com/watch?v=w8imy7LT9zY', duration: '2m 17s' },
+            ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Introducción al Testing de Software para Principiantes',
+                url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
+              }
             ]
           },
         ],
@@ -456,6 +487,13 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
                 { type: 'video', title: 'ASP.NET Core Razor Pages Tutorial', url: 'https://www.youtube.com/watch?v=pmWFzzU_NB4', duration: '3h 48m' },
                 { type: 'video', title: 'Razor Pages tutorial for beginners | ASP.NET Core', url: 'https://www.youtube.com/watch?v=oKY60aLOrrs', duration: '40m' },
+            ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Introducción al Testing de Software para Principiantes',
+                url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
+              }
             ]
           },
         ],
@@ -504,7 +542,14 @@ export const learningPaths = (t: Translator): Technology[] => [
                 source: "sopra"
               },
             ],
-            youtubeResources: []
+            youtubeResources: [],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Introducción al Testing de Software para Principiantes',
+                url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
+              }
+            ]
           }
         ],
       },
