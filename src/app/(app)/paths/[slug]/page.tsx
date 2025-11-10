@@ -29,6 +29,7 @@ export default function PathDetailPage() {
   const slug = params.slug as string;
   const { t } = useLocale();
   const path = learningPaths(t).find((p) => p.slug === slug);
+
   const [activeLevel, setActiveLevel] = React.useState(
     path?.levels[0]?.name || ""
   );
@@ -60,9 +61,7 @@ export default function PathDetailPage() {
         <aside className="md:col-span-1">
           <nav className="sticky top-20">
             <h3 className="text-lg font-semibold mb-3 px-2">
-              {t("paths.levels.title", {
-                defaultValue: "Niveles",
-              })}
+              {t("paths.levels.title")}
             </h3>
             <div className="flex flex-col gap-1">
               {path.levels.map((level) => (
@@ -104,97 +103,97 @@ export default function PathDetailPage() {
                   className="w-full space-y-4"
                   defaultValue="item-0"
                 >
-                  {currentLevelData.modules.map((module, index) => (
-                    <AccordionItem
-                      key={`${module.title}-${index}`}
-                      value={`item-${index}`}
-                      className="border rounded-lg overflow-hidden"
-                    >
-                      <AccordionTrigger className="text-lg font-semibold px-6 py-4 bg-card hover:bg-muted/50 transition-colors">
-                        {module.title}
-                      </AccordionTrigger>
-                      <AccordionContent className="p-6 bg-card space-y-4">
-                        <p className="text-muted-foreground">
-                          {module.description}
-                        </p>
+                  {currentLevelData.modules.map((module, index) => {
+                    const allResources = [
+                      ...(module.sopraResources || []).map((r) => ({
+                        ...r,
+                        source: "sopra" as const,
+                      })),
+                      ...(module.youtubeResources || []).map((r) => ({
+                        ...r,
+                        source: "youtube" as const,
+                      })),
+                    ];
+                    return (
+                      <AccordionItem
+                        key={`${module.title}-${index}`}
+                        value={`item-${index}`}
+                        className="border rounded-lg overflow-hidden"
+                      >
+                        <AccordionTrigger className="text-lg font-semibold px-6 py-4 bg-card hover:bg-muted/50 transition-colors">
+                          {module.title}
+                        </AccordionTrigger>
+                        <AccordionContent className="p-6 bg-card space-y-4">
+                          <p className="text-muted-foreground">
+                            {module.description}
+                          </p>
 
-                        <div>
-                          <h4 className="font-semibold mb-4 mt-4">
-                            {t("paths.detail.resources")}:
-                          </h4>
-                          {[
-                            ...(module.sopraResources || []),
-                            ...(module.youtubeResources || []),
-                          ].length > 0 ? (
-                            <ul className="space-y-3">
-                              {[
-                                ...(module.sopraResources || []).map((r) => ({
-                                  ...r,
-                                  source: "sopra" as const,
-                                })),
-                                ...(module.youtubeResources || []).map((r) => ({
-                                  ...r,
-                                  source: "youtube" as const,
-                                })),
-                              ].map((resource, resIndex) => {
-                                const SourceIcon =
-                                  resource.source
-                                    ? Icons[resource.source]
-                                    : null;
-                                return (
-                                  <li key={`${resource.title}-${resIndex}`}>
-                                    <Link
-                                      href={resource.url}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="flex items-center gap-3 group"
-                                    >
-                                      <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
-                                        {SourceIcon && (
-                                          <SourceIcon className="size-4" />
-                                        )}
-                                        {resource.type === "video" && (
-                                          <PlayCircle className="text-primary" />
-                                        )}
-                                        {resource.type === "article" && (
-                                          <FileText className="text-primary" />
-                                        )}
-                                        {resource.type === "course" && (
-                                          <BookOpen className="text-primary" />
-                                        )}
-                                      </div>
-                                      <div className="flex-1">
-                                        <p className="font-medium group-hover:underline">
-                                          {resource.title}
-                                        </p>
-                                        {resource.duration && (
-                                          <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-                                            <Clock className="size-3" />
-                                            {resource.duration}
+                          <div>
+                            <h4 className="font-semibold mb-4 mt-4">
+                              {t("paths.detail.resources")}:
+                            </h4>
+                            {allResources.length > 0 ? (
+                              <ul className="space-y-3">
+                                {allResources.map((resource, resIndex) => {
+                                  const SourceIcon =
+                                    resource.source
+                                      ? Icons[resource.source]
+                                      : null;
+                                  return (
+                                    <li key={`${resource.title}-${resIndex}`}>
+                                      <Link
+                                        href={resource.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-3 group"
+                                      >
+                                        <div className="flex items-center gap-2 p-2 rounded-md bg-muted group-hover:bg-primary/10 transition-colors">
+                                          {SourceIcon && (
+                                            <SourceIcon className="size-4" />
+                                          )}
+                                          {resource.type === "video" && (
+                                            <PlayCircle className="text-primary" />
+                                          )}
+                                          {resource.type === "article" && (
+                                            <FileText className="text-primary" />
+                                          )}
+                                          {resource.type === "course" && (
+                                            <BookOpen className="text-primary" />
+                                          )}
+                                        </div>
+                                        <div className="flex-1">
+                                          <p className="font-medium group-hover:underline">
+                                            {resource.title}
                                           </p>
-                                        )}
-                                      </div>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          ) : (
-                            <p className="text-muted-foreground text-sm">
-                              {t("paths.detail.noResources")}
-                            </p>
-                          )}
-                        </div>
+                                          {resource.duration && (
+                                            <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                                              <Clock className="size-3" />
+                                              {resource.duration}
+                                            </p>
+                                          )}
+                                        </div>
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            ) : (
+                              <p className="text-muted-foreground text-sm">
+                                {t("paths.detail.noResources")}
+                              </p>
+                            )}
+                          </div>
 
-                        {module.quiz && (
-                          <Button variant="outline" className="mt-4">
-                            <Puzzle className="mr-2" />
-                            {t("paths.detail.takeQuiz")}: {module.quiz.title}
-                          </Button>
-                        )}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
+                          {module.quiz && (
+                            <Button variant="outline" className="mt-4">
+                              <Puzzle className="mr-2" />
+                              {t("paths.detail.takeQuiz")}: {module.quiz.title}
+                            </Button>
+                          )}
+                        </AccordionContent>
+                      </AccordionItem>
+                    );
+                  })}
                 </Accordion>
               ) : (
                 <Card>
@@ -211,7 +210,7 @@ export default function PathDetailPage() {
           ) : (
             <Card>
               <CardContent className="text-center py-12 text-muted-foreground">
-                <p>{t("paths.detail.selectLevel", {defaultValue: "Selecciona un nivel para ver el contenido."})}</p>
+                <p>{t("paths.detail.selectLevel")}</p>
               </CardContent>
             </Card>
           )}
