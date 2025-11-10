@@ -4,7 +4,10 @@
     "learningPaths": "Learning Paths",
     "playground": "Playground",
     "tests": "Tests",
-    "refactors": "Refactors"
+    "refactors": "Refactors",
+    "softSkills": "Soft Skills",
+    "softSkillsExercises": "Exercises",
+    "softSkillsCourses": "Courses"
   },
   "userNav": {
     "name": "New Hire",
@@ -265,5 +268,19 @@
     "april": "April",
     "may": "May",
     "june": "June"
+  },
+  "softskills": {
+    "exercises": {
+      "page": {
+        "title": "Soft Skills Practice",
+        "description": "Generate scenarios to practice your communication and problem-solving skills."
+      }
+    },
+    "courses": {
+      "page": {
+        "title": "Soft Skills Development",
+        "description": "Browse courses on leadership, management, and other essential soft skills."
+      }
+    }
   }
 }

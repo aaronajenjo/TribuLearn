@@ -4,7 +4,10 @@
     "learningPaths": "Rutas de Aprendizaje",
     "playground": "Playground",
     "tests": "Tests",
-    "refactors": "Refactors"
+    "refactors": "Refactors",
+    "softSkills": "Habilidades Blandas",
+    "softSkillsExercises": "Ejercicios",
+    "softSkillsCourses": "Cursos"
   },
   "userNav": {
     "name": "Nuevo Empleado",
@@ -265,5 +268,19 @@
     "april": "Abril",
     "may": "Mayo",
     "june": "Junio"
+  },
+  "softskills": {
+    "exercises": {
+      "page": {
+        "title": "Práctica de Habilidades Blandas",
+        "description": "Genera escenarios para practicar tus habilidades de comunicación y resolución de problemas."
+      }
+    },
+    "courses": {
+      "page": {
+        "title": "Desarrollo de Habilidades Blandas",
+        "description": "Explora cursos sobre liderazgo, gestión y otras habilidades blandas esenciales."
+      }
+    }
   }
 }
