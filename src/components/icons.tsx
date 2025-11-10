@@ -20,7 +20,7 @@ export const Icons = {
   ),
   udemy: (props: SVGProps<SVGSVGElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src="/udemy.png" alt="Udemy Logo" width={16} height={16} {...props} />
+    <img src="/udemy.png" alt="Udemy Logo" style={{ width: '0.6rem', height: 'auto' }} {...props} />
   ),
   openWebinars: (props: SVGProps<SVGSVGElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
