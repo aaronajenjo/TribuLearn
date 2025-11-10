@@ -113,7 +113,7 @@ export default function PathDetailPage() {
                         ...r,
                         source: "youtube" as const,
                       })),
-                       ...(module.udemyResources || []).map((r) => ({
+                      ...(module.udemyResources || []).map((r) => ({
                         ...r,
                         source: "udemy" as const,
                       })),
@@ -223,5 +223,3 @@ export default function PathDetailPage() {
     </div>
   );
 }
-
-  
