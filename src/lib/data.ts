@@ -220,7 +220,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               },
               {
                 type: 'course',
-                title: 'C# Advanced',
+                title: 'C# Advanced Topics: Prepare for Technical Interviews',
                 url: 'https://www.udemy.com/course/csharp-advanced/'
               }
             ]
