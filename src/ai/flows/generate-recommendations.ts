@@ -73,7 +73,7 @@ Based on the questions they got wrong and their current skill level, your task i
 
 4.  **Percipio (Sopra Steria) Course Searches**: Recommend 2 relevant course searches for Percipio. For each recommendation:
     - Create a concise, descriptive title that would be a good search query.
-    - For the URL, create a valid Percipio search URL by encoding the title and appending it to 'https://sopra.percipio.com/search?q='. For example, for "C# Fundamentals", the URL is "https://sopra.percipio.com/search?q=C%23+Fundamentals".
+    - For the URL, create a valid Percipio search URL by encoding the title and appending it to 'https://soprasteria.percipio.com/search?q='. For example, for "C# Fundamentals", the URL is "https://soprasteria.percipio.com/search?q=C%23+Fundamentals".
     - Provide a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining its relevance.
 
 The entire response must be in the language with this ISO 639-1 code: {{{language}}}.

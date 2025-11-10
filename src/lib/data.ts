@@ -58,7 +58,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               {
                 type: "course",
                 title: "C# Development Fundamentals Journey",
-                url: "https://sopra.percipio.com/journey/be885a23-3ee8-4c14-8407-ea1d3d0c6dab",
+                url: "https://soprasteria.percipio.com/journey/be885a23-3ee8-4c14-8407-ea1d3d0c6dab",
                 source: "sopra"
               },
             ],
@@ -97,7 +97,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               {
                 type: "course",
                 title: "C# Intermediate Learning Track",
-                url: "https://sopra.percipio.com/track/fed7500e-f1c5-42cf-9b14-2c738633361a",
+                url: "https://soprasteria.percipio.com/track/fed7500e-f1c5-42cf-9b14-2c738633361a",
                 source: "sopra"
               },
               {
@@ -146,7 +146,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               {
                 type: "course",
                 title: "C# Advanced Learning Track",
-                url: "https://sopra.percipio.com/track/ba25d689-0c0e-4585-92b7-640ed1651c7d",
+                url: "https://soprasteria.percipio.com/track/ba25d689-0c0e-4585-92b7-640ed1651c7d",
                 source: "sopra"
               },
               {
@@ -211,13 +211,13 @@ export const learningPaths = (t: Translator): Technology[] => [
               {
                 type: "course",
                 title: "Angular Beginner Journey",
-                url: "https://sopra.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/6c3e8841-d56a-45d2-a6dd-36ac704c9d8d?tab=WATCH",
+                url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/6c3e8841-d56a-45d2-a6dd-36ac704c9d8d?tab=WATCH",
                 source: "sopra"
               },
               {
                 type: "video",
                 title: "What's New in Angular 17 & 18",
-                url: "https://sopra.percipio.com/courses/9d2b542c-d61e-4ffd-a7e0-99df49567f0e/videos/6e3bfbd3-992e-4739-aaf2-6a4b2b5a95f2",
+                url: "https://soprasteria.percipio.com/courses/9d2b542c-d61e-4ffd-a7e0-99df49567f0e/videos/6e3bfbd3-992e-4739-aaf2-6a4b2b5a95f2",
                 duration: "35m",
                 source: "sopra"
               },
@@ -232,7 +232,7 @@ export const learningPaths = (t: Translator): Technology[] => [
                     type: 'course',
                     title: 'Angular: De Cero a Experto',
                     url: 'https://www.udemy.com/course/angular-fernando-herrera',
-                    duration: '46h'
+                    duration: '33h'
                 }
             ]
           },
@@ -248,7 +248,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               {
                 type: "course",
                 title: "Angular Intermediate Journey",
-                url: "https://sopra.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/a11bcb81-3461-4631-89be-586006d1d293?tab=WATCH",
+                url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/a11bcb81-3461-4631-89be-586006d1d293?tab=WATCH",
                 source: "sopra"
               },
               {
@@ -282,7 +282,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               {
                 type: "course",
                 title: "Angular Advanced Journey",
-                url: "https://sopra.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/8f0be60e-27a4-4470-95a8-4b57e1ca48e4?tab=WATCH",
+                url: "https://soprasteria.percipio.com/channels/f3619a61-1944-11e7-b488-c198130a9b04/view/8f0be60e-27a4-4470-95a8-4b57e1ca48e4?tab=WATCH",
                 source: "sopra"
               },
             ],
