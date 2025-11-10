@@ -90,10 +90,8 @@ export const Icons = {
     </svg>
   ),
   azure: (props: SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M78.72 10.8L41.6 62.4L10.8 62.4L78.72 10.8Z" fill="#3E90E5"/>
-      <path d="M85.92 10.8L117.2 67.68V10.8H85.92Z" fill="#114A8B"/>
-      <path d="M41.6 62.4L78.72 117.2L117.2 67.68L85.92 10.8L41.6 62.4Z" fill="#3E9-E5"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="59.242" height="47.271" viewBox="0 0 59.242 47.271" {...props}>
+      <path fill="#0072c6" d="M32.368 0 14.9 15.145 0 41.895h13.437Zm2.323 3.543-7.454 21.008 14.291 17.956L13.8 47.271h45.442Z"></path>
     </svg>
   ),
 };
