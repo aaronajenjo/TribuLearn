@@ -4,12 +4,6 @@
 import { Icons } from "@/components/icons";
 import { learningPaths } from "@/lib/data";
 import { notFound, useParams } from "next/navigation";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { FileText, BookOpen, Clock, PlayCircle, Puzzle } from "lucide-react";
 import Link from "next/link";
@@ -56,14 +50,23 @@ export default function PathDetailPage() {
         {path.levels.map((level) => (
           <TabsContent key={level.name} value={level.name}>
             <div className="mt-4">
-              <Accordion
-                type="single"
-                collapsible
-                className="w-full"
-                defaultValue="item-0"
-              >
-                {level.modules.length > 0 ? (
-                  level.modules.map((module, index) => {
+              {level.modules.length > 0 ? (
+                <Tabs
+                  defaultValue={level.modules[0]?.title}
+                  className="w-full"
+                >
+                  <TabsList className="flex-wrap h-auto">
+                    {level.modules.map((module, index) => (
+                      <TabsTrigger
+                        key={`${module.title}-${index}`}
+                        value={module.title}
+                      >
+                        {module.title}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+
+                  {level.modules.map((module, index) => {
                     const allResources = [
                       ...(module.sopraResources || []).map((r) => ({
                         ...r,
@@ -74,16 +77,13 @@ export default function PathDetailPage() {
                         source: "youtube" as const,
                       })),
                     ];
-
                     return (
-                      <AccordionItem
-                        key={`${module.title}-${index}`}
-                        value={`item-${index}`}
+                      <TabsContent
+                        key={`${module.title}-${index}-content`}
+                        value={module.title}
+                        className="p-4 border rounded-md mt-2"
                       >
-                        <AccordionTrigger className="text-lg font-semibold">
-                          {module.title}
-                        </AccordionTrigger>
-                        <AccordionContent className="space-y-4">
+                        <div className="space-y-4">
                           <p className="text-muted-foreground">
                             {module.description}
                           </p>
@@ -96,7 +96,9 @@ export default function PathDetailPage() {
                               <ul className="space-y-3">
                                 {allResources.map((resource, resIndex) => {
                                   const SourceIcon =
-                                    resource.source ? Icons[resource.source] : null;
+                                    resource.source
+                                      ? Icons[resource.source]
+                                      : null;
                                   return (
                                     <li key={`${resource.title}-${resIndex}`}>
                                       <Link
@@ -148,18 +150,18 @@ export default function PathDetailPage() {
                               {t("paths.detail.takeQuiz")}: {module.quiz.title}
                             </Button>
                           )}
-                        </AccordionContent>
-                      </AccordionItem>
+                        </div>
+                      </TabsContent>
                     );
-                  })
-                ) : (
-                  <div className="text-center py-12 text-muted-foreground">
-                    <p>
-                      {t("paths.detail.comingSoon", { levelName: level.name })}
-                    </p>
-                  </div>
-                )}
-              </Accordion>
+                  })}
+                </Tabs>
+              ) : (
+                <div className="text-center py-12 text-muted-foreground">
+                  <p>
+                    {t("paths.detail.comingSoon", { levelName: level.name })}
+                  </p>
+                </div>
+              )}
             </div>
           </TabsContent>
         ))}
