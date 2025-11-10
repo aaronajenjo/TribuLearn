@@ -231,7 +231,7 @@ export const learningPaths = (t: Translator): Technology[] => [
                 {
                     type: 'course',
                     title: 'Angular: De Cero a Experto',
-                    url: 'https://www.udemy.com/course/angular-fernando-herrera/?couponCode=MT251110G3',
+                    url: 'https://www.udemy.com/course/angular-fernando-herrera',
                     source: 'udemy',
                     duration: '46h'
                 }
@@ -546,5 +546,3 @@ export const learningPaths = (t: Translator): Technology[] => [
     ],
   },
 ];
-
-  
