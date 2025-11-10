@@ -19,7 +19,21 @@ export const Icons = {
     </svg>
   ),
   udemy: (props: SVGProps<SVGSVGElement>) => (
-    <GraduationCap {...props} />
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <circle cx="12" cy="12" r="10" fill="#A435F0" />
+      <path
+        d="M12.53 7.74L15.36 10.58L12.53 13.42M12.53 10.58V17.5M9.7 13.42L12.53 10.58"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   ),
   openWebinars: (props: SVGProps<SVGSVGElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
@@ -89,9 +103,7 @@ export const Icons = {
     <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path d="M78.72 10.8L41.6 62.4L10.8 62.4L78.72 10.8Z" fill="#3E90E5"/>
       <path d="M85.92 10.8L117.2 67.68V10.8H85.92Z" fill="#114A8B"/>
-      <path d="M41.6 62.4L78.72 117.2L117.2 67.68L85.92 10.8L41.6 62.4Z" fill="#3E90E5"/>
+      <path d="M41.6 62.4L78.72 117.2L117.2 67.68L85.92 10.8L41.6 62.4Z" fill="#3E9-E5"/>
     </svg>
   ),
 };
-
-  
