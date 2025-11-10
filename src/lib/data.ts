@@ -5,7 +5,7 @@ export type Resource = {
   title: string;
   url: string;
   duration?: string;
-  source?: "sopra" | "youtube" | "openWebinars" | "percipio";
+  source?: "sopra" | "youtube" | "openWebinars" | "percipio" | "udemy";
 };
 
 export type Module = {
@@ -13,6 +13,7 @@ export type Module = {
   description: string;
   sopraResources: Resource[];
   youtubeResources: Resource[];
+  udemyResources?: Resource[];
   quiz?: {
     title: string;
     questions: any[];
@@ -225,6 +226,15 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Angular for Beginners - Full Course', url: 'https://www.youtube.com/watch?v=3qBXWUpoPHo', duration: '11h 17m' },
               { type: 'video', title: 'Learn Angular - Full Tutorial for Beginners', url: 'https://www.youtube.com/watch?v=f7unUpshmpA', duration: '1h 12m' },
               { type: 'video', title: 'Angular Component Communication', url: 'https://www.youtube.com/watch?v=MtTAfjiZxtk', duration: '20m' },
+            ],
+            udemyResources: [
+                {
+                    type: 'course',
+                    title: 'Angular: De Cero a Experto',
+                    url: 'https://www.udemy.com/course/angular-fernando-herrera/?couponCode=MT251110G3',
+                    source: 'udemy',
+                    duration: '46h'
+                }
             ]
           },
         ],
@@ -536,3 +546,5 @@ export const learningPaths = (t: Translator): Technology[] => [
     ],
   },
 ];
+
+  

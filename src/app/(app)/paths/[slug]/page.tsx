@@ -113,6 +113,10 @@ export default function PathDetailPage() {
                         ...r,
                         source: "youtube" as const,
                       })),
+                       ...(module.udemyResources || []).map((r) => ({
+                        ...r,
+                        source: "udemy" as const,
+                      })),
                     ];
                     return (
                       <AccordionItem
@@ -219,3 +223,5 @@ export default function PathDetailPage() {
     </div>
   );
 }
+
+  
