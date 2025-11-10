@@ -150,6 +150,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'C# Intermediate: Classes, Interfaces and OOP',
                 url: 'https://www.udemy.com/course/csharp-intermediate-classes-interfaces-and-oop/'
+              },
+              {
+                type: 'course',
+                title: 'Curso Entity Framework Core',
+                url: 'https://www.udemy.com/course/curso-entity-framework-core/'
               }
             ]
           },
@@ -212,6 +217,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'Creando Web APIs Profesionales con ASP.NET Core',
                 url: 'https://www.udemy.com/course/creando-web-apis-profesionales-con-aspnet-core-22/'
+              },
+              {
+                type: 'course',
+                title: 'C# Advanced',
+                url: 'https://www.udemy.com/course/csharp-advanced/'
               }
             ]
           },
