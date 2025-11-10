@@ -1,7 +1,7 @@
 "use client";
 
+import { SoftSkillsChallenge } from "@/components/soft-skills-challenge";
 import { useLocale } from "@/hooks/use-locale";
-import { Card, CardContent } from "@/components/ui/card";
 
 export default function SoftSkillsExercisesPage() {
   const { t } = useLocale();
@@ -15,11 +15,7 @@ export default function SoftSkillsExercisesPage() {
           {t("softskills.exercises.page.description")}
         </p>
       </div>
-       <Card>
-        <CardContent className="flex flex-col items-center justify-center h-64 text-muted-foreground p-6">
-            <p>Coming Soon...</p>
-        </CardContent>
-      </Card>
+       <SoftSkillsChallenge />
     </div>
   );
 }

@@ -274,6 +274,30 @@
       "page": {
         "title": "Práctica de Habilidades Blandas",
         "description": "Genera escenarios para practicar tus habilidades de comunicación y resolución de problemas."
+      },
+      "form": {
+        "title": "Generador de Desafíos",
+        "description": "Selecciona una habilidad blanda para generar un escenario laboral al que responder.",
+        "skill": "Habilidad Blanda",
+        "selectSkill": "Selecciona una habilidad",
+        "generateButton": "Generar Desafío"
+      },
+      "challenge": {
+        "title": "Tu Escenario",
+        "description": "Lee el escenario a continuación y piensa en cómo responderías.",
+        "generating": "Generando escenario...",
+        "placeholder": "Tu escenario aparecerá aquí."
+      },
+      "solution": {
+        "title": "Tu Respuesta",
+        "description": "Describe cómo manejarías la situación en el área de texto a continuación.",
+        "placeholder": "Escribe tu respuesta aquí...",
+        "analyzeButton": "Analizar Respuesta"
+      },
+      "analysis": {
+        "title": "Feedback de la IA",
+        "description": "Aquí está el feedback de la IA sobre tu respuesta.",
+        "generating": "Analizando tu respuesta..."
       }
     },
     "courses": {
@@ -281,6 +305,13 @@
         "title": "Desarrollo de Habilidades Blandas",
         "description": "Explora cursos sobre liderazgo, gestión y otras habilidades blandas esenciales."
       }
+    },
+    "types": {
+      "communication": "Comunicación",
+      "conflictResolution": "Resolución de Conflictos",
+      "leadership": "Liderazgo",
+      "teamwork": "Trabajo en Equipo",
+      "adaptability": "Adaptabilidad"
     }
   }
 }

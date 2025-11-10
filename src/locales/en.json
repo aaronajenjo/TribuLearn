@@ -274,6 +274,30 @@
       "page": {
         "title": "Soft Skills Practice",
         "description": "Generate scenarios to practice your communication and problem-solving skills."
+      },
+      "form": {
+        "title": "Challenge Generator",
+        "description": "Select a soft skill to generate a workplace scenario to respond to.",
+        "skill": "Soft Skill",
+        "selectSkill": "Select a skill",
+        "generateButton": "Generate Challenge"
+      },
+      "challenge": {
+        "title": "Your Scenario",
+        "description": "Read the scenario below and think about how you would respond.",
+        "generating": "Generating scenario...",
+        "placeholder": "Your scenario will appear here."
+      },
+      "solution": {
+        "title": "Your Response",
+        "description": "Describe how you would handle the situation in the text area below.",
+        "placeholder": "Write your response here...",
+        "analyzeButton": "Analyze Response"
+      },
+      "analysis": {
+        "title": "AI Feedback",
+        "description": "Here is the AI's feedback on your response.",
+        "generating": "Analyzing your response..."
       }
     },
     "courses": {
@@ -281,6 +305,13 @@
         "title": "Soft Skills Development",
         "description": "Browse courses on leadership, management, and other essential soft skills."
       }
+    },
+    "types": {
+      "communication": "Communication",
+      "conflictResolution": "Conflict Resolution",
+      "leadership": "Leadership",
+      "teamwork": "Teamwork",
+      "adaptability": "Adaptability"
     }
   }
 }
