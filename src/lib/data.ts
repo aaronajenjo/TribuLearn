@@ -325,6 +325,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'Angular con Devops, TDD, Pruebas Unitarias, Pipelines, GIT',
                 url: 'https://www.udemy.com/course/angular-con-devops-tdd-pruebas-unitarias-pipelines-git/'
+              },
+              {
+                type: 'course',
+                title: 'Angular Avanzado',
+                url: 'https://www.udemy.com/course/angular-avanzado-fernando-herrera/'
               }
             ]
           },
@@ -366,6 +371,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'Introducción al Testing de Software para Principiantes',
                 url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
+              },
+              {
+                type: 'course',
+                title: 'Aprende Ionic con Proyectos Prácticos',
+                url: 'https://www.udemy.com/course/aprende-ionic-con-proyectos-practicos/'
               }
             ]
           },
@@ -395,6 +405,13 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
               { type: 'video', title: 'Ionic Tutorial #19 - Authentication', url: 'https://www.youtube.com/watch?v=PZ8stXVoXjE', duration: '16m' },
               { type: 'video', title: 'Ionic Tutorial #28 - Building for Android & IOS', url: 'https://www.youtube.com/watch?v=4y3AeFDdFVY', duration: '11m' },
+            ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Ionic & Angular: Advanced Concepts',
+                url: 'https://www.udemy.com/course/ionic-angular-advanced-concepts/'
+              }
             ]
           }
         ] 
