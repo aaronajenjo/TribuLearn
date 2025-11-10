@@ -228,12 +228,12 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Angular Component Communication', url: 'https://www.youtube.com/watch?v=MtTAfjiZxtk', duration: '20m' },
             ],
             udemyResources: [
-                {
-                    type: 'course',
-                    title: 'Angular: De Cero a Experto',
-                    url: 'https://www.udemy.com/course/angular-fernando-herrera',
-                    duration: '33h'
-                }
+              {
+                type: 'course',
+                title: 'Angular: De Cero a Experto',
+                url: 'https://www.udemy.com/course/angular-fernando-herrera',
+                duration: '33h'
+              }
             ]
           },
         ],
@@ -288,6 +288,13 @@ export const learningPaths = (t: Translator): Technology[] => [
             ],
             youtubeResources: [
               { type: 'course', title: 'Mastering Angular', url: 'https://www.youtube.com/watch?v=R_It2UgUssg&list=PLoC8Q0moRTSgYzCoo5fklvPT40KQVUorx', duration: '54 videos' },
+            ],
+            udemyResources: [
+              {
+                type: 'course',
+                title: 'Angular con Devops, TDD, Pruebas Unitarias, Pipelines, GIT',
+                url: 'https://www.udemy.com/course/angular-con-devops-tdd-pruebas-unitarias-pipelines-git/'
+              }
             ]
           },
         ] 
