@@ -1,7 +1,7 @@
 "use client";
 
 import { GenerateRecommendationsOutput, Recommendation } from "@/ai/flows/generate-recommendations";
-import { Sparkles, Youtube, GraduationCap, BookMarked } from "lucide-react";
+import { Sparkles, Youtube, GraduationCap } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -42,7 +42,6 @@ export function RecommendationsDisplay({ isLoading, recommendations }: Recommend
   
   const hasUdemy = recommendations.udemy && recommendations.udemy.length > 0;
   const hasYoutube = recommendations.youtube && recommendations.youtube.length > 0;
-  const hasOpenWebinars = recommendations.openWebinars && recommendations.openWebinars.length > 0;
   const hasPercipio = recommendations.percipio && recommendations.percipio.length > 0;
 
   return (
@@ -72,15 +71,7 @@ export function RecommendationsDisplay({ isLoading, recommendations }: Recommend
           </div>
         </div>
        )}
-        {hasOpenWebinars && (
-        <div>
-          <h4 className="font-semibold text-lg mb-3 flex items-center gap-2"><BookMarked className="size-5" /> OpenWebinars Courses</h4>
-          <div className="space-y-4">
-            {recommendations.openWebinars.map(rec => <RecommendationCard key={rec.url} recommendation={rec} Icon={BookMarked} />)}
-          </div>
-        </div>
-       )}
-       {!hasUdemy && !hasYoutube && !hasOpenWebinars && !hasPercipio && (
+       {!hasUdemy && !hasYoutube && !hasPercipio && (
          <p className="text-center text-muted-foreground">No specific recommendations could be generated at this time.</p>
        )}
     </div>

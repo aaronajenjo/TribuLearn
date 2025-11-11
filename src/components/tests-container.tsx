@@ -158,7 +158,7 @@ export function TestsContainer({
     };
 
     fetchRecommendations();
-  }, [currentQuizState?.result, activeTab, technologies, locale, toast, t]);
+  }, [currentQuizState?.result, activeTab, technologies, locale, toast, t, currentQuizState?.isRecommending, currentQuizState?.recommendations]);
 
 
   return (
