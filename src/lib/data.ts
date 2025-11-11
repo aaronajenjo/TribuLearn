@@ -528,6 +528,11 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'Introducción al Testing de Software para Principiantes',
                 url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
+              },
+              {
+                type: 'course',
+                title: 'Aprende Blazor desde Cero - Curso Completo de Blazor',
+                url: 'https://www.udemy.com/course/aprende-blazor-desde-cero-curso-completo-de-blazor/'
               }
             ]
           },
