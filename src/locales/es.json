@@ -5,6 +5,7 @@
     "playground": "Playground",
     "tests": "Tests",
     "refactors": "Refactors",
+    "technicalSkills": "Habilidades Técnicas",
     "softSkills": "Habilidades Blandas",
     "softSkillsExercises": "Ejercicios",
     "softSkillsCourses": "Cursos"
@@ -316,14 +317,16 @@
       "conflictResolution": "Resolución de Conflictos",
       "leadership": "Liderazgo",
       "teamwork": "Trabajo en Equipo",
-      "timeManagement": "Gestión del Tiempo"
+      "timeManagement": "Gestión del Tiempo",
+      "adaptability": "Adaptabilidad"
     },
     "descriptions": {
       "communication": "Aprende a transmitir ideas de forma clara y eficaz.",
       "conflictResolution": "Desarrolla habilidades para navegar y resolver desacuerdos.",
       "leadership": "Inspira y guía a individuos y equipos.",
       "teamwork": "Colabora eficazmente con otros para alcanzar objetivos comunes.",
-      "timeManagement": "Mejora tu capacidad para usar el tiempo de manera efectiva y productiva."
+      "timeManagement": "Mejora tu capacidad para usar el tiempo de manera efectiva y productiva.",
+      "adaptability": "Adáptate a nuevas condiciones y prospera en entornos cambiantes."
     }
   }
 }

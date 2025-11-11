@@ -69,7 +69,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/sopra_logo.png"
+                src="/sopra_steria_logo.png"
                 alt="Sopra Steria Logo"
                 width={32}
                 height={32}
@@ -82,6 +82,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu className="px-2 space-y-1">
+              <p className="px-2 py-1 text-xs font-semibold text-muted-foreground/80">
+                {t("nav.technicalSkills")}
+              </p>
               {techNavItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
                   <SidebarMenuButton

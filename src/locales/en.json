@@ -5,6 +5,7 @@
     "playground": "Playground",
     "tests": "Tests",
     "refactors": "Refactors",
+    "technicalSkills": "Technical Skills",
     "softSkills": "Soft Skills",
     "softSkillsExercises": "Exercises",
     "softSkillsCourses": "Courses"
@@ -316,14 +317,16 @@
       "conflictResolution": "Conflict Resolution",
       "leadership": "Leadership",
       "teamwork": "Teamwork",
-      "timeManagement": "Time Management"
+      "timeManagement": "Time Management",
+      "adaptability": "Adaptability"
     },
     "descriptions": {
       "communication": "Learn to convey ideas clearly and effectively.",
       "conflictResolution": "Develop skills to navigate and resolve disagreements.",
       "leadership": "Inspire and guide individuals and teams.",
       "teamwork": "Collaborate effectively with others to achieve common goals.",
-      "timeManagement": "Improve your ability to use time effectively and productively."
+      "timeManagement": "Improve your ability to use time effectively and productively.",
+      "adaptability": "Adjust to new conditions and thrive in changing environments."
     }
   }
 }
