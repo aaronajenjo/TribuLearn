@@ -117,6 +117,10 @@ export default function PathDetailPage() {
                         ...r,
                         source: "udemy" as const,
                       })),
+                      ...(module.openWebinarsResources || []).map((r) => ({
+                        ...r,
+                        source: "openWebinars" as const,
+                      })),
                     ];
                     return (
                       <AccordionItem
