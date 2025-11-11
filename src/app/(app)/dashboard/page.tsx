@@ -12,7 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useLocale } from "@/hooks/use-locale";
-import { Code2, ClipboardList, CodeSquare } from "lucide-react";
+import { Code2, ClipboardList, CodeSquare, BrainCircuit, BookUser } from "lucide-react";
 
 export default function Dashboard() {
   const { t } = useLocale();
@@ -35,6 +35,18 @@ export default function Dashboard() {
       icon: CodeSquare,
       title: t("nav.refactors"),
       description: t("refactors.page.description"),
+    },
+    {
+      href: "/soft-skills-exercises",
+      icon: BrainCircuit,
+      title: t("nav.softSkillsExercises"),
+      description: t("softskills.exercises.page.description"),
+    },
+    {
+      href: "/soft-skills-courses",
+      icon: BookUser,
+      title: t("nav.softSkillsCourses"),
+      description: t("softskills.courses.page.description"),
     },
   ];
 
