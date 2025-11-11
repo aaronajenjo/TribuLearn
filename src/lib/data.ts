@@ -15,6 +15,7 @@ export type Module = {
   sopraResources: Resource[];
   youtubeResources: Resource[];
   udemyResources?: Resource[];
+  openWebinarsResources?: Resource[];
   quiz?: {
     title: string;
     questions: any[];
@@ -65,7 +66,15 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
         description: "Learn how to communicate more effectively with your team and clients.",
         sopraResources: [],
         youtubeResources: [],
-        udemyResources: []
+        udemyResources: [],
+        openWebinarsResources: [
+            {
+                type: "course",
+                title: "Curso de Comunicación en equipos",
+                url: "https://openwebinars.net/cursos/comunicacion-equipos/",
+                source: "openWebinars"
+            }
+        ]
       }
     ]
   },
@@ -85,7 +94,28 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
     description: t("softskills.descriptions.leadership"),
     icon: BrainCircuit,
     imageId: "softskill-leadership",
-    modules: []
+    modules: [
+      {
+        title: "Leadership Fundamentals",
+        description: "Explore core leadership principles and management techniques.",
+        sopraResources: [],
+        youtubeResources: [],
+        udemyResources: [
+          {
+            type: "course",
+            title: "Liderazgo efectivo: Desarrolla un equipo de alto desempeño",
+            url: "https://www.udemy.com/course/liderazgo-efectivo-desarrolla-un-equipo-de-alto-desempeno/",
+            source: "udemy"
+          },
+          {
+            type: "course",
+            title: "Liderazgo y gestión de equipos (Certificación 2018)",
+            url: "https://www.udemy.com/course/liderazgo-y-gestion-de-equipos-certificacion-2018/",
+            source: "udemy"
+          }
+        ]
+      }
+    ]
   },
   {
     id: "teamwork",
@@ -94,16 +124,46 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
     description: t("softskills.descriptions.teamwork"),
     icon: BrainCircuit,
     imageId: "softskill-teamwork",
-    modules: []
+    modules: [
+      {
+        title: "Team Collaboration Techniques",
+        description: "Improve your teamwork and collaboration skills.",
+        sopraResources: [],
+        youtubeResources: [],
+        openWebinarsResources: [
+          {
+            type: "course",
+            title: "Curso de Comunicación en equipos",
+            url: "https://openwebinars.net/cursos/comunicacion-equipos/",
+            source: "openWebinars"
+          }
+        ]
+      }
+    ]
   },
   {
-    id: "adaptability",
-    slug: "adaptability",
-    name: t("softskills.types.adaptability"),
-    description: t("softskills.descriptions.adaptability"),
+    id: "time-management",
+    slug: "time-management",
+    name: t("softskills.types.timeManagement"),
+    description: t("softskills.descriptions.timeManagement"),
     icon: BrainCircuit,
     imageId: "softskill-adaptability",
-    modules: []
+    modules: [
+      {
+        title: "Effective Time Management",
+        description: "Learn to manage your time, reduce stress, and increase productivity.",
+        sopraResources: [],
+        youtubeResources: [],
+        openWebinarsResources: [
+          {
+            type: "course",
+            title: "Curso de Gestión del tiempo para tener menos estrés",
+            url: "https://openwebinars.net/cursos/gestion-tiempo-menos-estres/",
+            source: "openWebinars"
+          }
+        ]
+      }
+    ]
   }
 ];
 
