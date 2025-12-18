@@ -210,7 +210,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Introducción al Testing de Software para Principiantes',
                 url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
               }
-            ]
+            ],
+            pluralsightResources: []
           },
           {
             title: t('technologies.csharp.beginner.module2.title'),
@@ -223,7 +224,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 source: "sopra"
               },
             ],
-            youtubeResources: []
+            youtubeResources: [],
+            pluralsightResources: []
           },
         ],
       },
@@ -286,7 +288,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Curso Entity Framework Core',
                 url: 'https://www.udemy.com/course/curso-entity-framework-core/'
               }
-            ]
+            ],
+            pluralsightResources: []
           },
         ],
       },
@@ -413,7 +416,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Introducción al Testing de Software para Principiantes',
                 url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
               }
-            ]
+            ],
+            pluralsightResources: []
           },
         ],
       },
@@ -447,7 +451,8 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Angular Dependency Injection - A Deep Dive', url: 'https://www.youtube.com/watch?v=OFPIGlxunL0', duration: '25m' },
               { type: 'video', title: 'Angular Migration from v14 to v17', url: 'https://www.youtube.com/watch?v=fbCfniJT_JA', duration: '30m' },
               { type: 'video', title: 'Are Modules required in Angular 19?', url: 'https://www.youtube.com/watch?v=x5PZwb4XurU', duration: '15m' },
-            ]
+            ],
+            pluralsightResources: []
           },
         ] 
       },
@@ -478,6 +483,14 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'Angular Avanzado',
                 url: 'https://www.udemy.com/course/angular-avanzado-fernando-herrera/'
+              }
+            ],
+            pluralsightResources: [
+              {
+                type: 'course',
+                title: 'Micro-front-end Fundamentals',
+                url: 'https://app.pluralsight.com/library/courses/micro-front-end-fundamentals/table-of-contents',
+                source: 'pluralsight'
               }
             ]
           },
@@ -525,7 +538,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Aprende Ionic con Proyectos Prácticos',
                 url: 'https://www.udemy.com/course/aprende-ionic-con-proyectos-practicos/'
               }
-            ]
+            ],
+            pluralsightResources: []
           },
         ],
       },
@@ -539,7 +553,8 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
               { type: 'video', title: 'Ionic Tutorial #9 - HTTP Requests', url: 'https://www.youtube.com/watch?v=_p4lL3dhovY', duration: '11m' },
               { type: 'video', title: 'Ionic Tutorial #13 - Storing Data with Storage', url: 'https://www.youtube.com/watch?v=WshbmpP5JuY', duration: '12m' },
-            ]
+            ],
+            pluralsightResources: []
           }
         ] 
       },
@@ -560,7 +575,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Ionic & Angular: Advanced Concepts',
                 url: 'https://www.udemy.com/course/ionic-angular-advanced-concepts/'
               }
-            ]
+            ],
+            pluralsightResources: []
           }
         ] 
       },
@@ -603,7 +619,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Aprende Blazor desde Cero - Curso Completo de Blazor',
                 url: 'https://www.udemy.com/course/aprende-blazor-desde-cero-curso-completo-de-blazor/'
               }
-            ]
+            ],
+            pluralsightResources: []
           },
         ],
       },
@@ -617,7 +634,8 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
               { type: 'video', title: 'Blazor Components | Ep 3 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=G910vWOdhQ8&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=3', duration: '27m' },
               { type: 'video', title: 'Blazor Forms and Validation | Ep 5 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=3Gr83lIaENg&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=5', duration: '26m' },
-            ]
+            ],
+            pluralsightResources: []
           }
         ] 
       },
@@ -633,7 +651,8 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Publishing a Blazor App | Ep 16 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=vi51RBc_TkY&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=16', duration: '10m' },
               { type: 'video', title: 'How to deploy Blazor app to Azure | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=oprGTwdpDKk&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=24', duration: '9m' },
               { type: 'video', title: 'Publish to IIS | Ep 28 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=STtxYvPxPl4&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=28', duration: '10m' },
-            ]
+            ],
+            pluralsightResources: []
           }
         ] 
       },
@@ -664,7 +683,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Introducción al Testing de Software para Principiantes',
                 url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
               }
-            ]
+            ],
+            pluralsightResources: []
           },
         ],
       },
@@ -677,7 +697,8 @@ export const learningPaths = (t: Translator): Technology[] => [
             sopraResources: [],
             youtubeResources: [
               { type: 'video', title: 'CRUD Operations in Razor Pages in ASP.NET Core', url: 'https://www.youtube.com/watch?v=ZqlvK5UcXnY', duration: '29m' },
-            ]
+            ],
+            pluralsightResources: []
           }
         ]
       },
@@ -719,7 +740,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 title: 'Introducción al Testing de Software para Principiantes',
                 url: 'https://www.udemy.com/course/introduccion-al-testing-de-software-para-principiantes/'
               }
-            ]
+            ],
+            pluralsightResources: []
           }
         ],
       },
@@ -749,7 +771,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 source: 'sopra'
               }
             ],
-            youtubeResources: []
+            youtubeResources: [],
+            pluralsightResources: []
           }
         ],
       },
@@ -773,7 +796,8 @@ export const learningPaths = (t: Translator): Technology[] => [
                 source: 'sopra'
               }
             ],
-            youtubeResources: []
+            youtubeResources: [],
+            pluralsightResources: []
           }
         ] 
       },
