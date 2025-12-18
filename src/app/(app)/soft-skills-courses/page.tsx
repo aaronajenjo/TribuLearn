@@ -108,6 +108,14 @@ export default function SoftSkillsCoursesPage() {
                         ...r,
                         source: "udemy" as const,
                       })),
+                      ...(module.openWebinarsResources || []).map((r) => ({
+                        ...r,
+                        source: "openWebinars" as const,
+                      })),
+                      ...(module.pluralsightResources || []).map((r) => ({
+                        ...r,
+                        source: "pluralsight" as const,
+                      })),
                     ];
                     return (
                       <AccordionItem

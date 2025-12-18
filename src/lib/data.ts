@@ -6,7 +6,7 @@ export type Resource = {
   title: string;
   url: string;
   duration?: string;
-  source?: "sopra" | "youtube" | "openWebinars" | "percipio" | "udemy";
+  source?: "sopra" | "youtube" | "openWebinars" | "percipio" | "udemy" | "pluralsight";
 };
 
 export type Module = {
@@ -16,6 +16,7 @@ export type Module = {
   youtubeResources: Resource[];
   udemyResources?: Resource[];
   openWebinarsResources?: Resource[];
+  pluralsightResources?: Resource[];
   quiz?: {
     title: string;
     questions: any[];
@@ -351,6 +352,14 @@ export const learningPaths = (t: Translator): Technology[] => [
                 type: 'course',
                 title: 'C# Advanced Topics: Prepare for Technical Interviews',
                 url: 'https://www.udemy.com/course/csharp-advanced/'
+              }
+            ],
+            pluralsightResources: [
+              {
+                type: 'course',
+                title: 'Microservices Fundamentals',
+                url: 'https://app.pluralsight.com/library/courses/microservices-foundations/table-of-contents',
+                source: 'pluralsight'
               }
             ]
           },

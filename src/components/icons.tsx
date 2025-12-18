@@ -26,6 +26,22 @@ export const Icons = {
     // eslint-disable-next-line @next/next/no-img-element
     <img src="/openwebinars.jpg" alt="OpenWebinars Logo" width={16} height={16} {...props} />
   ),
+  pluralsight: (props: SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="1.53 1.53 30.93 30.93" {...props}>
+      <path d="M32.3745 18.6111C33.2643 10.1161 27.0991 2.50814 18.6041 1.61828C10.1091 0.728411 2.50111 6.89362 1.61124 15.3886C0.721379 23.8837 6.88658 31.4916 15.3816 32.3815C23.8766 33.2714 31.4846 27.1062 32.3745 18.6111Z" fill="url(#paint0_linear_4997_19950)"/>
+      <path d="M9.54199 23.8027L12.9465 21.8368V25.6691L27.9622 17.0012L12.9465 8.33325V12.1656L9.54199 10.1996V23.8027ZM14.503 14.8619L18.2099 17.0012L14.503 19.1405V14.8619ZM14.503 20.9405L14.5473 20.9146L21.323 17.0012L14.503 13.0619V11.0295L24.8455 17.0012L14.503 22.9728V20.9405ZM11.0985 12.8959L12.9428 13.9619V20.0405L11.0985 21.1064V12.8959Z" fill="white"/>
+      <defs>
+        <linearGradient id="paint0_linear_4997_19950" x1="16.9928" y1="2.03704" x2="16.9928" y2="32.644" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#FF1675"/>
+          <stop offset="0.15" stop-color="#FF2C5B"/>
+          <stop offset="0.4" stop-color="#FF4E34"/>
+          <stop offset="0.64" stop-color="#FF6618"/>
+          <stop offset="0.85" stop-color="#FF7507"/>
+          <stop offset="1" stop-color="#FF7B01"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  ),
   csharp: (props: SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" {...props}>
       <path fill="#68217A" d="M117.5 33.5l.3-.2c-.6-1.1-1.5-2.1-2.4-2.6l-48.3-27.8c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3.9 3.4l-.2.1c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4v-55.8c.1-.8 0-1.7-.4-2.6zm-53.5 70c-21.8 0-39.5-17.7-39.5-39.5s17.7-39.5 39.5-39.5c14.7 0 27.5 8.1 34.3 20l-13 7.5c-4.2-7.5-12.2-12.5-21.3-12.5-13.5 0-24.5 11-24.5 24.5s11 24.5 24.5 24.5c9.1 0 17.1-5 21.3-12.4l12.9 7.6c-6.8 11.8-19.6 19.8-34.2 19.8zm51-41.5h-3.2l-.9 4h4.1v5h-5l-1.2 6h-4.9l1.2-6h-3.8l-1.2 6h-4.8l1.2-6h-2.5v-5h3.5l.9-4h-4.4v-5h5.3l1.2-6h4.9l-1.2 6h3.8l1.2-6h4.8l-1.2 6h2.2v5zM102.3 66h3.8l.9-4h-3.8z"></path>

@@ -32,6 +32,7 @@ const GenerateRecommendationsOutputSchema = z.object({
   udemy: z.array(RecommendationSchema).describe('An array of recommended course searches from Udemy.'),
   youtube: z.array(RecommendationSchema).describe('An array of recommended video searches from YouTube.'),
   percipio: z.array(RecommendationSchema).describe('An array of recommended course searches from Percipio.'),
+  pluralsight: z.array(RecommendationSchema).describe('An array of recommended course searches from Pluralsight.'),
 });
 export type GenerateRecommendationsOutput = z.infer<typeof GenerateRecommendationsOutputSchema>;
 
@@ -68,6 +69,11 @@ Based on the questions they got wrong and their current skill level, your task i
 3.  **Percipio (Sopra Steria) Course Searches**: Recommend 2 relevant course searches for Percipio. For each recommendation:
     - Create a concise, descriptive title that would be a good search query.
     - For the URL, create a valid Percipio search URL by encoding the title and appending it to 'https://soprasteria.percipio.com/search?q='. For example, for "C# Fundamentals", the URL is "https://soprasteria.percipio.com/search?q=C%23+Fundamentals".
+    - Provide a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining its relevance.
+
+4.  **Pluralsight Course Searches**: Recommend 2 relevant course searches for Pluralsight. For each recommendation:
+    - Create a concise, descriptive title that would be a good search query.
+    - For the URL, create a valid Pluralsight search URL by encoding the title and appending it to 'https://app.pluralsight.com/library/search?q='. For example, for "C# Fundamentals", the URL is "https://app.pluralsight.com/library/search?q=C%23+Fundamentals".
     - Provide a short, encouraging description (in the language with ISO 639-1 code: {{{language}}}) explaining its relevance.
 
 The entire response must be in the language with this ISO 639-1 code: {{{language}}}.

@@ -43,6 +43,7 @@ export function RecommendationsDisplay({ isLoading, recommendations }: Recommend
   const hasUdemy = recommendations.udemy && recommendations.udemy.length > 0;
   const hasYoutube = recommendations.youtube && recommendations.youtube.length > 0;
   const hasPercipio = recommendations.percipio && recommendations.percipio.length > 0;
+  const hasPluralsight = recommendations.pluralsight && recommendations.pluralsight.length > 0;
 
   return (
     <div className="space-y-6">
@@ -52,6 +53,14 @@ export function RecommendationsDisplay({ isLoading, recommendations }: Recommend
           <h4 className="font-semibold text-lg mb-3 flex items-center gap-2"><Icons.sopra className="size-5" /> Percipio Courses</h4>
           <div className="space-y-4">
             {recommendations.percipio.map(rec => <RecommendationCard key={rec.url} recommendation={rec} Icon={Icons.sopra} />)}
+          </div>
+        </div>
+       )}
+       {hasPluralsight && (
+        <div>
+          <h4 className="font-semibold text-lg mb-3 flex items-center gap-2"><Icons.pluralsight className="size-5" /> Pluralsight Courses</h4>
+          <div className="space-y-4">
+            {recommendations.pluralsight.map(rec => <RecommendationCard key={rec.url} recommendation={rec} Icon={Icons.pluralsight} />)}
           </div>
         </div>
        )}
@@ -71,7 +80,7 @@ export function RecommendationsDisplay({ isLoading, recommendations }: Recommend
           </div>
         </div>
        )}
-       {!hasUdemy && !hasYoutube && !hasPercipio && (
+       {!hasUdemy && !hasYoutube && !hasPercipio && !hasPluralsight && (
          <p className="text-center text-muted-foreground">No specific recommendations could be generated at this time.</p>
        )}
     </div>
