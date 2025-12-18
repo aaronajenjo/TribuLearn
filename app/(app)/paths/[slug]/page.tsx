@@ -121,6 +121,10 @@ export default function PathDetailPage() {
                         ...r,
                         source: "openWebinars" as const,
                       })),
+                      ...(module.pluralsightResources || []).map((r) => ({
+                        ...r,
+                        source: "pluralsight" as const,
+                      })),
                     ];
                     return (
                       <AccordionItem

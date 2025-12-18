@@ -75,7 +75,8 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
                 url: "https://openwebinars.net/cursos/comunicacion-equipos/",
                 source: "openWebinars"
             }
-        ]
+        ],
+        pluralsightResources: [],
       }
     ]
   },
@@ -114,7 +115,9 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
             url: "https://www.udemy.com/course/liderazgo-y-gestion-de-equipos-certificacion-2018/",
             source: "udemy"
           }
-        ]
+        ],
+        openWebinarsResources: [],
+        pluralsightResources: [],
       }
     ]
   },
@@ -131,6 +134,7 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
         description: "Improve your teamwork and collaboration skills.",
         sopraResources: [],
         youtubeResources: [],
+        udemyResources: [],
         openWebinarsResources: [
           {
             type: "course",
@@ -138,7 +142,8 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
             url: "https://openwebinars.net/cursos/comunicacion-equipos/",
             source: "openWebinars"
           }
-        ]
+        ],
+        pluralsightResources: [],
       }
     ]
   },
@@ -155,6 +160,7 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
         description: "Learn to manage your time, reduce stress, and increase productivity.",
         sopraResources: [],
         youtubeResources: [],
+        udemyResources: [],
         openWebinarsResources: [
           {
             type: "course",
@@ -162,7 +168,8 @@ export const softSkillsData = (t: Translator): SoftSkill[] => [
             url: "https://openwebinars.net/cursos/gestion-tiempo-menos-estres/",
             source: "openWebinars"
           }
-        ]
+        ],
+        pluralsightResources: [],
       }
     ]
   }
@@ -452,6 +459,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Angular Migration from v14 to v17', url: 'https://www.youtube.com/watch?v=fbCfniJT_JA', duration: '30m' },
               { type: 'video', title: 'Are Modules required in Angular 19?', url: 'https://www.youtube.com/watch?v=x5PZwb4XurU', duration: '15m' },
             ],
+            udemyResources: [],
             pluralsightResources: []
           },
         ] 
@@ -554,6 +562,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Ionic Tutorial #9 - HTTP Requests', url: 'https://www.youtube.com/watch?v=_p4lL3dhovY', duration: '11m' },
               { type: 'video', title: 'Ionic Tutorial #13 - Storing Data with Storage', url: 'https://www.youtube.com/watch?v=WshbmpP5JuY', duration: '12m' },
             ],
+            udemyResources: [],
             pluralsightResources: []
           }
         ] 
@@ -635,6 +644,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'Blazor Components | Ep 3 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=G910vWOdhQ8&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=3', duration: '27m' },
               { type: 'video', title: 'Blazor Forms and Validation | Ep 5 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=3Gr83lIaENg&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=5', duration: '26m' },
             ],
+            udemyResources: [],
             pluralsightResources: []
           }
         ] 
@@ -652,6 +662,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               { type: 'video', title: 'How to deploy Blazor app to Azure | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=oprGTwdpDKk&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=24', duration: '9m' },
               { type: 'video', title: 'Publish to IIS | Ep 28 | Blazor for Beginners', url: 'https://www.youtube.com/watch?v=STtxYvPxPl4&list=PLzewa6pjbr3IQEUfNiK2SROQC1NuKl6PV&index=28', duration: '10m' },
             ],
+            udemyResources: [],
             pluralsightResources: []
           }
         ] 
@@ -698,6 +709,7 @@ export const learningPaths = (t: Translator): Technology[] => [
             youtubeResources: [
               { type: 'video', title: 'CRUD Operations in Razor Pages in ASP.NET Core', url: 'https://www.youtube.com/watch?v=ZqlvK5UcXnY', duration: '29m' },
             ],
+            udemyResources: [],
             pluralsightResources: []
           }
         ]
@@ -772,6 +784,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               }
             ],
             youtubeResources: [],
+            udemyResources: [],
             pluralsightResources: []
           }
         ],
@@ -797,6 +810,7 @@ export const learningPaths = (t: Translator): Technology[] => [
               }
             ],
             youtubeResources: [],
+            udemyResources: [],
             pluralsightResources: []
           }
         ] 
